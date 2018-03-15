@@ -6,42 +6,60 @@
     android:layout_height="match_parent"
     tools:context="com.example.katharinafeiertag.mediary.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menü"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033" />
-
     <ImageButton
         android:id="@+id/bt_suitcase"
-        android:layout_width="74dp"
-        android:layout_height="66dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/suitecase"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="106dp" />
+        android:layout_width="152dp"
+        android:layout_height="160dp"
+        android:background="@android:color/background_light"
+        android:contentDescription="Hausapotheke"
+        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
+        app:srcCompat="@drawable/apothekebt"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="11dp" />
 
     <ImageButton
         android:id="@+id/bt_setting"
-        android:layout_width="68dp"
-        android:layout_height="64dp"
+        android:layout_width="150dp"
+        android:layout_height="136dp"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/settings"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="280dp" />
+        android:contentDescription="Einstellungen"
+        android:onClick="onSettingsClick"
+        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
+        app:srcCompat="@drawable/settingsbt"
+        tools:layout_editor_absoluteX="218dp"
+        tools:layout_editor_absoluteY="348dp" />
 
     <ImageButton
-        android:id="@+id/bt_picarchive"
-        android:layout_width="74dp"
-        android:layout_height="65dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/pics"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="185dp" />
+        android:id="@+id/bt_med"
+        android:layout_width="137dp"
+        android:layout_height="131dp"
+        android:background="@android:color/background_light"
+        android:contentDescription="regelmäßig einzunehmende Mediakmente"
+        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
+        app:srcCompat="@drawable/medbt"
+        tools:layout_editor_absoluteX="231dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageButton
+        android:id="@+id/bt_user"
+        android:layout_width="127dp"
+        android:layout_height="149dp"
+        android:background="@android:color/background_light"
+        android:contentDescription="Benutzerprofil"
+        android:onClick="onUserClick"
+        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
+        app:srcCompat="@drawable/userbt"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:contentDescription="Apotheken in Ihrer Nähe"
+        app:srcCompat="@drawable/apotheken"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="342dp" />
 
 </android.support.constraint.ConstraintLayout>

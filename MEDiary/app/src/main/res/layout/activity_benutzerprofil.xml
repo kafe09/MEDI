@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.katharinafeiertag.mediary.BenutzerprofilActivity">
+
+    <EditText
+        android:id="@+id/tf_vn"
+        android:layout_width="303dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Vorname:"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <EditText
+        android:id="@+id/tf_nm"
+        android:layout_width="302dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nachname:"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <EditText
+        android:id="@+id/tf_mail"
+        android:layout_width="306dp"
+        android:layout_height="51dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="@dimen/activity_horizontal_margin"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="E-Mail:"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="304dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="91dp"
+        android:layout_height="80dp"
+        android:drawableLeft="@drawable/female"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="104dp"
+        android:layout_height="79dp"
+        android:drawableLeft="@drawable/male"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <ImageView
+        android:id="@+id/iv_insertProfilimage"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        android:onClick="selectImage"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+</android.support.constraint.ConstraintLayout>
