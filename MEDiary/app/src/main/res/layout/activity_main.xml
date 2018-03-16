@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,58 +8,81 @@
 
     <ImageButton
         android:id="@+id/bt_suitcase"
-        android:layout_width="152dp"
-        android:layout_height="160dp"
+        android:layout_width="156dp"
+        android:layout_height="168dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:background="@android:color/background_light"
         android:contentDescription="Hausapotheke"
+        android:onClick="onHausapothekeClick"
+        android:visibility="visible"
         app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
-        app:srcCompat="@drawable/apothekebt"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="11dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bt_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153"
+        app:srcCompat="@drawable/apothekebt" />
 
     <ImageButton
         android:id="@+id/bt_setting"
         android:layout_width="150dp"
         android:layout_height="136dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageButton2"
+        android:layout_marginEnd="26dp"
         android:background="@android:color/transparent"
         android:contentDescription="Einstellungen"
         android:onClick="onSettingsClick"
         app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
-        app:srcCompat="@drawable/settingsbt"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="348dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_user"
+        app:srcCompat="@drawable/settingsbt" />
 
     <ImageButton
         android:id="@+id/bt_med"
-        android:layout_width="137dp"
-        android:layout_height="131dp"
+        android:layout_width="170dp"
+        android:layout_height="164dp"
+        android:layout_alignEnd="@+id/bt_setting"
+        android:layout_alignTop="@+id/bt_suitcase"
         android:background="@android:color/background_light"
         android:contentDescription="regelmäßig einzunehmende Mediakmente"
         app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
-        app:srcCompat="@drawable/medbt"
-        tools:layout_editor_absoluteX="231dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bt_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266"
+        app:srcCompat="@drawable/medbt" />
 
     <ImageButton
         android:id="@+id/bt_user"
         android:layout_width="127dp"
         android:layout_height="149dp"
+        android:layout_below="@+id/bt_suitcase"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
         android:background="@android:color/background_light"
         android:contentDescription="Benutzerprofil"
         android:onClick="onUserClick"
-        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
         app:srcCompat="@drawable/userbt"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="171dp" />
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="227dp" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="148dp"
+        android:layout_height="145dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="17dp"
+        android:layout_toStartOf="@+id/bt_med"
         android:background="@android:color/background_light"
         android:contentDescription="Apotheken in Ihrer Nähe"
-        app:srcCompat="@drawable/apotheken"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="342dp" />
+        android:onClick="onApothekenClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_user"
+        app:srcCompat="@drawable/apotheken" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

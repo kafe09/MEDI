@@ -89,7 +89,6 @@
     <string name="pref_title_vibrate">Vibrate</string>
 
 
-
     <!--damit Fingerprint geht-->
     <string name="MEDiary">Fingerprint Authentication</string>
     <string name="instructions">

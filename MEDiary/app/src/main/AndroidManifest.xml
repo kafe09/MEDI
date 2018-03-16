@@ -28,7 +28,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".BenutzerprofilActivity"></activity>
+        <activity android:name=".BenutzerprofilActivity" />
+        <activity android:name=".RegistrierenActivity" />
+        <activity android:name=".ApothekenActivity" />
+        <activity android:name=".MedEinnahmeActivity" />
+        <activity android:name=".HausapothekeActivity"></activity>
     </application>
 
 </manifest>
