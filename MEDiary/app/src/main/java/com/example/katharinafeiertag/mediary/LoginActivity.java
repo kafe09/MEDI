@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+                //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.tf_password);
@@ -349,7 +349,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //klick auf Anmelde-Button
         public void onAnmeldenClick (View v){
-            Intent AnmeldeIntent = new Intent(getBaseContext(), MainActivity.class);
+            Intent AnmeldeIntent = new Intent(getBaseContext(), HauptmenuActivity.class);
             startActivity(AnmeldeIntent);
         }
 

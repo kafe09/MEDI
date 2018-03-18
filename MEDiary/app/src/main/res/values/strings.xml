@@ -8,8 +8,8 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_invalid_password">Das Passwort ist zu kurz</string>
+    <string name="error_incorrect_password">Das Passwort ist nicht korrekt</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
@@ -19,7 +19,7 @@
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="pref_header_general">Allgemein</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
     <string name="pref_description_social_recommendations">Recommendations for people to contact
@@ -91,9 +91,20 @@
 
     <!--damit Fingerprint geht-->
     <string name="MEDiary">Fingerprint Authentication</string>
-    <string name="instructions">
-    Place your fingertip on the Home button to verify your identity
-    </string>
+    <string name="instructions"> Place your fingertip on the Home button to verify your identity</string>
+
+    <string name="hausapotheke">Hausapotheke</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="regelm_einzunehmende_mediakmente">regelmäßig einzunehmende Mediakmente</string>
+    <string name="benutzerprofil">Benutzerprofil</string>
+    <string name="apotheken_in_ihrer_naehe">Apotheken in Ihrer Nähe</string>
+    <string name="Anzeige_Hausapotheke">Hier sehen Sie Ihre digitale Hausapotheke</string>
+    <string name="title_activity_einstellungen">Einstellungen</string>
+    <string name="e_mail">E-Mail:</string>
+    <string name="passwort">Passwort:</string>
+    <string name="anmelden">Anmelden</string>
+    <string name="registrieren">Registrieren</string>
+    <string name="schnellerer_login_mithilfe_des_fingerprints_auf_der_home_buttons">Schnellerer Login mithilfe des Fingerprints auf der Home-Buttons</string>
 
 </resources>
 
