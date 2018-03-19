@@ -45,10 +45,10 @@ public class HauptmenuActivity extends AppCompatActivity {
     //klick auf MedEinnahme-Button
     //Aufgabenstellung: onClickSwitchActivity()
     public void onMedEinnahmeClick(View v) {
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String text = editText.getText().toString();
+        //EditText editText = (EditText) findViewById(R.id.editText);
+        //String text = editText.getText().toString();
         Intent einnahmeIntent = new Intent(this, EinnahmeActivity.class);
-        einnahmeIntent.putExtra(Intent.EXTRA_TEXT, text);
+       // einnahmeIntent.putExtra(Intent.EXTRA_TEXT, text);
         startActivityForResult(einnahmeIntent, 1);
     }
 
@@ -67,8 +67,7 @@ public class HauptmenuActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Toast.makeText(this,
-                    Integer.toString(data.getIntExtra(REQUEST_RESULT, 0)),
+          Toast.makeText(this, Integer.toString(data.getIntExtra(REQUEST_RESULT, 0)),
                     Toast.LENGTH_LONG).show();
         }
     }
