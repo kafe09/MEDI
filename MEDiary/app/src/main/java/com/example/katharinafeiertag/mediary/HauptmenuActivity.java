@@ -72,4 +72,9 @@ public class HauptmenuActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
+
+
+    public void unnoetig () {
+        int i = 0;
+    }
 }
