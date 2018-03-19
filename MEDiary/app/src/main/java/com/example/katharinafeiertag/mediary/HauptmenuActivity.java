@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class HauptmenuActivity extends AppCompatActivity {
+    //I HOFF DER KACK FUNZT JETZT ENDLICH DALIA
     //Aufgabenstellung: Ein Ergebnis aus einer Aktivität zurückgeben
     public static final String REQUEST_RESULT = "REQUEST_RESULT";
 
