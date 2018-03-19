@@ -8,24 +8,35 @@
 
     <TextView
         android:id="@+id/tf_vorhanden"
-        android:layout_width="162dp"
-        android:layout_height="28dp"
-        android:layout_alignEnd="@+id/tf_editText"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="38dp"
-        android:text="@string/Anzeige_Hausapotheke"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:text="@string/Hausapotheke"
         tools:layout_editor_absoluteX="58dp"
         tools:layout_editor_absoluteY="16dp" />
 
     <EditText
         android:id="@+id/tf_editText"
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/tf_vorhanden"
-        android:layout_marginTop="94dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:text="@string/Anzeige_Hausapotheke"
         tools:layout_editor_absoluteX="58dp"
         tools:layout_editor_absoluteY="65dp" />
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="99dp"
+        android:layout_marginStart="35dp"
+        android:text="versuch" />
 </RelativeLayout>

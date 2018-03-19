@@ -10,9 +10,23 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="43dp"
+        android:layout_marginStart="37dp"
+        android:onClick="onClickClose"
         android:text="zurück zum Menü"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="539dp"
-        android:onClick="onClickClose"/>
+        tools:layout_editor_absoluteY="539dp" />
+
+    <TextView
+        android:id="@+id/tf_Einnahme"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/regelm_einzunehmende_mediakmente" />
 
 </RelativeLayout>

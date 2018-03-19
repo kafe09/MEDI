@@ -10,9 +10,9 @@
         android:id="@+id/bt_suitcase"
         android:layout_width="156dp"
         android:layout_height="168dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@+id/bt_med"
         android:background="@android:color/background_light"
         android:contentDescription="@string/hausapotheke"
         android:onClick="onHausapothekeClick"
@@ -48,6 +48,7 @@
         android:layout_alignTop="@+id/bt_suitcase"
         android:background="@android:color/background_light"
         android:contentDescription="@string/regelm_einzunehmende_mediakmente"
+        android:onClick="onMedEinnahmeClick"
         app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
         app:layout_constraintBottom_toTopOf="@+id/bt_user"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +73,8 @@
         android:id="@+id/imageButton2"
         android:layout_width="148dp"
         android:layout_height="145dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="22dp"
-        android:layout_marginEnd="17dp"
-        android:layout_toStartOf="@+id/bt_med"
+        android:layout_alignStart="@+id/bt_suitcase"
+        android:layout_below="@+id/bt_user"
         android:background="@android:color/background_light"
         android:contentDescription="@string/apotheken_in_ihrer_naehe"
         android:onClick="onApothekenClick"
@@ -83,5 +82,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_user"
         app:srcCompat="@drawable/apotheken" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageButton2"
+        android:inputType="" />
 
 </RelativeLayout>

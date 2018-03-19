@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MEDiary</string>
-    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login">MEDiary</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -105,6 +105,9 @@
     <string name="anmelden">Anmelden</string>
     <string name="registrieren">Registrieren</string>
     <string name="schnellerer_login_mithilfe_des_fingerprints_auf_der_home_buttons">Schnellerer Login mithilfe des Fingerprints auf der Home-Buttons</string>
+
+    <string name="Hausapotheke">TextViewText</string>
+    <string name="hauptmenu">Hauptmenü</string>
 
 </resources>
 

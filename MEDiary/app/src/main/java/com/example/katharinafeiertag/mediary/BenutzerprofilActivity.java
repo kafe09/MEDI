@@ -54,6 +54,10 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     }
 
     public void onClickClose(View view) {
+        //Aufgabenstellung: hier entsteht dann der Toast
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(HauptmenuActivity.REQUEST_RESULT,42);
+        setResult(RESULT_OK, returnIntent);
         finish();
     }
 }
