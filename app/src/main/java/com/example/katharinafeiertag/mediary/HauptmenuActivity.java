@@ -65,8 +65,6 @@ public class HauptmenuActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
-        public void kathiversucht () {
-            int i = 0;
-    }
+
 }
 
