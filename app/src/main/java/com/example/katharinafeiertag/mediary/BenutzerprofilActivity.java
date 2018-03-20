@@ -63,5 +63,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
 
     public void methodezumVersuch() {
         String name;
+        int alter;
+        char punkt;
     }
 }
