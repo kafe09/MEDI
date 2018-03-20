@@ -26,8 +26,8 @@
             </intent-filter>
         </activity>
 
-
-        <!--<activity WENN LOGIN STARTSEITE IST
+        <!--//WENN LOGIN STARTSEITE IST-->
+        <!--<activity
             android:label="@string/title_activity_login"
             android:name=".LoginActivity" >
             <intent-filter >
