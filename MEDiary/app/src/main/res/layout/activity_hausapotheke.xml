@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.katharinafeiertag.mediary.HausapothekeActivity">
 
-
-
     <TextView
         android:id="@+id/tf_editText"
         android:layout_width="400dp"
