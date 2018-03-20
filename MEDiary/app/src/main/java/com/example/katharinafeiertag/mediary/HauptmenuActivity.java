@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class HauptmenuActivity extends AppCompatActivity {
-    //I HOFF DER KACK FUNZT JETZT ENDLICH DALIA
     //Aufgabenstellung: Ein Ergebnis aus einer Aktivität zurückgeben
     public static final String REQUEST_RESULT = "REQUEST_RESULT";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,21 +46,14 @@ public class HauptmenuActivity extends AppCompatActivity {
     //klick auf MedEinnahme-Button
     //Aufgabenstellung: onClickSwitchActivity()
     public void onMedEinnahmeClick(View v) {
-        //EditText editText = (EditText) findViewById(R.id.editText);
-        //String text = editText.getText().toString();
         Intent einnahmeIntent = new Intent(this, EinnahmeActivity.class);
-       // einnahmeIntent.putExtra(Intent.EXTRA_TEXT, text);
         startActivityForResult(einnahmeIntent, 1);
     }
 
     //klick auf Hausapotheke-Button
     public void onHausapothekeClick(View v) {
         //Aufgabenstellung: "Daten an eine andere Aktivität übergeben"
-        final EditText tf_editText = (EditText) findViewById(R.id.tf_editText);
-        String userMessage = tf_editText.getText().toString();
         Intent hpIntent = new Intent(this, HausapothekeActivity.class);
-        // hpIntent.putExtra("Hier sehen Sie Ihre Hausapotheke", userMessage);
-        hpIntent.putExtra(Intent.EXTRA_TEXT, userMessage);
         startActivity(hpIntent);
     }
 
@@ -71,10 +64,5 @@ public class HauptmenuActivity extends AppCompatActivity {
           Toast.makeText(this, Integer.toString(data.getIntExtra(REQUEST_RESULT, 0)),
                     Toast.LENGTH_LONG).show();
         }
-    }
-
-
-    public void unnoetig () {
-        int i = 0;
     }
 }

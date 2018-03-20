@@ -6,24 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.katharinafeiertag.mediary.HausapothekeActivity">
 
-    <TextView
-        android:id="@+id/tf_vorhanden"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:text="@string/Hausapotheke"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="16dp" />
 
-    <EditText
+
+    <TextView
         android:id="@+id/tf_editText"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tf_vorhanden"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/Anzeige_Hausapotheke"
@@ -31,12 +23,12 @@
         tools:layout_editor_absoluteY="65dp" />
 
     <Button
-        android:id="@+id/ok"
+        android:id="@+id/bt_zuruck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="99dp"
-        android:layout_marginStart="35dp"
-        android:text="versuch" />
+        android:layout_alignStart="@+id/tf_editText"
+        android:layout_marginBottom="35dp"
+        android:layout_marginStart="28dp"
+        android:text="zurück zum Menü" />
 </RelativeLayout>
