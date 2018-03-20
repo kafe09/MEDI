@@ -60,4 +60,8 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         setResult(RESULT_OK, returnIntent);
         finish();
     }
+
+    public void methodezumVersuch() {
+        String name;
+    }
 }
