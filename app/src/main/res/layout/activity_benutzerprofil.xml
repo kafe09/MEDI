@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.katharinafeiertag.mediary.BenutzerprofilActivity">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tf_vn"
+        android:layout_marginBottom="24dp"
+        android:onClick="onClickClose"
+        android:text="zurück zum Menü"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/tf_vn"
+        android:layout_width="303dp"
+        android:layout_height="47dp"
+        android:layout_below="@+id/iv_insertProfilimage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Vorname:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
+
+    <EditText
+        android:id="@+id/tf_nm"
+        android:layout_width="302dp"
+        android:layout_height="48dp"
+        android:layout_alignStart="@+id/tf_vn"
+        android:layout_below="@+id/tf_vn"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nachname:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_vn" />
+
+    <EditText
+        android:id="@+id/tf_mail"
+        android:layout_width="306dp"
+        android:layout_height="51dp"
+        android:layout_alignStart="@+id/tf_nm"
+        android:layout_below="@+id/tf_nm"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="@dimen/activity_horizontal_margin"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="E-Mail:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_nm" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="91dp"
+        android:layout_height="80dp"
+        android:layout_alignStart="@+id/tf_mail"
+        android:layout_below="@+id/tf_mail"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:drawableLeft="@drawable/female"
+        app:layout_constraintTop_toBottomOf="@+id/tf_mail"
+        tools:layout_editor_absoluteX="62dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="104dp"
+        android:layout_height="79dp"
+        android:layout_alignBottom="@+id/radioButton"
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/button3"
+        android:drawableLeft="@drawable/male"
+        app:layout_constraintTop_toBottomOf="@+id/tf_mail"
+        tools:layout_editor_absoluteX="217dp" />
+
+    <ImageView
+        android:id="@+id/iv_insertProfilimage"
+        android:layout_width="72dp"
+        android:layout_height="69dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:onClick="selectImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        tools:layout_editor_absoluteX="145dp" />
+
+</RelativeLayout>

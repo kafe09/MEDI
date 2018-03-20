@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.katharinafeiertag.mediary.RegistrierenActivity">
+
+    <Button
+        android:id="@+id/bt_registrieren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onRegisterClick"
+        android:text="Registrieren"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="420dp" />
+
+    <EditText
+        android:id="@+id/tf_name"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <EditText
+        android:id="@+id/tf_vorname"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Vorname"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="88dp" />
+
+    <EditText
+        android:id="@+id/tf_geschlecht"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Geschlecht"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <EditText
+        android:id="@+id/tf_email"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="E-Mail"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <EditText
+        android:id="@+id/tf_passwort"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword|textVisiblePassword"
+        android:text="Passwort"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="327dp" />
+</RelativeLayout>
