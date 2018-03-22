@@ -6,22 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.katharinafeiertag.mediary.RegistrierenActivity">
 
-    <Button
-        android:id="@+id/bt_registrieren"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onRegisterClick"
-        android:text="Registrieren"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="420dp" />
-
     <EditText
         android:id="@+id/tf_name"
         android:layout_width="294dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tf_vorname"
+        android:layout_below="@+id/tf_vorname"
+        android:layout_marginTop="19dp"
         android:ems="10"
+        android:hint="Nachname"
         android:inputType="textPersonName"
-        android:text="Name"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="28dp" />
 
@@ -29,9 +23,12 @@
         android:id="@+id/tf_vorname"
         android:layout_width="295dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tf_passwort"
+        android:layout_marginTop="34dp"
         android:ems="10"
+        android:hint="Vorname"
         android:inputType="textPersonName"
-        android:text="Vorname"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="88dp" />
 
@@ -39,9 +36,12 @@
         android:id="@+id/tf_geschlecht"
         android:layout_width="294dp"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tf_passwortwh"
+        android:layout_below="@+id/tf_passwortwh"
+        android:layout_marginTop="21dp"
         android:ems="10"
+        android:hint="Geschlecht"
         android:inputType="textPersonName"
-        android:text="Geschlecht"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="148dp" />
 
@@ -49,9 +49,12 @@
         android:id="@+id/tf_email"
         android:layout_width="292dp"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tf_passwort"
+        android:layout_below="@+id/tf_name"
+        android:layout_marginTop="21dp"
         android:ems="10"
+        android:hint="E-Mail"
         android:inputType="textEmailAddress"
-        android:text="E-Mail"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="250dp" />
 
@@ -59,9 +62,35 @@
         android:id="@+id/tf_passwort"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tf_geschlecht"
+        android:layout_below="@+id/tf_email"
+        android:layout_marginTop="19dp"
         android:ems="10"
+        android:hint="Passwort"
         android:inputType="textPassword|textVisiblePassword"
-        android:text="Passwort"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="327dp" />
+
+    <EditText
+        android:id="@+id/tf_passwortwh"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tf_passwort"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="Passwort wiederholen"
+        android:inputType="textPassword|textVisiblePassword"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="327dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="Registrieren" />
 </RelativeLayout>

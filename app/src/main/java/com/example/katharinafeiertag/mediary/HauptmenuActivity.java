@@ -56,6 +56,12 @@ public class HauptmenuActivity extends AppCompatActivity {
         startActivity(hpIntent);
     }
 
+    public void onInfoClick (View v) {
+        //klick auf InfoActivity
+        Intent iIntent = new Intent (this,InfoActivity.class);
+        startActivity(iIntent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
