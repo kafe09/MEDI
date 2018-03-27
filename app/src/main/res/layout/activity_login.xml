@@ -106,11 +106,22 @@
             <!--android:layout_centerHorizontal="true"-->
             <!--android:layout_marginTop="36dp" />-->
 
+            <Button
+                android:id="@+id/bt_registrieren"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@android:drawable/ic_input_add"
+                android:text="REGISTRIEREN"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/lb_fingerprint"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"
-                android:layout_gravity="center"
+
                 android:layout_marginTop="27dp"
                 android:lineSpacingExtra="8sp"
                 android:text="@string/schnellerer_login_mithilfe_des_fingerprints_auf_der_home_buttons"
