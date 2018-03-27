@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="wochentage">
+        <item>Zeit</item>
+        <item>Morgen</item>
+        <item>Mittag</item>
+        <item>Abend</item>
+        <item>Nacht</item>
+        <item>Mo</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Di</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Mi</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Do</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Fr</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>Sa</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item>So</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+    </string-array>
+</resources>

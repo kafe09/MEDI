@@ -110,6 +110,8 @@
 
     <string name="Hausapotheke">TextViewText</string>
     <string name="hauptmenu">Hauptmenü</string>
+    <string name="todo">TODO</string>
+    <string name="welches_medikament_suchen_sie">welches Medikament suchen Sie?</string>
 
 </resources>
 
