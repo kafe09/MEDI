@@ -23,8 +23,8 @@ public class HausapothekeActivity extends AppCompatActivity {
         if(hpData == null) {
             return;
         }
-        String hpMessage = hpData.getString("Hier sehen Sie Ihre Hausapotheke");
+        /*String hpMessage = hpData.getString("Hier sehen Sie Ihre Hausapotheke");
         final TextView tf_vorhanden =(TextView)findViewById(R.id.tf_vorhanden);
-        tf_vorhanden.setText(hpMessage);
+        tf_vorhanden.setText(hpMessage);*/
     }
 }

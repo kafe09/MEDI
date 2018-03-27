@@ -74,6 +74,16 @@
         <item>3</item>
     </string-array>
 
+    <string-array name="wochentage">
+        <item>Montag</item>
+        <item>Dienstag</item>
+        <item>Mittwoch</item>
+        <item>Donnerstag</item>
+        <item>Freitag</item>
+        <item>Samstag</item>
+        <item>Sonntag</item>
+    </string-array>
+
     <string-array name="multi_select_list_preference_default_value" />
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
@@ -95,7 +105,7 @@
 
     <string name="hausapotheke">Hausapotheke</string>
     <string name="einstellungen">Einstellungen</string>
-    <string name="regelm_einzunehmende_mediakmente">regelmäßig einzunehmende Mediakmente</string>
+    <string name="regelm_einzunehmende_mediakmente">regelmäßig einzunehmende Medikamente</string>
     <string name="benutzerprofil">Benutzerprofil</string>
     <string name="apotheken_in_ihrer_naehe">Apotheken in Ihrer Nähe</string>
     <string name="Anzeige_Hausapotheke">Hier sehen Sie Ihre digitale Hausapotheke</string>
