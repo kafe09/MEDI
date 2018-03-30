@@ -25,7 +25,8 @@ public class ProgrammController {
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/"
                     + "MEDiary?user=root&password=root");
 
-            dbBenutzer = "Benutzer";
+
+            dbBenutzer = "benutzer";
 
             verbindung = "Verbindung erfolgreich";
         } catch (SQLException ex) {
