@@ -121,11 +121,6 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/fingerneu" android:contentDescription="@string/todo" />
 
-            <TextView
-                android:id="@+id/lb_verbindung"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
         </LinearLayout>
 
 
