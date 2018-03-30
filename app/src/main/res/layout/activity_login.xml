@@ -51,7 +51,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Passwort:">
+                android:hint="@string/passwort">
 
                 <EditText
                     android:id="@+id/tf_password"
@@ -82,37 +82,22 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="left|center_vertical|fill"
                 android:layout_marginTop="16dp"
                 android:gravity="top|center_horizontal"
-                android:onClick="onAnmeldenClick"
                 android:text="@string/anmelden"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+                <!--android:layout_gravity="left|center_vertical|fill"-->
 
-            <!--<TextView
-                android:id="@+id/textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />-->
-
-            <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--&lt;!&ndash;app:srcCompat="@drawable/fingerprint"&ndash;&gt;-->
-            <!--android:id="@+id/imageView"-->
-            <!--android:layout_below="@+id/textView"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="36dp" />-->
 
             <Button
                 android:id="@+id/bt_registrieren"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:drawableLeft="@android:drawable/ic_input_add"
-                android:text="REGISTRIEREN"
+                android:drawableStart="@android:drawable/ic_input_add"
+                android:text="registrieren"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -134,7 +119,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/fingerneu" />
+                app:srcCompat="@drawable/fingerneu" android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/lb_verbindung"
