@@ -1,5 +1,6 @@
 package com.example.katharinafeiertag.mediary;
 
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -40,6 +41,10 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+ private final ProgrammController controller;
+
+
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -63,6 +68,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    //Konstruktor für ProgrammController/*
+    public LoginActivity() {
+        controller = new ProgrammController();
+
+
+
+
+        //connect.setText(controller.verbindung);
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +87,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Set up the login form.
                 //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
+
+        TextView connect =(TextView)findViewById(R.id.lb_verbindung);
+        connect.setText(controller.verbindung);
 
         mPasswordView = (EditText) findViewById(R.id.tf_password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
