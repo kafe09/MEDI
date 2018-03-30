@@ -41,8 +41,6 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
- private final ProgrammController controller;
-
 
 
     /**
@@ -68,16 +66,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
-    //Konstruktor für ProgrammController/*
-    public LoginActivity() {
-        controller = new ProgrammController();
-
-
-
-
-        //connect.setText(controller.verbindung);
-    }
-
 
 
     @Override
@@ -88,8 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
-        TextView connect =(TextView)findViewById(R.id.lb_verbindung);
-        connect.setText(controller.verbindung);
+
 
         mPasswordView = (EditText) findViewById(R.id.tf_password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
