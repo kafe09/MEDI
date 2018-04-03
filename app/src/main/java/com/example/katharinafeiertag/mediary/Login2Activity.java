@@ -24,17 +24,14 @@ public class Login2Activity extends AppCompatActivity {
 
     public void anmelden (View v) {
 
-        if (v.getId() == R.id.bt_login) {
+        //if (v.getId() == R.id.bt_login)
 
+            EditText username = (EditText) findViewById(R.id.tf_benutzername);
+            String usernameEingabe = username.getText().toString();
+            EditText passwort = (EditText) findViewById(R.id.tf_passwort);
+            String passwortEingabe = passwort.getText().toString();
 
-            EditText a = (EditText) findViewById(R.id.tf_benutzername);
-            String str = a.getText().toString();
-            EditText b = (EditText) findViewById(R.id.tf_passwort);
-            String pass = b.getText().toString();
-
-            String passwort = helper.searchPass(str);
-
-            if (pass.equals(passwort)) {
+            if (helper.searchUser(usernameEingabe, passwortEingabe)) {
 
                 Intent i = new Intent(Login2Activity.this, HauptmenuActivity.class);
                 startActivity(i);
@@ -47,4 +44,4 @@ public class Login2Activity extends AppCompatActivity {
 
         }
     }
-}
+

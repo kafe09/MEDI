@@ -60,9 +60,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+
     //Methode für LoginActivity um Email zu überprüfen von Datenbank
 
-    public String searchPass(String name) {
+    /*public String searchPass(String name) {
         db = this.getReadableDatabase();
         String query = "select * from " + TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
@@ -71,17 +72,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                a = cursor.getString(0);
+                a = cursor.getString(1);
 
                 if (a.equals(name)) {
-                    b = cursor.getString(2);
+                    b = cursor.getString(3);
                     break;
                 }
             }
             while (cursor.moveToNext());
         }
             return b;
+        }*/
+
+    public boolean searchUser (String name, String passwort) {
+        db = this.getReadableDatabase();
+        String query = "select * from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String a, b;
+
+
+        if (cursor.moveToFirst()) {
+            do {
+                a = cursor.getString(1);
+
+                if (a.equals(name)) {
+                    //username gefunden
+                    b = cursor.getString(2);
+
+                    if (b.equals(passwort)) {
+                        return true;
+                    }
+                } else {
+                    //username nicht gfunden
+                    return false;
+                }
+            }
+            while (cursor.moveToNext());
         }
+        return false;
+    }
 
 
     @Override

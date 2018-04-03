@@ -26,9 +26,9 @@ public class BenutzerprofilActivity extends AppCompatActivity {
 
     public void onAnmeldenClick (View v) {
 
-        if (v.getId() == R.id.bt_anmelden)
+        Intent anmeldeintent = new Intent(getBaseContext(), Login2Activity.class );
+        startActivity(anmeldeintent);
 
-        {
             EditText vorname = (EditText) findViewById(R.id.tf_vn);
             EditText name = (EditText) findViewById(R.id.tf_nm);
             EditText email = (EditText) findViewById(R.id.tf_mail);
@@ -65,7 +65,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
             }
 
         }
-        }
+
 
 
 

@@ -7,7 +7,7 @@ package com.example.katharinafeiertag.mediary;
 public class Contact  {
 
     String vorname,name,email,passwort;
-    //char geschlecht;
+
 
 public void setVorname(String vorname){
     this.vorname = vorname;

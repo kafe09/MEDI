@@ -1,11 +1,7 @@
 package com.example.katharinafeiertag.mediary;
 
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 //import static android.Manifest.permission.READ_CONTACTS;
 
@@ -16,7 +12,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     //neues Objekt von Databasehelper erstellen für Methode
-    DatabaseHelper helper = new DatabaseHelper(this);
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -85,29 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         getLoaderManager().initLoader(0, null, this);*/
 
 
-    public void registrieren (View v){
-        Intent Intent = new Intent(getBaseContext(), BenutzerprofilActivity.class);
-        startActivity(Intent);
-    }
 
-    public void anmelden (View v) {
-
-        EditText a = (EditText)findViewById(R.id.tf_email);
-        String str = a.getText().toString();
-        EditText b = (EditText)findViewById(R.id.tf_password);
-        String pass = b.getText().toString();
-
-        String password = helper.searchPass(str);
-        if(pass.equals(password)) {
-
-            Intent Intent = new Intent (getBaseContext(), HauptmenuActivity.class);
-            startActivity(Intent);
-
-        }
-        else {
-            Toast temp = Toast.makeText(LoginActivity.this,"E-Mail und Passwort stimmen nicht!", Toast.LENGTH_SHORT);
-            temp.show();
-        }
 
 
     }
@@ -364,6 +338,6 @@ public class LoginActivity extends AppCompatActivity {
 
 */
 
-    }
+
 
 
