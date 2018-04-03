@@ -93,11 +93,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                a = cursor.getString(1);
+                a = cursor.getString(2);
 
                 if (a.equals(name)) {
                     //username gefunden
-                    b = cursor.getString(2);
+                    b = cursor.getString(4);
 
                     if (b.equals(passwort)) {
                         return true;
