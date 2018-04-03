@@ -14,8 +14,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
         android:ems="10"
+        android:hint="Vorname:"
         android:inputType="textPersonName"
-        android:text="Vorname:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
 
@@ -27,8 +27,8 @@
         android:layout_below="@+id/tf_vn"
         android:layout_marginTop="14dp"
         android:ems="10"
+        android:hint="Nachname:"
         android:inputType="textPersonName"
-        android:text="Nachname:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_vn" />
 
@@ -42,8 +42,8 @@
         android:drawableLeft="@android:drawable/sym_action_email"
         android:drawablePadding="@dimen/activity_horizontal_margin"
         android:ems="10"
+        android:hint="E-Mail:"
         android:inputType="textPersonName"
-        android:text="E-Mail:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_nm" />
 
@@ -51,9 +51,8 @@
         android:id="@+id/radioButton"
         android:layout_width="91dp"
         android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/lb_geschlecht"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp"
         android:drawableLeft="@drawable/female"
         app:layout_constraintTop_toBottomOf="@+id/tf_mail"
         tools:layout_editor_absoluteX="62dp" />
@@ -75,7 +74,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:onClick="selectImage"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery"
         tools:layout_editor_absoluteX="145dp" />
@@ -84,15 +82,14 @@
         android:id="@+id/lb_geschlecht"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/radioButton"
-        android:layout_alignBottom="@+id/radioButton"
-        android:layout_alignStart="@+id/tf_mail"
+        android:layout_above="@+id/bt_anmelden"
+        android:layout_alignStart="@+id/tf_passwort"
         android:text="Geschlecht:"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/tf_passwort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tf_vn"
@@ -100,7 +97,28 @@
         android:layout_below="@+id/tf_mail"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Allergien:" />
+        android:hint="Passwort:"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/bt_anmelden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/lb_geschlecht"
+        android:layout_alignParentBottom="true"
+        android:text="Anmelden"
+        android:onClick="onAnmeldenClick"/>
+
+    <EditText
+        android:id="@+id/tf_passwort2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/radioButton2"
+        android:layout_alignStart="@+id/tf_passwort"
+        android:layout_below="@+id/tf_passwort"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Confirm Passwort:"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

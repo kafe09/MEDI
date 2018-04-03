@@ -87,7 +87,8 @@
                 android:text="@string/anmelden"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="anmelden"/>
                 <!--android:layout_gravity="left|center_vertical|fill"-->
 
 
@@ -100,7 +101,8 @@
                 android:text="registrieren"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="registrieren"/>
 
             <TextView
                 android:id="@+id/lb_fingerprint"

@@ -5,21 +5,69 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class BenutzerprofilActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 0;
     private ImageView imageView;
 
+    DatabaseHelper helper = new DatabaseHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benutzerprofil);
     }
+
+    public void onAnmeldenClick (View v) {
+
+        if (v.getId() == R.id.bt_anmelden)
+
+        {
+            EditText vorname = (EditText) findViewById(R.id.tf_vn);
+            EditText name = (EditText) findViewById(R.id.tf_nm);
+            EditText email = (EditText) findViewById(R.id.tf_mail);
+            EditText passwort = (EditText) findViewById(R.id.tf_passwort);
+            EditText passwort2 = (EditText) findViewById(R.id.tf_passwort2);
+
+
+            String vornamestr = vorname.getText().toString();
+            String namestr = name.getText().toString();
+            String emailstr = email.getText().toString();
+            String passwortstr = passwort.getText().toString();
+            String passwort2str = passwort2.getText().toString();
+            //Character geschlechtch = geschlecht.getText().charAt();
+
+
+            if (!passwortstr.equals(passwort2str)) {
+
+                Toast pass = Toast.makeText(BenutzerprofilActivity.this,"Passwörter stimmen nicht überein!",Toast.LENGTH_SHORT);
+                pass.show();
+            }
+
+            else {
+                //insert details in database
+
+                Contact c = new Contact();
+                c.setVorname(vornamestr);
+                c.setName(namestr);
+                c.setEmail(emailstr);
+                c.setPasswort(passwortstr);
+                //c.setGeschlecht(geschlechtch);
+
+                helper.insertContact(c);
+
+            }
+
+        }
+        }
+
+
 
     //damit Benutzer ein Profilbild hinzufügen kann
 
