@@ -37,6 +37,11 @@ public String getPasswort() {
     return this.passwort;
 }
 
+public void nixtun (){
+    int i = 0;
+    i++;
+    }
+
 /*public void setGeschlecht(Character geschlecht) {
     this.geschlecht = geschlecht;
 }
