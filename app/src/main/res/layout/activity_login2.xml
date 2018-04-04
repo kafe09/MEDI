@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_light"
     tools:context="com.example.katharinafeiertag.mediary.Login2Activity">
 
     <TextView
@@ -48,18 +49,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tf_passwort"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="25dp"
+        android:onClick="anmelden"
         android:text="Anmelden"
-        android:textSize="18sp"
-        android:onClick="anmelden"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_info3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bt_registrieren"
+        android:layout_below="@+id/bt_login"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
+        android:autofillHints="@color/colorAccent"
+        android:background="@android:color/background_light"
         android:text="Sie sind noch nicht angemeldet?"
         android:textAlignment="center"
         android:textSize="18sp" />
@@ -68,10 +70,43 @@
         android:id="@+id/bt_registrieren"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/tv_info3"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="93dp"
+        android:layout_marginTop="29dp"
         android:onClick="registrieren"
         android:text="Registrieren"
         android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tf_fingerprinta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_registrieren"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:text="Fingerprint Authentifizierung"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/iv_fingerprint"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/tf_fingerprinta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@mipmap/fingerprint_new" />
+
+    <TextView
+        android:id="@+id/tf_fingerinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_fingerprint"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Platzieren sie Ihren Finger am Scanner um fortzufahren"
+        android:textStyle="italic" />
+
 </RelativeLayout>

@@ -1,12 +1,9 @@
 package com.example.katharinafeiertag.mediary;
 
-/**
- * Created by scheerbernhard on 30.03.18.
- */
 
 public class Contact  {
 
-    String vorname,name,email,passwort;
+    String vorname,name,email,uname,passwort;
 
 
 public void setVorname(String vorname){
@@ -30,19 +27,11 @@ public String getEmail() {
     return this.email;
 }
 
+public void setUname(String uname) {this.uname = uname;}
+public String getUname() {return this.uname;}
+
 public void setPasswort(String passwort) {
     this.passwort = passwort;
 }
-public String getPasswort() {
-    return this.passwort;
-}
-
-
-
-/*public void setGeschlecht(Character geschlecht) {
-    this.geschlecht = geschlecht;
-}
-public Character getGeschlecht() {
-    return this.geschlecht;
-}*/
+public String getPasswort() {return this.passwort;}
 }

@@ -32,6 +32,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
             EditText vorname = (EditText) findViewById(R.id.tf_vn);
             EditText name = (EditText) findViewById(R.id.tf_nm);
             EditText email = (EditText) findViewById(R.id.tf_mail);
+            EditText uname = (EditText) findViewById(R.id.tf_uname);
             EditText passwort = (EditText) findViewById(R.id.tf_passwort);
             EditText passwort2 = (EditText) findViewById(R.id.tf_passwort2);
 
@@ -39,6 +40,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
             String vornamestr = vorname.getText().toString();
             String namestr = name.getText().toString();
             String emailstr = email.getText().toString();
+            String unamestr = uname.getText().toString();
             String passwortstr = passwort.getText().toString();
             String passwort2str = passwort2.getText().toString();
             //Character geschlechtch = geschlecht.getText().charAt();
@@ -57,6 +59,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
                 c.setVorname(vornamestr);
                 c.setName(namestr);
                 c.setEmail(emailstr);
+                c.setUname(unamestr);
                 c.setPasswort(passwortstr);
                 //c.setGeschlecht(geschlechtch);
 

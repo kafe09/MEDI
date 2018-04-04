@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by scheerbernhard on 30.03.18.
- */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -19,12 +16,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_VORNAME = "vorname";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_UNAME = "uname";
     private static final String COLUMN_PASSWORT = "passwort";
-    //private static final String COLUMN_GESCHLECHT = "geschlecht";
     SQLiteDatabase db;
 
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null ," +
-            "vorname text not null , name text not null , email text not null , passwort text not null);";
+            "vorname text not null , name text not null , email text not null , uname text not null , passwort text not null);";
 
     //Konstruktor
     public DatabaseHelper(Context context)
@@ -53,8 +50,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_VORNAME, c.getVorname());
         values.put(COLUMN_NAME, c.getName());
         values.put(COLUMN_EMAIL, c.getEmail());
+        values.put(COLUMN_UNAME, c.getUname());
         values.put(COLUMN_PASSWORT, c.getPasswort());
-        //values.put(COLUMN_GESCHLECHT)
 
         db.insert(TABLE_NAME,null,values);
         db.close();
@@ -63,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Methode für LoginActivity um Email zu überprüfen von Datenbank
 
-    /*public String searchPass(String name) {
+    public String searchPass(String uname) {
         db = this.getReadableDatabase();
         String query = "select * from " + TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
@@ -72,45 +69,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                a = cursor.getString(1);
+                a = cursor.getString(4);
 
-                if (a.equals(name)) {
-                    b = cursor.getString(3);
+                if (a.equals(uname)) {
+                    b = cursor.getString(5);
                     break;
                 }
             }
             while (cursor.moveToNext());
         }
             return b;
-        }*/
-
-    public boolean searchUser (String name, String passwort) {
-        db = this.getReadableDatabase();
-        String query = "select * from " + TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
-        String a, b;
-
-
-        if (cursor.moveToFirst()) {
-            do {
-                a = cursor.getString(2);
-
-                if (a.equals(name)) {
-                    //username gefunden
-                    b = cursor.getString(4);
-
-                    if (b.equals(passwort)) {
-                        return true;
-                    }
-                } else {
-                    //username nicht gfunden
-                    return false;
-                }
-            }
-            while (cursor.moveToNext());
         }
-        return false;
-    }
 
 
     @Override
