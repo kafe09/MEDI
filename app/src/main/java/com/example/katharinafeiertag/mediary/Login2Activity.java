@@ -67,7 +67,6 @@ public class Login2Activity extends AppCompatActivity {
         //5. At least 1 fingerprint is registered
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
             keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 
@@ -77,22 +76,20 @@ public class Login2Activity extends AppCompatActivity {
 
             } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
 
-                tf_info.setText("Permission not granted to use Fingerprint Scanner");
+                tf_info.setText("Fingerprint zu verwenden ist nicht erlaubt");
+
             } else if (keyguardManager.isKeyguardSecure()) {
 
                 tf_info.setText("Add Lock to your Phone in Settings");
 
             } else if (fingerprintManager.hasEnrolledFingerprints()) {
 
-                tf_info.setText("You should add at least 1 Fingerprint to use this Feature.");
+                tf_info.setText("Um dieses Feature nutzen zu können müssen Sie mindestens einen Fingerscan festlegen.");
             } else {
 
-                tf_info.setText("Place your Finger on Scanner to Access the app");
-
+                tf_info.setText("Platzieren Sie Ihren Finger am Scanner um Eintritt in die App zu bekommen.");
                 generateKey();
-
                 if (cipherInit()) {
-
                     FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
                     FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
                     fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
@@ -103,7 +100,6 @@ public class Login2Activity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void generateKey() {
-
         try {
 
             KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
@@ -141,7 +137,6 @@ public class Login2Activity extends AppCompatActivity {
 
 
         try {
-
             keyStore.load(null);
 
             SecretKey key = (SecretKey) keyStore.getKey(KEY_NAME,
@@ -156,7 +151,6 @@ public class Login2Activity extends AppCompatActivity {
         } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
             throw new RuntimeException("Failed to init Cipher", e);
         }
-
     }
 
 
@@ -167,13 +161,10 @@ public class Login2Activity extends AppCompatActivity {
     }
 
     public void anmelden (View v) {
-
-
             EditText username = (EditText) findViewById(R.id.tf_benutzername);
             String usernameEingabe = username.getText().toString();
             EditText passwort = (EditText) findViewById(R.id.tf_passwort);
             String passwortEingabe = passwort.getText().toString();
-
 
             String password = helper.searchPass(usernameEingabe);
             if(passwortEingabe.equals(password)) {
@@ -185,8 +176,6 @@ public class Login2Activity extends AppCompatActivity {
                 Toast temp = Toast.makeText(Login2Activity.this, "Benutzername und Passwort stimmen nicht!", Toast.LENGTH_SHORT);
                 temp.show();
             }
-
-
         }
     }
 
