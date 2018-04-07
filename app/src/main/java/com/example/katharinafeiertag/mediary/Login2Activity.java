@@ -47,7 +47,7 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
         iv_finger = (ImageView) findViewById(R.id.iv_fingerprint);
         tf_info = (TextView) findViewById(R.id.tf_fingerinfo);
 
-        username = (EditText) findViewById(R.id.tf_benutzername);
+        username = (EditText) findViewById(R.id.tf_allergien);
         passwort = (EditText) findViewById(R.id.tf_passwort);
 
 

@@ -11,12 +11,8 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.HashMap;
 
 public class BenutzerprofilActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 0;
@@ -24,7 +20,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     private Button bt_logout;
     SessionManager session;
     DatabaseHelper helper;
-    TextView nachname, vorname, benutzername, email;
+    TextView nachname, vorname, benutzername, email, allergien;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +45,8 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         benutzername = (TextView) findViewById(R.id.tf_benutzername);
         benutzername.setText(displayName);
 
+        benutzername = (TextView) findViewById(R.id.tf_allergien);
+        benutzername.setText("keine Daten");
 
         if(!session.loggedIn()) {
             logout();

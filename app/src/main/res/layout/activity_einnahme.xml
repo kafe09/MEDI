@@ -29,11 +29,11 @@
         android:columnCount="7"
         android:gravity="bottom|left"
         android:rowCount="4"
-        android:columnWidth="20dp"
+        android:columnWidth="9dp"
         android:verticalSpacing="1dp"
         android:horizontalSpacing="1dp"
         android:stretchMode="columnWidth"
-        android:textSize="5dp"
+        android:textSize="1dp"
         android:numColumns="5"/>
 
 

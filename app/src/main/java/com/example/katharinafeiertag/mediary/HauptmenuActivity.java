@@ -1,6 +1,5 @@
 package com.example.katharinafeiertag.mediary;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -51,7 +50,7 @@ public class HauptmenuActivity extends AppCompatActivity {
     //klick auf Hausapotheke-Button
     public void onHausapothekeClick(View v) {
         //Aufgabenstellung: "Daten an eine andere Aktivität übergeben"
-        Intent hpIntent = new Intent(this, HausapothekeActivity.class);
+        Intent hpIntent = new Intent(this, HausapothekeMenuActivity.class);
         startActivity(hpIntent);
     }
 

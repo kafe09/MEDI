@@ -18,12 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".Login2Activity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,14 +32,17 @@
             android:label="@string/app_name" />
         <activity android:name=".RegistrierungActivity" />
         <activity android:name=".BenutzerprofilActivity" />
-        <activity android:name=".HausapothekeActivity" />
+        <activity android:name=".alleMedEinsichtActivity" />
         <activity
             android:name=".EinstellungenActivity"
             android:label="@string/title_activity_einstellungen" />
         <activity android:name=".AptknaeheActivity" />
         <activity android:name=".EinnahmeActivity" />
         <activity android:name=".InfoActivity" />
-        <activity android:name=".passwortActivity"></activity>
+        <activity android:name=".passwortActivity" />
+        <activity android:name=".HausapothekeMenuActivity" />
+        <activity android:name=".MedikamentHinzufugenActivity" />
+        <activity android:name=".MedEinnahmeActivitiy"></activity>
     </application>
 
 </manifest>

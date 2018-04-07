@@ -13,11 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="17dp"
         android:text="Benutzername:"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/tf_benutzername"
+        android:id="@+id/tf_allergien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -30,9 +31,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tf_benutzername"
+        android:layout_below="@+id/tf_allergien"
         android:text="Passwort:"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/tf_passwort"
@@ -58,8 +59,8 @@
         android:id="@+id/tv_info3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_login"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:autofillHints="@color/colorAccent"
         android:background="@android:color/background_light"
         android:text="Sie sind noch nicht angemeldet?"
@@ -83,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bt_registrieren"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="22dp"
         android:text="Fingerprint Authentifizierung"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
