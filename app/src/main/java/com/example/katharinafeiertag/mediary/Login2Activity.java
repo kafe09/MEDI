@@ -1,16 +1,13 @@
 package com.example.katharinafeiertag.mediary;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.security.keystore.KeyGenParameterSpec;
-import android.security.keystore.KeyPermanentlyInvalidatedException;
-import android.security.keystore.KeyProperties;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,44 +16,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 
-public class Login2Activity extends AppCompatActivity {
+public class Login2Activity extends AppCompatActivity implements View.OnClickListener {
+    private TextView tf_info;
+    private SessionManager session;
+    DatabaseHelper helper;
+    private EditText username,passwort;
+    public String usernameEingabe, passwortEingabe;
 
     private TextView tf_fingerprint;
     private ImageView iv_finger;
-    private TextView tf_info;
-
     private FingerprintManager fingerprintManager;
     private KeyguardManager keyguardManager;
-
     private KeyStore keyStore;
     private Cipher cipher;
     private String KEY_NAME = "AndroidKey";
 
-    DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
+        helper = new DatabaseHelper(this);
+        session = new SessionManager(this);
 
         tf_fingerprint = (TextView) findViewById(R.id.tf_fingerprinta);
         iv_finger = (ImageView) findViewById(R.id.iv_fingerprint);
         tf_info = (TextView) findViewById(R.id.tf_fingerinfo);
+
+        username = (EditText) findViewById(R.id.tf_benutzername);
+        passwort = (EditText) findViewById(R.id.tf_passwort);
+
+
 
         //Hier wird überprüft ob wir berechtigt sind Fingerprint zu verwenden und ob alles funktionieren würde.
         //5 verschiedene Abfragen
@@ -88,17 +82,17 @@ public class Login2Activity extends AppCompatActivity {
             } else {
 
                 tf_info.setText("Platzieren Sie Ihren Finger am Scanner um Eintritt in die App zu bekommen.");
-                generateKey();
-                if (cipherInit()) {
-                    FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                    FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
-                    fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
-                }
+                // generateKey();
+                // if (cipherInit()) {
+                FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
+                fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
             }
         }
     }
+    //}
 
-    @TargetApi(Build.VERSION_CODES.M)
+    /*@TargetApi(Build.VERSION_CODES.M)
     private void generateKey() {
         try {
 
@@ -125,9 +119,9 @@ public class Login2Activity extends AppCompatActivity {
         } catch (KeyStoreException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
-    @TargetApi(Build.VERSION_CODES.M)
+    /*@TargetApi(Build.VERSION_CODES.M)
     public boolean cipherInit() {
         try {
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
@@ -151,31 +145,56 @@ public class Login2Activity extends AppCompatActivity {
         } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
             throw new RuntimeException("Failed to init Cipher", e);
         }
-    }
+    }*/
 
 
-
-    public void registrieren (View v){
-        Intent Intent = new Intent(getBaseContext(), BenutzerprofilActivity.class);
+    public void registrieren(View v) {
+        Intent Intent = new Intent(getBaseContext(), RegistrierungActivity.class);
         startActivity(Intent);
     }
 
+
     public void anmelden (View v) {
-            EditText username = (EditText) findViewById(R.id.tf_benutzername);
-            String usernameEingabe = username.getText().toString();
-            EditText passwort = (EditText) findViewById(R.id.tf_passwort);
-            String passwortEingabe = passwort.getText().toString();
+         usernameEingabe = username.getText().toString();
+         passwortEingabe = passwort.getText().toString();
 
-            String password = helper.searchPass(usernameEingabe);
-            if(passwortEingabe.equals(password)) {
+        String password = helper.searchPass(usernameEingabe);
+        if(passwortEingabe.equals(password)) {
+            session.setLoggedin(true);
 
-                Intent i = new Intent(Login2Activity.this, HauptmenuActivity.class);
-                startActivity(i);
+            SharedPreferences preferences = getSharedPreferences("MEDI", MODE_PRIVATE);
+            String userDetailName = preferences.getString("Kein Benutzername vorhanden",usernameEingabe);
 
-            } else {
-                Toast temp = Toast.makeText(Login2Activity.this, "Benutzername und Passwort stimmen nicht!", Toast.LENGTH_SHORT);
-                temp.show();
-            }
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("displayName", userDetailName);
+            editor.commit();
+
+            Intent i = new Intent(Login2Activity.this, HauptmenuActivity.class);
+            startActivity(i);
+            finish();
+
+        } else {
+            Toast temp = Toast.makeText(Login2Activity.this, "Benutzername und Passwort stimmen nicht!", Toast.LENGTH_SHORT);
+            temp.show();
         }
     }
+
+    //wegen session erstellt
+    @Override
+    public void onClick (View v) {
+        switch (v.getId()) {
+            case R.id.bt_login:
+
+                break;
+            case R.id.bt_registrieren:
+
+                break;
+            default:
+
+        }
+    }
+
+
+    }
+
 

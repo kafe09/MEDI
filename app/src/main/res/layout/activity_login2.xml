@@ -74,7 +74,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:onClick="registrieren"
-        android:text="Registrieren"
+        android:text="jetzt registrieren"
         android:textSize="14sp" />
 
     <TextView

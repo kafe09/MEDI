@@ -1,6 +1,7 @@
 package com.example.katharinafeiertag.mediary;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,71 +10,69 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
 
 public class BenutzerprofilActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 0;
     private ImageView imageView;
+    private Button bt_logout;
+    SessionManager session;
+    DatabaseHelper helper;
+    TextView nachname, vorname, benutzername, email;
 
-    DatabaseHelper helper = new DatabaseHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benutzerprofil);
+
+        session = new SessionManager(this);
+        helper = new DatabaseHelper(this);
+
+        SharedPreferences preferences = getSharedPreferences("MEDI", MODE_PRIVATE);
+        String displayName = preferences.getString("displayName", "");  //ist der Username der gerade eingeloggt ist
+
+        nachname = (TextView) findViewById(R.id.tf_name);
+        nachname.setText(helper.searchNachname(displayName));
+
+        vorname = (TextView) findViewById(R.id.tf_vorname);
+        vorname.setText(helper.searchVorname(displayName));
+
+        email = (TextView) findViewById(R.id.tf_email);
+        email.setText(helper.searchEmail(displayName));
+
+        benutzername = (TextView) findViewById(R.id.tf_benutzername);
+        benutzername.setText(displayName);
+
+
+        if(!session.loggedIn()) {
+            logout();
+        }
+        bt_logout = (Button)findViewById(R.id.bt_logout);
+        bt_logout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
     }
 
-    public void onAnmeldenClick (View v) {
 
-        Intent anmeldeintent = new Intent(getBaseContext(), Login2Activity.class );
-        startActivity(anmeldeintent);
-
-            EditText vorname = (EditText) findViewById(R.id.tf_vn);
-            EditText name = (EditText) findViewById(R.id.tf_nm);
-            EditText email = (EditText) findViewById(R.id.tf_mail);
-            EditText uname = (EditText) findViewById(R.id.tf_uname);
-            EditText passwort = (EditText) findViewById(R.id.tf_passwort);
-            EditText passwort2 = (EditText) findViewById(R.id.tf_passwort2);
-
-
-            String vornamestr = vorname.getText().toString();
-            String namestr = name.getText().toString();
-            String emailstr = email.getText().toString();
-            String unamestr = uname.getText().toString();
-            String passwortstr = passwort.getText().toString();
-            String passwort2str = passwort2.getText().toString();
-            //Character geschlechtch = geschlecht.getText().charAt();
-
-
-            if (!passwortstr.equals(passwort2str)) {
-
-                Toast pass = Toast.makeText(BenutzerprofilActivity.this,"Passwörter stimmen nicht überein!",Toast.LENGTH_SHORT);
-                pass.show();
-            }
-
-            else {
-                //insert details in database
-
-                Contact c = new Contact();
-                c.setVorname(vornamestr);
-                c.setName(namestr);
-                c.setEmail(emailstr);
-                c.setUname(unamestr);
-                c.setPasswort(passwortstr);
-                //c.setGeschlecht(geschlechtch);
-
-                helper.insertContact(c);
-
-            }
-
-        }
+    private void logout () {
+        session.setLoggedin(false);
+        finish();
+        startActivity(new Intent(BenutzerprofilActivity.this, Login2Activity.class));
+    }
 
 
 
 
-    //damit Benutzer ein Profilbild hinzufügen kann
-
+    //folgende drei Methoden: damit Benutzer ein Profilbild hinzufügen kann
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,6 +96,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
 
         return bitmap;
     }
+
     private void selectImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -104,17 +104,10 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
     }
 
-    public void onClickClose(View view) {
-        //Aufgabenstellung: hier entsteht dann der Toast
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(HauptmenuActivity.REQUEST_RESULT,42);
-        setResult(RESULT_OK, returnIntent);
-        finish();
+    public void onEditClick (View v) {
+        Intent editIntent = new Intent(getBaseContext(), passwortActivity.class );
+        startActivity(editIntent);
     }
 
-    public void methodezumVersuch() {
-        String name;
-        int alter;
-        char punkt;
-    }
+
 }

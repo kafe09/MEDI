@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.katharinafeiertag.mediary.RegistrierungActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:text="Registrierung"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/tf_vn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Vorname:"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
+
+    <EditText
+        android:id="@+id/tf_nm"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/tf_vn"
+        android:layout_below="@+id/tf_vn"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:hint="Nachname:"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_vn" />
+
+    <EditText
+        android:id="@+id/tf_mail"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/tf_nm"
+        android:layout_below="@+id/tf_nm"
+        android:layout_marginTop="9dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="@dimen/activity_horizontal_margin"
+        android:ems="10"
+        android:hint="E-Mail:"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_nm" />
+
+
+
+    <EditText
+        android:id="@+id/tf_passwort"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/tf_uname"
+        android:layout_below="@+id/tf_uname"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Passwort:"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/tf_passwort2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/tf_passwort"
+        android:layout_below="@+id/tf_passwort"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Passwort wiederholen:"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/bt_registrieren"
+        android:onClick="onRegistrierenClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="Registrieren"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+
+    <EditText
+        android:id="@+id/tf_uname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/tf_mail"
+        android:layout_below="@+id/tf_mail"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:hint="Benutzername:"
+        android:inputType="textPersonName" />
+
+</RelativeLayout>
