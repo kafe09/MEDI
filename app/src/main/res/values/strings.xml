@@ -1,5 +1,8 @@
 <resources>
+    <string name="google_maps_API_key">AIzaSyBfvlYQFiHgdr-VHeLzi12F9kJi4XqV7V8</string>
+
     <string name="app_name">MEDiary</string>
+
     <string name="title_activity_login">MEDiary</string>
 
     <!-- Strings related to login -->

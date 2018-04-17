@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.katharinafeiertag.mediary.AptknaeheActivity">
+    tools:context="com.example.katharinafeiertag.mediary.AptknaeheActivity"
+    android:name="com.google.android.gms.maps.SupportMapFragment">
 
     <Button
         android:id="@+id/button2"
@@ -29,4 +30,14 @@
         android:text="Hier sehen Sie die Apotheken in Ihrer Nähe"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="28dp" />
+
+    <Button
+        android:id="@+id/bt_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="19dp"
+        android:text="Karte" />
 </RelativeLayout>

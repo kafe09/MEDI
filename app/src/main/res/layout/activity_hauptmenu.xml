@@ -31,7 +31,7 @@
         android:layout_width="150dp"
         android:layout_height="136dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/imageButton2"
+        android:layout_alignTop="@+id/bt_apt"
         android:layout_marginEnd="26dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/einstellungen"
@@ -73,7 +73,7 @@
         tools:layout_editor_absoluteY="227dp" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/bt_apt"
         android:layout_width="148dp"
         android:layout_height="145dp"
         android:layout_alignEnd="@+id/bt_suitcase"
