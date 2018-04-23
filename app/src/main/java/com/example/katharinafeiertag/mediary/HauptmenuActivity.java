@@ -26,9 +26,9 @@ public class HauptmenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hauptmenu);
-        if(isServiceOK()){
-            init();
-        }
+//        if(isServiceOK()){
+//            init();
+//        }
     }
 
     private void init() {
@@ -95,7 +95,7 @@ public class HauptmenuActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isServiceOK() {
+   /* public boolean isServiceOK() {
         Log.d(TAG, "isServiceOK: checking google services version");
 
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(AptknaeheActivity.this);
@@ -114,7 +114,7 @@ public class HauptmenuActivity extends AppCompatActivity {
             Toast.makeText(this, "We can't make map requests", Toast.LENGTH_SHORT).show();
         }
         return false;
-    }
+    }*/
 
 }
 
