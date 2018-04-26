@@ -67,4 +67,34 @@
         android:text="Packungsinhalt:"
         android:textAlignment="viewStart" />
 
+    <TextView
+        android:id="@+id/tv_versuch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tf_menge"
+        android:layout_below="@+id/tf_menge"
+        android:layout_marginTop="11dp"
+        android:maxLines="5000"
+        android:scrollbars="vertical"
+        android:text="Medikament in der Datenbank gefunden" />
+
+    <Button
+        android:id="@+id/bt_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="13dp"
+        android:onClick="anzeigen"
+        android:text="Anzeigen" />
+
+    <TextView
+        android:id="@+id/tv_anzeige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bt_show"
+        android:layout_alignStart="@+id/tv_versuch"
+        android:hint="Prozess durchgeführt" />
+
 </RelativeLayout>
