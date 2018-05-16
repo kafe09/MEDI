@@ -42,7 +42,8 @@
         <activity android:name=".passwortActivity" />
         <activity android:name=".HausapothekeMenuActivity" />
         <activity android:name=".MedikamentHinzufugenActivity" />
-        <activity android:name=".MedEinnahmeActivitiy"></activity>
+        <activity android:name=".MedEinnahmeActivitiy"/>
+        <activity android:name=".MedikamentenAdd"></activity>
 
         <!-- Declaring Service in Manifest -->
         <service

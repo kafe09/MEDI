@@ -84,8 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="11dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="12dp"
         android:onClick="anzeigen"
         android:text="Anzeigen" />
 
@@ -93,8 +93,9 @@
         android:id="@+id/tv_anzeige"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/bt_show"
+        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/tv_versuch"
+        android:layout_marginBottom="15dp"
         android:hint="Prozess durchgeführt" />
 
 </RelativeLayout>
