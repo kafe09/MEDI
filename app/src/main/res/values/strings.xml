@@ -1,5 +1,5 @@
 <resources>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyACNCPudG4uNbwUF1885rB_pk9Jl6KyJeg</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBXocJtnDp9dDXkWbeu4I8AvGg5Ul-810s</string>
 
     <string name="app_name">MEDiary</string>
 
