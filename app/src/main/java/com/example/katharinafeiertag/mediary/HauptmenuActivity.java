@@ -47,8 +47,8 @@ public class HauptmenuActivity extends AppCompatActivity {
     public void onApothekenClick(View v) {
         //launchIntent Methode der Aufgabenstellung
         //Art: Action_View: hier wird die Google Maps App geöffnet
-        Intent apothekenIntent = new Intent(Intent.ACTION_VIEW);
-        apothekenIntent.setData(Uri.parse("https://www.google.com/maps"));
+        Log.d(TAG, "in der onClick Methode damit man zu Google Maps kommt.");
+        Intent apothekenIntent = new Intent(getBaseContext(), AptknaeheActivity.class);
         startActivity(apothekenIntent);
     }
 
@@ -79,8 +79,8 @@ public class HauptmenuActivity extends AppCompatActivity {
         startActivity(hpIntent);
     }
 
+    //klick auf InfoActivity
     public void onInfoClick (View v) {
-        //klick auf InfoActivity
         Intent iIntent = new Intent (this,InfoActivity.class);
         startActivity(iIntent);
     }
