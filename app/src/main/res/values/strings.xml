@@ -1,5 +1,5 @@
 <resources>
-    <string name="google_maps_API_key">AIzaSyBfvlYQFiHgdr-VHeLzi12F9kJi4XqV7V8</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyACNCPudG4uNbwUF1885rB_pk9Jl6KyJeg</string>
 
     <string name="app_name">MEDiary</string>
 
