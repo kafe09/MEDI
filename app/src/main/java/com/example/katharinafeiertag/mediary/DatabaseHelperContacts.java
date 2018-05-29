@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String TAG = DatabaseHelper.class.getSimpleName();
+public class DatabaseHelperContacts extends SQLiteOpenHelper {
+    public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "contacts.db";
     private static final String TABLE_NAME = "contacts";
@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "vorname text not null , name text not null , email text not null , uname text not null , passwort text not null);";
 
     //Konstruktor
-    public DatabaseHelper(Context context)
+    public DatabaseHelperContacts(Context context)
             //, String name, SQLiteDatabase.CursorFactory, int version)
     {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);

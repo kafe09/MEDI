@@ -19,7 +19,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     private ImageView imageView;
     private Button bt_logout;
     SessionManager session;
-    DatabaseHelper helper;
+    DatabaseHelperContacts helper;
     TextView nachname, vorname, benutzername, email, allergien;
 
     @Override
@@ -28,7 +28,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_benutzerprofil);
 
         session = new SessionManager(this);
-        helper = new DatabaseHelper(this);
+        helper = new DatabaseHelperContacts(this);
 
         SharedPreferences preferences = getSharedPreferences("MEDI", MODE_PRIVATE);
         String displayName = preferences.getString("displayName", "");  //ist der Username der gerade eingeloggt ist

@@ -27,6 +27,7 @@ class SearchViewHolder extends RecyclerView.ViewHolder{
         bezeichnung = (TextView) itemView.findViewById(R.id.bezeichnung);
 
     }
+
 }
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
@@ -37,6 +38,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     public SearchAdapter(Context context, List<Drugs> drugs) {
         this.context = context;
         this.drugs = drugs;
+    }
+
+    public SearchAdapter() {
+
     }
 
     @Override

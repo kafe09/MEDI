@@ -50,8 +50,8 @@
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
         android:onClick="onClickGps"
-        android:id="@+id/ic_gps"
-        android:src="@drawable/location"/>
+        android:id="@+id/ic_gps"/>
+        <!--android:src="@drawable/location"/>-->
 
     <!--<ImageView
         android:layout_width="40dp"

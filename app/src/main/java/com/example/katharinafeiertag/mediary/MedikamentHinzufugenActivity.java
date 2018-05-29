@@ -6,27 +6,34 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.content.res.AssetManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import jxl.read.biff.BiffException;
 
 public class MedikamentHinzufugenActivity extends AppCompatActivity {
+
+    public SeekBar sb;
+    public TextView tv1;
+
+    int sbvalue;
+    int sbmax = 500;
+    int sbstart = 1;
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     String value;
     private TextView tv;
@@ -42,6 +49,30 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.tv_anzeige);
         registerExampleBroadcastReceiver();
         start = (Button) findViewById(R.id.bt_show);
+
+        sb = (SeekBar) findViewById(R.id.seekBar);
+        tv1 = (TextView) findViewById(R.id.tv_wert);
+
+        sb.setMax(sbmax);
+        sb.setProgress(sbstart);
+        tv1.setText(Integer.toString(sbstart));
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sbvalue = sb.getProgress();
+                tv1.setText(Integer.toString(sbvalue));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override

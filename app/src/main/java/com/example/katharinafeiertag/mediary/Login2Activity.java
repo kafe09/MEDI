@@ -1,19 +1,13 @@
 package com.example.katharinafeiertag.mediary;
 
-import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
-import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,7 +17,6 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import java.security.Key;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -43,7 +36,7 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
 
     private TextView tf_info;
     private SessionManager session;
-    DatabaseHelper helper;
+    DatabaseHelperContacts helper;
     private EditText username,passwort;
     public String usernameEingabe, passwortEingabe;
 
@@ -90,7 +83,7 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
                     }
             }
         }
-        helper = new DatabaseHelper(this);
+        helper = new DatabaseHelperContacts(this);
         session = new SessionManager(this);
 
         tf_fingerprint = (TextView) findViewById(R.id.tf_fingerprinta);
