@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.security.keystore.KeyGenParameterSpec;
+import android.security.keystore.KeyPermanentlyInvalidatedException;
+import android.security.keystore.KeyProperties;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,11 +20,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.Key;
 import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 
 public class Login2Activity extends AppCompatActivity implements View.OnClickListener {
+    private KeyStore keyStore;
+    private Cipher cipher;
+    private String KEY_NAME = "AndroidKey";
+
     private TextView tf_info;
     private SessionManager session;
     DatabaseHelper helper;
@@ -30,17 +49,47 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
 
     private TextView tf_fingerprint;
     private ImageView iv_finger;
-    private FingerprintManager fingerprintManager;
+
+    public FingerprintManager fingerprintManager;
     private KeyguardManager keyguardManager;
-    private KeyStore keyStore;
-    private Cipher cipher;
-    private String KEY_NAME = "AndroidKey";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
+        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+
+        if (!fingerprintManager.isHardwareDetected())
+            Toast.makeText(this, "Fingerprint kann leider nicht verwendet werden.", Toast.LENGTH_SHORT).show();
+        else {
+            if (!fingerprintManager.hasEnrolledFingerprints())
+                Toast.makeText(this, "Definieren Sie einen Fingerabdruck in Ihren Einstellungen.", Toast.LENGTH_SHORT).show();
+            else {
+                if (!keyguardManager.isKeyguardSecure())
+                    Toast.makeText(this, "Das Entsperren mit Fingerprint wird in den Einstellungen nicht erlaubt.", Toast.LENGTH_SHORT).show();
+                else
+
+                    try {
+                        genKey();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
+                    } catch (CertificateException e) {
+                        e.printStackTrace();
+
+                        if (cipherInit()) {
+                            FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                            FingerprintHandler helper = new FingerprintHandler(this);
+                            helper.startAuth(fingerprintManager, cryptoObject);
+                        }
+
+                    }
+            }
+        }
         helper = new DatabaseHelper(this);
         session = new SessionManager(this);
 
@@ -50,18 +99,11 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
 
         username = (EditText) findViewById(R.id.tf_allergien);
         passwort = (EditText) findViewById(R.id.tf_passwort);
+    }
 
 
 
-        //Hier wird überprüft ob wir berechtigt sind Fingerprint zu verwenden und ob alles funktionieren würde.
-        //5 verschiedene Abfragen
-        //1. Android version should be greater or equal to Marshmallow
-        //2. Device has Fingerprint Scanner
-        //3. Have permission to use fingerprint scanner in the app
-        //4. Lock screen is secured with at least 1 type of lock
-        //5. At least 1 fingerprint is registered
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
             keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 
@@ -89,40 +131,51 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
                 FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
                 fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
             }
-        }
-    }
-    //}
+        }*/
 
-    /*@TargetApi(Build.VERSION_CODES.M)
-    private void generateKey() {
+
+    public void genKey() throws CertificateException, NoSuchAlgorithmException, IOException {
         try {
 
             KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
-            KeyGenerator keyGenerator = KeyGenerator.getInstance( KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
-
-            keyStore.load(null);
-            keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                    .setBlockModes(KeyProperties.BLOCK_MODE_CBC) .setUserAuthenticationRequired(true)
-                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
-                    .build());
-            keyGenerator.generateKey();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
-            e.printStackTrace();
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
         } catch (KeyStoreException e) {
-            e.printStackTrace();
-        }
-    }*/
+                e.printStackTrace();
+            }
 
-    /*@TargetApi(Build.VERSION_CODES.M)
+            KeyGenerator keyGenerator = null;
+
+        try {
+            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (NoSuchProviderException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                keyStore.load(null);
+
+                keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                        .setBlockModes(KeyProperties.BLOCK_MODE_CBC) .setUserAuthenticationRequired(true)
+                        .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
+                        .build());
+                keyGenerator.generateKey();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (CertificateException e) {
+                e.printStackTrace();
+            } catch (InvalidAlgorithmParameterException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+
     public boolean cipherInit() {
         try {
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
@@ -130,23 +183,35 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
             throw new RuntimeException("Failed to get Cipher", e);
         }
 
-
         try {
             keyStore.load(null);
 
-            SecretKey key = (SecretKey) keyStore.getKey(KEY_NAME,
-                    null);
-
+            SecretKey key = (SecretKey)keyStore.getKey(KEY_NAME,null);
             cipher.init(Cipher.ENCRYPT_MODE, key);
-
             return true;
 
-        } catch (KeyPermanentlyInvalidatedException e) {
+        }  catch (IOException e) {
+            e.printStackTrace();
             return false;
-        } catch (KeyStoreException | CertificateException | UnrecoverableKeyException | IOException | NoSuchAlgorithmException | InvalidKeyException e) {
-            throw new RuntimeException("Failed to init Cipher", e);
+        } catch (CertificateException e) {
+            e.printStackTrace();
+            return false;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return false;
+        } catch (UnrecoverableKeyException e) {
+            e.printStackTrace();
+            return false;
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+            return false;
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+            return false;
         }
-    }*/
+
+    }
+
 
 
     public void registrieren(View v) {
