@@ -27,7 +27,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis","ATC-Code","BezeichnungATC-Code"};
+        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis","ATCCode","BezeichnungATCCode"};
         String tableName="drugs";
 
         qb.setTables(tableName);
@@ -42,8 +42,8 @@ public class DrugsDatabase extends SQLiteAssetHelper {
                 drug.setMenge(cursor.getString(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
                 drug.setPreis(cursor.getString(cursor.getColumnIndex("Kassenverkaufspreis")));
-                drug.setCode(cursor.getString(cursor.getColumnIndex("ATC-Code")));
-                drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATC-Code")));
+                drug.setCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
+                drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
 
                 result.add(drug);
 
@@ -75,7 +75,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis","ATC-Code","BezeichnungATC-Code"};
+        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis","ATCCode","BezeichnungATCCode"};
         String tableName="drugs";
 
         qb.setTables(tableName);
@@ -90,8 +90,8 @@ public class DrugsDatabase extends SQLiteAssetHelper {
                 drug.setMenge(cursor.getString(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
                 drug.setPreis(cursor.getString(cursor.getColumnIndex("Kassenverkaufspreis")));
-                drug.setCode(cursor.getString(cursor.getColumnIndex("ATC-Code")));
-                drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATC-Code")));
+                drug.setCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
+                drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
 
                 result.add(drug);
 
