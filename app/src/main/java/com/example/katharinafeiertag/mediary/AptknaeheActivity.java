@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Zeigt via Google Maps den aktuellen Standort sowie Apotheken im Umkreis an
+// wir müssen mit type-proximity arbeiten
 public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener {
 

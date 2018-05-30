@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     SearchAdapter sa = new SearchAdapter();
-    public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
+    public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "hausapotheke.db";
     private static final String TABLE_NAME = "medikamente";
@@ -27,16 +27,22 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
 
     //Konstruktor
     public DatabaseHelperMedikament(Context context)
-    //, String name, SQLiteDatabase.CursorFactory, int version)
     {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);
-        this.dbhausapotheke = db;
+    public void onCreate(SQLiteDatabase dbhausapotheke) {
+        dbhausapotheke.execSQL(TABLE_CREATE);
+        this.dbhausapotheke = dbhausapotheke;
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase dbhausapotheke, int oldVersion, int newVersion) {
+        String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
+        dbhausapotheke.execSQL(query);
+        this.onCreate(dbhausapotheke);
     }
 
     public void insertMedikament(MedikamentNeu mn) {
@@ -151,11 +157,6 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     }
 */
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
-        dbhausapotheke.execSQL(query);
-        this.onCreate(dbhausapotheke);
-    }
+
 }
 

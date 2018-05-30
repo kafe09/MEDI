@@ -65,10 +65,13 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         registerExampleBroadcastReceiver();
         start = (Button) findViewById(R.id.bt_show);*/
 
-        menge = (Spinner) findViewById(R.id.spinner);
+
         handelsname = (EditText) findViewById(R.id.tf_handelsname);
-        zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
+        menge = (Spinner) findViewById(R.id.spinner);
         art = (TextView) findViewById(R.id.tv_art);
+        zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
+
+        helper = new DatabaseHelperMedikament(this);
 
 
         //Spinner um die Mengenart der Medikamente auszuwählen
