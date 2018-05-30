@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,6 +22,9 @@ import android.widget.Button;
 
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -36,7 +40,43 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     TextView menge;
     EditText art;
 
-    //für Seekbar
+    //Anfang Medikamente der Hausapotheke in Liste zu speicher
+
+    private ArrayList<HashMap> list;
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_medikamenthinzufugen);
+
+        ListView lview = (ListView) findViewById(R.id.lv_medikamente);
+        populateList();
+        ListviewAdapter adapter = new ListviewAdapter(this, list);
+        lview.setAdapter(adapter);
+    }
+
+    private void populateList() {
+
+        list = new ArrayList<HashMap>();
+
+        HashMap temp = new HashMap();
+        temp.put(FIRST_COLUMN,"Colored Notebooks");
+        temp.put(SECOND_COLUMN, "By NavNeet");
+        temp.put(THIRD_COLUMN, "Rs. 200");
+        temp.put(FOURTH_COLUMN, "Per Unit");
+        list.add(temp);
+
+        HashMap temp1 = new HashMap();
+        temp1.put(FIRST_COLUMN,"Diaries");
+        temp1.put(SECOND_COLUMN, "By Amee Products");
+        temp1.put(THIRD_COLUMN, "Rs. 400");
+        temp1.put(FOURTH_COLUMN, "Per Unit");
+        list.add(temp1);
+
+
+
+
+    //Anfang Medikamente der Hausapotheke in Datenbank zu speicher
+    /*//für Seekbar
     public SeekBar sb;
     public TextView tv1;
 
@@ -44,27 +84,13 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     int sbmax = 500;
     int sbstart = 1;
 
-    //auch für IntentService - siehe unten
-/*
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    String value;
-    private TextView tv;
-    private ExampleBroadcastReciever resultReciever;
-    ServiceDbAbfrage servicedbabfrage;
-    Button start;*/
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medikamenthinzufugen);
-       /* tv = (TextView) findViewById(R.id.tv_anzeige);
+       *//* tv = (TextView) findViewById(R.id.tv_anzeige);
         registerExampleBroadcastReceiver();
-        start = (Button) findViewById(R.id.bt_show);*/
+        start = (Button) findViewById(R.id.bt_show);*//*
 
 
         handelsname = (EditText) findViewById(R.id.tf_handelsname);
@@ -149,92 +175,7 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
     public void displayToast (String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-    }
-
-
-
-    //alles für IntentService; Java UI Thread Service anders lösen!!!!
-
-
-    /*public void anzeigen(View v) {
-
-
-        int wartezeit;
-
-    try{
-        *//*Toast toasti = Toast.makeText(MedikamentHinzufugenActivity.this, "Datenbank wird durchgesucht", Toast.LENGTH_SHORT);
-        toasti.show();*//*
-
-        wartezeit = 5000;
-        AssetManager am = getAssets();
-        InputStream is = am.open("versuch.xls");
-        Workbook wb = Workbook.getWorkbook(is);
-        Sheet s = wb.getSheet(0);
-        int row = s.getRows();
-        int col = s.getColumns();
-        String xx="";
-
-        for(int i=0;i<row;i++)
-        {
-            for(int c=0;c<col;c++)
-            {
-                Cell z = s.getCell(c,i);
-                xx =xx+z.getContents();
-            }
-            xx=xx+"\n";
-        }
-        display(xx);
-    }
-    catch(Exception e){
-        wartezeit = 0;
-        Toast toasti2 = Toast.makeText(MedikamentHinzufugenActivity.this,"Fehlgeschlagen",Toast.LENGTH_SHORT);
-        toasti2.show();
-    }
-
-        Intent intent = new Intent(getBaseContext(),ServiceDbAbfrage.class);
-        intent.putExtra("wartezeit",wartezeit);
-        startService(intent);
-
-    }
-
-    public void display(String value) {
-        TextView example = (TextView) findViewById(R.id.tv_versuch);
-        example.setMovementMethod(new ScrollingMovementMethod());
-        example.setText(value);
-    }
-
-    private void registerExampleBroadcastReceiver(){
-        // Create a broadcast receiver
-        resultReciever = new ExampleBroadcastReciever();
-
-        // Create an intent that indicates which broadcasts to listen for
-        IntentFilter intentFilter = new IntentFilter();
-        //intentFilter.addAction(ExampleIntentService.EXAMPLE_ACTION);
-        intentFilter.addAction(ServiceDbAbfrage.EXAMPLE_ACTION);
-
-        // Register the receiver
-        registerReceiver(resultReciever, intentFilter);
-    }
-
-
-    private class ExampleBroadcastReciever extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            String ex_info = intent.getStringExtra(ServiceDbAbfrage.EXAMPLE_CATEGORY);
-            tv.setText(ex_info);
-        }
-    }
-
-*/
-    //war für IntentService
-    /*@Override
-    protected void onStop() {
-        super.onStop();
-        // When the function stops, the receiver needs to be unregistered
-        unregisterReceiver(resultReciever);
     }*/
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.katharinafeiertag.mediary;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 //Hier sieht man die Benutzerdaten des Benutzers
 public class BenutzerprofilActivity extends AppCompatActivity {
+    public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
     private static final int SELECT_PICTURE = 0;
     private ImageView imageView;
     private Button bt_logout;
@@ -32,8 +34,12 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         session = new SessionManager(this);
         helper = new DatabaseHelperContacts(this);
 
+
+
         SharedPreferences preferences = getSharedPreferences("MEDI", MODE_PRIVATE);
         displayName = preferences.getString("displayName", "");  //ist der Username der gerade eingeloggt ist
+
+        Log.d(TAG,"benutzer eingeloggt: " +displayName );
 
         nachname = (TextView) findViewById(R.id.tf_name);
         nachname.setText(helper.searchNachname(displayName));
@@ -50,7 +56,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         benutzername = (TextView) findViewById(R.id.tf_allergien);
         benutzername.setText("keine Daten");
 
-        if(!session.loggedIn()) {
+        /*if(!session.loggedIn()) {
             logout();
         }
         bt_logout = (Button)findViewById(R.id.bt_logout);
@@ -59,15 +65,11 @@ public class BenutzerprofilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 logout();
             }
-        });
+        });*/
     }
 
 
-    private void logout () {
-        session.setLoggedin(false);
-        finish();
-        startActivity(new Intent(BenutzerprofilActivity.this, LoginActivity.class));
-    }
+
 
 
 
@@ -97,24 +99,25 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         return bitmap;
     }
 
-    private void selectImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
-    }
 
 
-    public void benutzerlöschen (View v) {
-        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-        startActivity(intent);
+    public void benutzerloeschen(View v) {
         helper = new DatabaseHelperContacts(this);
 
+        Log.d(TAG,"EMail und Name "+ helper.searchEmail(displayName) + helper.searchNachname(displayName));
+
         helper.db.delete("contacts", "email=? and name=?",new String[]{helper.searchEmail(displayName),helper.searchNachname(displayName)});
-        Log.d("EMail und Name", helper.searchEmail(displayName) + helper.searchNachname(displayName));
 
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
 
+    }
 
+    public void logout(View v) {
+        // session.setLoggedin(false);
+        // finish();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
 

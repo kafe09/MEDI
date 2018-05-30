@@ -34,6 +34,10 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
         this.db = db;
+
+        //Versuch die Datenbank immer zu aktualisieren
+        ContentValues cv = new ContentValues();
+        db.update("contacts", cv, null,null);
     }
 
     public void insertContact(Contact c) {
