@@ -103,6 +103,10 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     }
 
 
+    public void benutzerlöschen (View v) {
+        Intent intent = new Intent(getBaseContext(), alleMedEinsichtActivity.class);
+        startActivity(intent);
+    }
 
 
 }

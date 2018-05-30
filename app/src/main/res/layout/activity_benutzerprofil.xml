@@ -123,6 +123,7 @@
         android:textSize="18sp"
         android:text="Logout"
         android:textStyle="bold"
+        android:onClick="benutzerlöschen"/>
 
         android:textColor="@color/colorPrimary" />
 

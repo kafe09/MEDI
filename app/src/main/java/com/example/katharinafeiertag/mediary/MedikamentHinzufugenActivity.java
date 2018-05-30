@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,8 +33,8 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
     DatabaseHelperMedikament helper = new DatabaseHelperMedikament(this);
     EditText handelsname, zulassungsnummer;
-    Spinner menge;
-    TextView art;
+    TextView menge;
+    EditText art;
 
     //für Seekbar
     public SeekBar sb;
@@ -67,8 +68,8 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
 
         handelsname = (EditText) findViewById(R.id.tf_handelsname);
-        menge = (Spinner) findViewById(R.id.spinner);
-        art = (TextView) findViewById(R.id.tv_art);
+        menge = (TextView) findViewById(R.id.tv_wert);
+        art = (EditText) findViewById(R.id.tf_art);
         zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
 
         helper = new DatabaseHelperMedikament(this);
@@ -126,8 +127,9 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         startActivity(intent);
 
         String handelsnamestr = handelsname.getText().toString();
-        String mengestr = menge.getContext().toString();   //eigentlich wäre hier getText() - is rot
+        String mengestr = menge.getText().toString();   //eigentlich wäre hier getText() - is rot
         String artstr = art.getText().toString();
+        Log.d("daten menge danach art", mengestr + artstr);
         String zulassungsnummerstr = zulassungsnummer.getText().toString();
 
 

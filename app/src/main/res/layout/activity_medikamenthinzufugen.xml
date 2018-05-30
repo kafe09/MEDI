@@ -92,14 +92,6 @@
         android:layout_below="@+id/seekBar"
         android:layout_marginTop="19dp" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_alignStart="@+id/tv_art"
-        android:layout_below="@+id/tv_art"
-        android:layout_marginTop="19dp" />
-
     <TextView
         android:id="@+id/tv_art"
         android:layout_width="300dp"
@@ -119,6 +111,17 @@
         android:layout_marginBottom="29dp"
         android:ems="10"
         android:hint="Zulassungsnummer:"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/tf_art"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_art"
+        android:layout_below="@+id/tv_art"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Mengenart:"
         android:inputType="textPersonName" />
 
 </RelativeLayout>
