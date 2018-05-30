@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     private Button bt_logout;
     SessionManager session;
     DatabaseHelperContacts helper;
+    String displayName;
     TextView nachname, vorname, benutzername, email, allergien;
 
     @Override
@@ -31,7 +33,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         helper = new DatabaseHelperContacts(this);
 
         SharedPreferences preferences = getSharedPreferences("MEDI", MODE_PRIVATE);
-        String displayName = preferences.getString("displayName", "");  //ist der Username der gerade eingeloggt ist
+        displayName = preferences.getString("displayName", "");  //ist der Username der gerade eingeloggt ist
 
         nachname = (TextView) findViewById(R.id.tf_name);
         nachname.setText(helper.searchNachname(displayName));
@@ -104,8 +106,15 @@ public class BenutzerprofilActivity extends AppCompatActivity {
 
 
     public void benutzerlöschen (View v) {
-        Intent intent = new Intent(getBaseContext(), alleMedEinsichtActivity.class);
+        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
         startActivity(intent);
+        helper = new DatabaseHelperContacts(this);
+
+        helper.db.delete("contacts", "email=? and name=?",new String[]{helper.searchEmail(displayName),helper.searchNachname(displayName)});
+        Log.d("EMail und Name", helper.searchEmail(displayName) + helper.searchNachname(displayName));
+
+
+
     }
 
 
