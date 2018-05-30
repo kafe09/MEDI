@@ -7,9 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Created by scheerbernhard on 26.04.18.
- */
+//war unser IntentService - restlicher Code in MedikmaentenHinzufugenActivity
 
 public class ServiceDbAbfrage extends Service {
     final static String EXAMPLE_ACTION = "example_action";          // Example action for client communication

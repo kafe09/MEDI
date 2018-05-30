@@ -28,10 +28,6 @@ import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 
-/**
- * Created by katharinafeiertag on 16.05.18.
- */
-
 
 /**
  * Adapter that handles Autocomplete requests from the Places Geo Data API.

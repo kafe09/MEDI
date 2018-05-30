@@ -7,10 +7,7 @@ import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
-/**
- * Created by katharinafeiertag on 16.05.18.
- */
-
+//Damit die Apotheken im Umkreis angezeigt werden // müssen noch Änderungen vorgenommen werden
 public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
     private final View mWindow;

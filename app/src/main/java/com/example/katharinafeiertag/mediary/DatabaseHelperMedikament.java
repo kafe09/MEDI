@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by scheerbernhard on 29.05.18.
- */
+//Datenbank für die Medikamente des Benutzers zu erstellen und Medikamente speichern
 
 public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     SearchAdapter sa = new SearchAdapter();
@@ -41,7 +39,7 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         this.dbhausapotheke = db;
     }
 
-    public void insertMedikament(MedikamentNeu mn {
+    public void insertMedikament(MedikamentNeu mn) {
         dbhausapotheke = this.getWritableDatabase();
 
         ContentValues values2 = new ContentValues();
@@ -64,7 +62,7 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
 
 
     //Methode für LoginActivity um Email zu überprüfen von Datenbank
-    public String searchMed(String handelsname) {
+   /* public String searchMed(String handelsname) {
         dbhausapotheke = this.getReadableDatabase();
         String query = "select * from " + TABLE_NAME;
         Cursor cursor = dbhausapotheke.rawQuery(query, null);
@@ -87,9 +85,9 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
 
 
     public String searchVorname(String uname) {
-        db = this.getReadableDatabase();
+        dbhausapotheke = this.getReadableDatabase();
         String query = "select * from " + TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor cursor = dbhausapotheke.rawQuery(query, null);
         String a;   //Benutzername
         String b;   //Vorname
         b = " ";
@@ -109,9 +107,9 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     }
 
     public String searchNachname(String uname) {
-        db = this.getReadableDatabase();
+        dbhausapotheke = this.getReadableDatabase();
         String query = "select * from " + TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor cursor = dbhausapotheke.rawQuery(query, null);
         String a;   //Benutzername
         String b;   //Passwort
         b = " ";
@@ -131,9 +129,9 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     }
 
     public String searchEmail (String uname) {
-        db = this.getReadableDatabase();
+        dbhausapotheke = this.getReadableDatabase();
         String query = "select * from " + TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor cursor = dbhausapotheke.rawQuery(query, null);
         String a;   //Benutzername
         String b;   //EMail
         b = " ";
@@ -151,14 +149,13 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         }
         return b;                              //wenn kein Benutzer gefunden wurde
     }
-
+*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
-        db.execSQL(query);
-        this.onCreate(db);
+        dbhausapotheke.execSQL(query);
+        this.onCreate(dbhausapotheke);
     }
 }
 
-}

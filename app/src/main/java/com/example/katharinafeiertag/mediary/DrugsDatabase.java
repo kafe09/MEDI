@@ -11,6 +11,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+//Datenbank für unsere Medikamenten-DB mit über 5000 Medikamenten
 public class DrugsDatabase extends SQLiteAssetHelper {
 
     private static final String DB_NAME="medikamenten.db";

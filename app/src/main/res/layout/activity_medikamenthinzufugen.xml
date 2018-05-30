@@ -25,50 +25,42 @@
         android:id="@+id/tf_handelsname"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/spinner2"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Handelsname:"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/lb_art"
-        android:layout_alignTop="@+id/lb_art"
-        android:layout_marginTop="42dp" />
-
     <Button
-        android:id="@+id/bt_show"
+        android:id="@+id/bt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="34dp"
         android:layout_marginEnd="12dp"
-        android:onClick="anzeigen"
-        android:text="Anzeigen" />
+        android:onClick="onAddClick"
+        android:text="Hinzufügen" />
 
-    <TextView
+<!--    <TextView
         android:id="@+id/tv_anzeige"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/tv_versuch"
         android:layout_marginBottom="15dp"
-        android:hint="Prozess durchgeführt" />
+        android:hint="Prozess durchgeführt" />-->
 
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="300dp"
         android:layout_height="20dp"
-        android:layout_alignStart="@+id/tf_handelsname"
+        android:layout_alignStart="@+id/lb_menge"
         android:layout_below="@+id/lb_menge"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="18dp"
         android:max="500" />
 
     <TextView
@@ -81,7 +73,7 @@
         android:textSize="18sp"
         tools:text="Mengenangabe:" />
 
-
+<!--
     <TextView
         android:id="@+id/lb_art"
         android:layout_width="300dp"
@@ -90,7 +82,7 @@
         android:layout_below="@+id/tv_wert"
         android:layout_marginTop="18dp"
         android:textSize="18sp"
-        tools:text="Mengenart:" />
+        tools:text="Mengenart:" />-->
 
     <TextView
         android:id="@+id/tv_wert"
@@ -98,13 +90,35 @@
         android:layout_height="50dp"
         android:layout_alignStart="@+id/seekBar"
         android:layout_below="@+id/seekBar"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="19dp" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/bt_show"
-        android:layout_alignStart="@+id/tv_wert" />
+        android:layout_alignStart="@+id/tv_art"
+        android:layout_below="@+id/tv_art"
+        android:layout_marginTop="19dp" />
+
+    <TextView
+        android:id="@+id/tv_art"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/tv_wert"
+        android:layout_below="@+id/tv_wert"
+        android:layout_marginTop="14dp"
+        android:text="Mengenart:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/tf_zulassungsnummer"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/bt_add"
+        android:layout_alignStart="@+id/spinner"
+        android:layout_marginBottom="29dp"
+        android:ems="10"
+        android:hint="Zulassungsnummer:"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

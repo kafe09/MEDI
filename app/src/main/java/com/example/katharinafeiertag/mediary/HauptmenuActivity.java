@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+//Unser Hauptmenü
 public class HauptmenuActivity extends AppCompatActivity {
     //Aufgabenstellung: Ein Ergebnis aus einer Aktivität zurückgeben
     public static final String REQUEST_RESULT = "REQUEST_RESULT";
@@ -79,11 +80,6 @@ public class HauptmenuActivity extends AppCompatActivity {
         startActivity(hpIntent);
     }
 
-    //klick auf InfoActivity
-    public void onInfoClick (View v) {
-        Intent iIntent = new Intent (this,InfoActivity.class);
-        startActivity(iIntent);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

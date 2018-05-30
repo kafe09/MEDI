@@ -1,6 +1,6 @@
 package com.example.katharinafeiertag.mediary;
 
-
+//Um verschiedene Benutzer der App in einer Datenbank zu speichern
 public class Contact  {
     String vorname,name,email,uname,passwort;
 

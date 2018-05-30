@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//Hier kann sich der Benutzer neu registrieren und wird in einer Datenbank gespeichert
 public class RegistrierungActivity extends AppCompatActivity {
     DatabaseHelperContacts helper = new DatabaseHelperContacts(this);
     EditText vorname, name, email, uname, passwort, passwort2;
@@ -26,7 +27,7 @@ public class RegistrierungActivity extends AppCompatActivity {
     }
 
     public void onRegistrierenClick (View v) {
-        Intent regiintent = new Intent(getBaseContext(), Login2Activity.class );
+        Intent regiintent = new Intent(getBaseContext(), LoginActivity.class );
         startActivity(regiintent);
 
             String vornamestr = vorname.getText().toString();

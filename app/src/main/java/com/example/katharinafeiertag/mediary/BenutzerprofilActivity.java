@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+//Hier sieht man die Benutzerdaten des Benutzers
 public class BenutzerprofilActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 0;
     private ImageView imageView;
@@ -64,7 +64,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     private void logout () {
         session.setLoggedin(false);
         finish();
-        startActivity(new Intent(BenutzerprofilActivity.this, Login2Activity.class));
+        startActivity(new Intent(BenutzerprofilActivity.this, LoginActivity.class));
     }
 
 
@@ -102,10 +102,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
     }
 
-    public void onEditClick (View v) {
-        Intent editIntent = new Intent(getBaseContext(), passwortActivity.class );
-        startActivity(editIntent);
-    }
+
 
 
 }

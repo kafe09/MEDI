@@ -1,22 +1,24 @@
 package com.example.katharinafeiertag.mediary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Toast;
 
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by scheerbernhard on 05.05.18.
- */
 
-public class MedikamentenAdd extends AppCompatActivity {
+//um Medikamente in unserer großen Datenbank zu suchen
+
+public class MedikamentenSuche extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -59,6 +61,11 @@ public class MedikamentenAdd extends AppCompatActivity {
                 for(String search:suggestList) {
                     if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
                         suggest.add(search);
+                    else {
+                        Toast toasti = Toast.makeText(MedikamentenSuche.this,"Dieses Medikament befindet sich nicht in der Datenbank. Bitte fügen Sie es hinzu durch Klick des Hinzufügen-Buttons!", Toast.LENGTH_LONG);
+                        toasti.show();
+                    }
+
                 }
                 materialSearchBar.setLastSuggestions(suggest);
 
@@ -103,5 +110,10 @@ public class MedikamentenAdd extends AppCompatActivity {
     private void loadSuggestList() {
         suggestList = database.getNames();
         materialSearchBar.setLastSuggestions(suggestList);
+    }
+
+    public void onHinzuClick(View v) {
+        Intent intent = new Intent (getBaseContext(),MedikamentHinzufugenActivity.class);
+        startActivity(intent);
     }
 }

@@ -88,14 +88,4 @@
         app:layout_constraintTop_toBottomOf="@+id/bt_user"
         app:srcCompat="@drawable/apotheken" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/background_light"
-        android:onClick="onInfoClick"
-        app:srcCompat="@drawable/info3" />
-
 </RelativeLayout>

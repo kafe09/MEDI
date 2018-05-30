@@ -29,7 +29,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-public class Login2Activity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private KeyStore keyStore;
     private Cipher cipher;
     private String KEY_NAME = "AndroidKey";
@@ -228,12 +228,12 @@ public class Login2Activity extends AppCompatActivity implements View.OnClickLis
             editor.putString("displayName", userDetailName);
             editor.commit();
 
-            Intent i = new Intent(Login2Activity.this, HauptmenuActivity.class);
+            Intent i = new Intent(LoginActivity.this, HauptmenuActivity.class);
             startActivity(i);
             finish();
 
         } else {
-            Toast temp = Toast.makeText(Login2Activity.this, "Benutzername und Passwort stimmen nicht!", Toast.LENGTH_SHORT);
+            Toast temp = Toast.makeText(LoginActivity.this, "Benutzername und Passwort stimmen nicht!", Toast.LENGTH_SHORT);
             temp.show();
         }
     }

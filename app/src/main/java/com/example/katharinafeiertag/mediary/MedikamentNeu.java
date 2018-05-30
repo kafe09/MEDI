@@ -1,6 +1,8 @@
 package com.example.katharinafeiertag.mediary;
 
 
+//für die persönliche Hausapotheke des Benutzers (Datenbank der eigenen Medikamente)
+
 public class MedikamentNeu {
     String handelsname,menge,art,zulassungsnummer;
 

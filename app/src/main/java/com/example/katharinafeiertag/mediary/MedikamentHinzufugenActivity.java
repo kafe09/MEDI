@@ -9,7 +9,11 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
@@ -20,9 +24,18 @@ import java.io.InputStream;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
+import android.widget.AdapterView.OnItemSelectedListener;
 
+
+//Hier gibt der Benutzer das Medikament ein, welches er zu seiner persönlichen Hausapotheke hinzufügen will
 public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
+    DatabaseHelperMedikament helper = new DatabaseHelperMedikament(this);
+    EditText handelsname, zulassungsnummer;
+    Spinner menge;
+    TextView art;
+
+    //für Seekbar
     public SeekBar sb;
     public TextView tv1;
 
@@ -30,6 +43,8 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     int sbmax = 500;
     int sbstart = 1;
 
+    //auch für IntentService - siehe unten
+/*
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
@@ -39,17 +54,45 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     private TextView tv;
     private ExampleBroadcastReciever resultReciever;
     ServiceDbAbfrage servicedbabfrage;
-    Button start;
+    Button start;*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medikamenthinzufugen);
-        tv = (TextView) findViewById(R.id.tv_anzeige);
+       /* tv = (TextView) findViewById(R.id.tv_anzeige);
         registerExampleBroadcastReceiver();
-        start = (Button) findViewById(R.id.bt_show);
+        start = (Button) findViewById(R.id.bt_show);*/
 
+        menge = (Spinner) findViewById(R.id.spinner);
+        handelsname = (EditText) findViewById(R.id.tf_handelsname);
+        zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
+        art = (TextView) findViewById(R.id.tv_art);
+
+
+        //Spinner um die Mengenart der Medikamente auszuwählen
+        final Spinner sp = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adp = ArrayAdapter.createFromResource(this,R.array.spinneritems,android.R.layout.simple_list_item_1);
+
+        adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp.setAdapter(adp);
+        sp.setOnItemSelectedListener(new OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                // TODO Auto-generated method stub
+                String ss = sp.getSelectedItem().toString();
+                Toast.makeText(getBaseContext(), ss, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        // SeekBar um die Menge der Medikamente festzulegen von 0 bis 500
         sb = (SeekBar) findViewById(R.id.seekBar);
         tv1 = (TextView) findViewById(R.id.tv_wert);
 
@@ -74,22 +117,48 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
             }
         });
     }
+    //Intent um neues Medikament zur Datenbank hinzuzufügen
+    public void onAddClick (View v) {
+        Intent intent = new Intent(getBaseContext(), alleMedEinsichtActivity.class );
+        startActivity(intent);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // When the function stops, the receiver needs to be unregistered
-        unregisterReceiver(resultReciever);
+        String handelsnamestr = handelsname.getText().toString();
+        String mengestr = menge.getContext().toString();   //eigentlich wäre hier getText() - is rot
+        String artstr = art.getText().toString();
+        String zulassungsnummerstr = zulassungsnummer.getText().toString();
+
+
+        if (handelsnamestr.isEmpty() && mengestr.isEmpty() && artstr.isEmpty()){
+            displayToast ("Bitte füllen Sie Handelsname, Mengenangabe und Mengenart aus!.");
+        }
+        else {
+            //insert details in database
+            MedikamentNeu mn = new MedikamentNeu();
+            mn.setHandelsname(handelsnamestr);
+            mn.setMenge(mengestr);
+            mn.setArt(artstr);
+            mn.setZulassungsnummer(zulassungsnummerstr);
+            helper.insertMedikament(mn);
+        }
     }
 
-    public void anzeigen(View v) {
+    public void displayToast (String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    //alles für IntentService; Java UI Thread Service anders lösen!!!!
+
+
+    /*public void anzeigen(View v) {
 
 
         int wartezeit;
 
     try{
-        /*Toast toasti = Toast.makeText(MedikamentHinzufugenActivity.this, "Datenbank wird durchgesucht", Toast.LENGTH_SHORT);
-        toasti.show();*/
+        *//*Toast toasti = Toast.makeText(MedikamentHinzufugenActivity.this, "Datenbank wird durchgesucht", Toast.LENGTH_SHORT);
+        toasti.show();*//*
 
         wartezeit = 5000;
         AssetManager am = getAssets();
@@ -151,4 +220,16 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
             tv.setText(ex_info);
         }
     }
+
+*/
+    //war für IntentService
+    /*@Override
+    protected void onStop() {
+        super.onStop();
+        // When the function stops, the receiver needs to be unregistered
+        unregisterReceiver(resultReciever);
+    }*/
+
+
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
-    tools:context="com.example.katharinafeiertag.mediary.Login2Activity">
+    tools:context="com.example.katharinafeiertag.mediary.LoginActivity">
 
     <TextView
         android:id="@+id/tv_info"

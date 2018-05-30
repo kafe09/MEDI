@@ -2,7 +2,7 @@ package com.example.katharinafeiertag.mediary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+//Hier sieht Benutzer all seine Medikamente in seiner Hausapotheke
 public class alleMedEinsichtActivity extends AppCompatActivity {
 
     @Override

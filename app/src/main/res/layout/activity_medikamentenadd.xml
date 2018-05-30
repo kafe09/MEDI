@@ -17,8 +17,22 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_search"
-        android:layout_below="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="400dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/search_bar" />
+
+    <Button
+        android:id="@+id/bt_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="22dp"
+        android:onClick="onHinzuClick"
+        android:text="Hinzufügen" />
+
 
 </RelativeLayout>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="spinneritems">
+        <item>Milliliter</item>
+        <item>Stück</item>
+        <item>Gramm</item>
+    </string-array>
+
     <string-array name="wochentage">
         <item>Zeit</item>
         <item>Früh</item>
