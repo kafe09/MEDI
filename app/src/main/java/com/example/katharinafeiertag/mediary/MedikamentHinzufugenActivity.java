@@ -49,12 +49,12 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medikamenthinzufugen);
 
         ListView lview = (ListView) findViewById(R.id.lv_medikamente);
-        populateList();
-        ListviewAdapter adapter = new ListviewAdapter(this, list);
-        lview.setAdapter(adapter);
+       // populateList();
+       // ListviewAdapter adapter = new ListviewAdapter(this, list);
+       // lview.setAdapter(adapter);
     }
 
-    private void populateList() {
+   /* private void populateList() {
 
         list = new ArrayList<HashMap>();
 
@@ -70,7 +70,7 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         temp1.put(SECOND_COLUMN, "By Amee Products");
         temp1.put(THIRD_COLUMN, "Rs. 400");
         temp1.put(FOURTH_COLUMN, "Per Unit");
-        list.add(temp1);
+        list.add(temp1);*/
 
 
 

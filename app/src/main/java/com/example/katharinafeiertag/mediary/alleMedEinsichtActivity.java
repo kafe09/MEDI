@@ -16,6 +16,5 @@ public class alleMedEinsichtActivity extends AppCompatActivity {
         if(hpData == null) {
             return;
         }
-
     }
 }
