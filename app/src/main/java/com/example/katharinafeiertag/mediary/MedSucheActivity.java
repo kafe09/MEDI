@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,9 +18,9 @@ import java.util.List;
 
 
 //um Medikamente in unserer großen Datenbank zu suchen
-
-public class MedikamentenSuche extends AppCompatActivity {
-
+//das Suchen geht verdammt langsam - eventuell Prof fragen was wir hier tun können
+public class MedSucheActivity extends AppCompatActivity {
+    public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     SearchAdapter adapter;
@@ -32,8 +33,9 @@ public class MedikamentenSuche extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"in onCreate von Medikament suchen");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medikamentenadd);
+        setContentView(R.layout.activity_medsuchen);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_search);
         layoutManager = new LinearLayoutManager(this);
@@ -62,7 +64,7 @@ public class MedikamentenSuche extends AppCompatActivity {
                     if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
                         suggest.add(search);
                     else {
-                        Toast toasti = Toast.makeText(MedikamentenSuche.this,"Dieses Medikament befindet sich nicht in der Datenbank. Bitte fügen Sie es hinzu durch Klick des Hinzufügen-Buttons!", Toast.LENGTH_LONG);
+                        Toast toasti = Toast.makeText(MedSucheActivity.this,"Dieses Medikament befindet sich nicht in der Datenbank. Bitte fügen Sie es hinzu durch Klick des Hinzufügen-Buttons!", Toast.LENGTH_LONG);
                         toasti.show();
                     }
 

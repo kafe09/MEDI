@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edmt.dev.androidsqlitesearch.MedikamentenAdd">
+    tools:context="com.example.katharinafeiertag.mediary.MedSucheActivity">
 
 
     <com.mancj.materialsearchbar.MaterialSearchBar
@@ -25,14 +25,13 @@
 
     <Button
         android:id="@+id/bt_add"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="21dp"
-        android:layout_marginEnd="22dp"
         android:onClick="onHinzuClick"
-        android:text="Hinzufügen" />
+        android:text="Medikament neu hinzufügen" />
 
 
 </RelativeLayout>

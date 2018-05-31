@@ -53,7 +53,7 @@
         <activity android:name=".HausapothekeMenuActivity" />
         <activity android:name=".MedikamentHinzufugenActivity" />
         <activity android:name=".MedEinnahmeActivitiy"/>
-        <activity android:name=".MedikamentenSuche"></activity>
+        <activity android:name=".MedSucheActivity"></activity>
 
         <!-- Declaring Service in Manifest -->
         <service

@@ -7,7 +7,7 @@
     android:background="@android:color/background_light"
     tools:context="com.example.katharinafeiertag.mediary.alleMedEinsichtActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/tf_editText"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
@@ -53,6 +53,7 @@
         android:layout_below="@+id/tf_editText"
         android:layout_marginStart="17dp"
         android:background="@android:color/background_light"
-        app:srcCompat="@drawable/lupe" android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/lupe"
+        android:contentDescription="@string/todo" />
 
 </RelativeLayout>

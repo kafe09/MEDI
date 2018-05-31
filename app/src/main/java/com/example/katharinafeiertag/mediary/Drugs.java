@@ -3,15 +3,15 @@ package com.example.katharinafeiertag.mediary;
 
 public class Drugs {
 
-    public String pharmaId,name,menge,art,preis,code,bezeichnung;
+    public String pharmaId,name,menge,art,preis,atccode,bezeichnung;
 
-    public Drugs(String pharmaId, String name, String menge, String art, String preis, String code, String bezeichnung) {
+    public Drugs(String pharmaId, String name, String menge, String art, String preis, String atccode, String bezeichnung) {
         this.pharmaId = pharmaId;
         this.name = name;
         this.menge = menge;
         this.art = art;
         this.preis = preis;
-        this.code = code;
+        this.atccode = atccode;
         this.bezeichnung = bezeichnung;
 
     }
@@ -61,11 +61,11 @@ public class Drugs {
     }
 
     public String getCode() {
-        return code;
+        return atccode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setATCCode(String code) {
+        this.atccode = code;
     }
 
     public String getBezeichnung() {

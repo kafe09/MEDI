@@ -23,7 +23,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.katharinafeiertag.mediary.module.PlaceInfo;
+//import com.example.katharinafeiertag.mediary.module.PlaceInfo;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -77,7 +77,7 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
     private GoogleApiClient mGoogleApiClient;
-    private PlaceInfo mPlace;
+    //private PlaceInfo mPlace;
     private Marker mMarker;
 
     public static AptknaeheActivity newInstance() {

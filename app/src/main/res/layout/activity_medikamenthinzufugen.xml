@@ -42,8 +42,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="34dp"
         android:layout_marginEnd="12dp"
-        android:onClick="onAddClick"
-        android:text="Hinzufügen" />
+        android:text="Hinzufügen"
+        android:onClick="onAddClick"/>
+
+
 
 <!--    <TextView
         android:id="@+id/tv_anzeige"
@@ -106,9 +108,9 @@
         android:id="@+id/tf_zulassungsnummer"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/bt_add"
-        android:layout_alignStart="@+id/spinner"
-        android:layout_marginBottom="29dp"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_below="@+id/tf_art"
+        android:layout_marginTop="29dp"
         android:ems="10"
         android:hint="Zulassungsnummer:"
         android:inputType="textPersonName" />

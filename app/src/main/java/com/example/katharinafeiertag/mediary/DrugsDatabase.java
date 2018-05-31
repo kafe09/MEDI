@@ -5,19 +5,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 
-import com.example.katharinafeiertag.mediary.Drugs;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//Datenbank für unsere Medikamenten-DB mit über 5000 Medikamenten
+//Datenbank für unsere Medikamenten-DB mit über 7000 Medikamenten
 public class DrugsDatabase extends SQLiteAssetHelper {
 
     private static final String DB_NAME="medikamenten.db";
     private static final int DB_VER=1;
-
-
 
     public DrugsDatabase(Context context) {
         super(context, DB_NAME,null,DB_VER);
@@ -28,7 +25,8 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis","ATCCode","BezeichnungATCCode"};
+        //Kathi habe hier: "ATCCode", "BezeichnungATCCode" gelöscht
+        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis"};
         String tableName="drugs";
 
         qb.setTables(tableName);
@@ -43,8 +41,8 @@ public class DrugsDatabase extends SQLiteAssetHelper {
                 drug.setMenge(cursor.getString(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
                 drug.setPreis(cursor.getString(cursor.getColumnIndex("Kassenverkaufspreis")));
-                drug.setCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
-                drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
+                // drug.setATCCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
+                //drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
 
                 result.add(drug);
 
@@ -91,7 +89,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
                 drug.setMenge(cursor.getString(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
                 drug.setPreis(cursor.getString(cursor.getColumnIndex("Kassenverkaufspreis")));
-                drug.setCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
+                drug.setATCCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
                 drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
 
                 result.add(drug);
