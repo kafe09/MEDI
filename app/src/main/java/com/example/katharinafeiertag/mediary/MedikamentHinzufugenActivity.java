@@ -62,6 +62,7 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
         menge = (TextView) findViewById(R.id.tv_wert);
         neuLagerbestandString = menge.toString();
+        //hier kommt es zum Fehler
         neuLagerbestandInt = Integer.parseInt(neuLagerbestandString);
 
         art = (EditText) findViewById(R.id.tf_art);
