@@ -55,7 +55,6 @@
                 android:gravity="center_vertical|start"
                 android:text="50"
                 />
-            //String pharmaId,name,menge,art,preis,atccode,bezeichnung;
 
             <TextView
                 android:id="@+id/art"

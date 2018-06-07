@@ -50,7 +50,7 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
 
         ContentValues values2 = new ContentValues();
         //um die ID immer unique zu machen
-        String query = "select * from contacts ";
+        String query = "select * from medikamente ";
         Cursor cursor = dbhausapotheke.rawQuery(query,null);
         int count = cursor.getCount();
         values2.put(COLUMN_ID, (count+1));       //+1 damit ID ermittelt werden kann

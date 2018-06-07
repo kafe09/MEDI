@@ -115,6 +115,7 @@ public class MedSucheActivity extends AppCompatActivity {
     }
 
     public void onHinzuClick(View v) {
+        Log.d("msg","Auf Hinzufügen Button gekclickt");
         Intent intent = new Intent (getBaseContext(),MedikamentHinzufugenActivity.class);
         startActivity(intent);
     }

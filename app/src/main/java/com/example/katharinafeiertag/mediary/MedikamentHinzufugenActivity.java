@@ -57,24 +57,25 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medikamenthinzufugen);
 
-        handelsname = (EditText) findViewById(R.id.tf_handelsname);
-        neuName = handelsname.toString();
+        /*handelsname = (EditText) findViewById(R.id.tf_handelsname);
+        neuName = handelsname.getText().toString();
+        Log.d(TAG, "handelsname " +handelsname);
 
         menge = (TextView) findViewById(R.id.tv_wert);
         neuLagerbestandString = menge.toString();
         //hier kommt es zum Fehler
-        neuLagerbestandInt = Integer.parseInt(neuLagerbestandString);
+        //neuLagerbestandInt = Integer.parseInt(neuLagerbestandString);
 
         art = (EditText) findViewById(R.id.tf_art);
-        neuMengenart = art.toString();
+        neuMengenart = art.getText().toString();
 
         //daweil noch nicht in der Anzeige von allen Medikamenten sichtbar
         zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
-        neuZulassungsnummerString = zulassungsnummer.toString();
-        neuZulassungsnummerInt = Integer.parseInt(neuZulassungsnummerString.toString());
+        neuZulassungsnummerString = zulassungsnummer.getText().toString();
+        //neuZulassungsnummerInt = Integer.parseInt(neuZulassungsnummerString.toString());
 
-        Log.d(TAG,"Infos des neu hinzugefügten Medikaments: " +neuName +" " +neuLagerbestandInt +" "+neuMengenart + " " +neuZulassungsnummerInt);
-
+        Log.d("msg","Infos des neu hinzugefügten Medikaments: " +neuName +" " +neuLagerbestandInt +" "+neuMengenart + " " +neuZulassungsnummerInt);
+*/
         // SeekBar um die Menge der Medikamente festzulegen von 0 bis 500
         sb = (SeekBar) findViewById(R.id.seekBar);
         tv1 = (TextView) findViewById(R.id.tv_wert);
@@ -130,6 +131,26 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     public void onAddClick (View v) {
         Intent intent = new Intent (getBaseContext(),alleMedEinsichtActivity.class);
         startActivity(intent);
+
+        handelsname = (EditText) findViewById(R.id.tf_handelsname);
+        neuName = handelsname.getText().toString();
+        Log.d(TAG, "handelsname " +handelsname);
+
+        menge = (TextView) findViewById(R.id.tv_wert);
+        neuLagerbestandString = menge.getText().toString();
+        //hier kommt es zum Fehler
+        neuLagerbestandInt = Integer.parseInt(neuLagerbestandString);
+
+        art = (EditText) findViewById(R.id.tf_art);
+        neuMengenart = art.getText().toString();
+
+        //daweil noch nicht in der Anzeige von allen Medikamenten sichtbar
+        zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
+        neuZulassungsnummerString = zulassungsnummer.getText().toString();
+        neuZulassungsnummerInt = Integer.parseInt(neuZulassungsnummerString.toString());
+
+        Log.d("msg","Infos des neu hinzugefügten Medikaments: " +neuName +" " +neuLagerbestandInt +" "+neuMengenart + " " +neuZulassungsnummerInt);
+
 
 
 
