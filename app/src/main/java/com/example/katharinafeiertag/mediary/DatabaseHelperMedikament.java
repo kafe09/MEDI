@@ -58,7 +58,7 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         values2.put(COLUMN_HANDELSNAME, mn.getHandelsname());
         values2.put(COLUMN_MENGENANGABE, mn.getMenge());
         values2.put(COLUMN_MENGENART, mn.getArt());
-        values2.put(COLUMN_ZULASSUNGSNUMMER, mn.getZulassungsnummer());
+       // values2.put(COLUMN_ZULASSUNGSNUMMER, mn.getZulassungsnummer());
 
         long id = dbhausapotheke.insert(TABLE_NAME,null,values2);
         dbhausapotheke.close();

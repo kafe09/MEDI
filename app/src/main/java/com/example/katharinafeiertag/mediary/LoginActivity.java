@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+        /*FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
         if (!fingerprintManager.isHardwareDetected())
             Toast.makeText(this, "Fingerprint kann leider nicht verwendet werden.", Toast.LENGTH_SHORT).show();
@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     }
             }
-        }
+        }*/
         helper = new DatabaseHelperContacts(this);
         session = new SessionManager(this);
 

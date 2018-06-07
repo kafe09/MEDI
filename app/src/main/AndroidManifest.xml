@@ -8,7 +8,10 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     -->
-    <uses-permission android:name="android.permission.USE_FINGERPRINT">Fingerprint</uses-permission>>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT">
+        Fingerprint
+    </uses-permission>
+    >
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,7 +21,7 @@
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -46,37 +49,30 @@
         <activity
             android:name=".EinstellungenActivity"
             android:label="@string/title_activity_einstellungen" />
-        <activity android:name=".AptknaeheActivity"/>
-
-
+        <activity android:name=".AptknaeheActivity" />
         <activity android:name=".EinnahmeActivity" />
         <activity android:name=".HausapothekeMenuActivity" />
         <activity android:name=".MedikamentHinzufugenActivity" />
-        <activity android:name=".MedEinnahmeActivitiy"/>
-        <activity android:name=".MedSucheActivity"></activity>
+        <activity android:name=".MedEinnahmeActivitiy" />
+        <activity android:name=".MedSucheActivity" />
 
         <!-- Declaring Service in Manifest -->
         <service
             android:name=".ServiceDbAbfrage"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
-
-
+        <activity android:name=".MedTableActivity"></activity>
     </application>
 
 </manifest>

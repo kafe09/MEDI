@@ -1,6 +1,7 @@
 package com.example.katharinafeiertag.mediary;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,14 @@ public class ListViewAdapter extends BaseAdapter {
     Activity activity;
 
 
-    public ListViewAdapter(Activity activity, ArrayList<HashMap> list) {
+    public ListViewAdapter(Activity activity, ArrayList list) { //laut Tutorial war hier ArrayList <Hashmap> list
         super();
         this.activity = activity;
         this.list = list;
+    }
+
+    public ListViewAdapter() {
+
     }
 
     @Override
@@ -74,7 +79,7 @@ public class ListViewAdapter extends BaseAdapter {
         // holder.txtFirst.setText(map.get(FIRST_COLUMN));
         // holder.txtSecond.setText(map.get(SECOND_COLUMN));
         // holder.txtThird.setText(map.get(THIRD_COLUMN));
-        // holder.txtFourth.setText(map.get(FOURTH_COLUMN));
+
 
         return convertView;
     }

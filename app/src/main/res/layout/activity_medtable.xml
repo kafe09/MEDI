@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context="com.example.katharinafeiertag.mediary.alleMedEinsichtActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
+                android:text="Handelsname"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="143dp"
+                android:layout_height="match_parent"
+                android:text="Menge"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="126dp"
+                android:layout_height="match_parent"
+                android:text="Mengenart"
+                android:textSize="18sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/name1"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/menge1"
+                android:layout_width="143dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/art1"
+                android:layout_width="126dp"
+                android:layout_height="match_parent"
+                android:textSize="18sp"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/menge2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/menge3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/name3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/menge4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/name4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

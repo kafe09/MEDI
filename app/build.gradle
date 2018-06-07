@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.katharinafeiertag.mediary"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -40,8 +40,8 @@ dependencies {
     implementation 'com.github.mancj:MaterialSearchBar:+'
     implementation files('Assets/medikamenten.db')
 
-
     //compile 'org.junit.jupiter:junit-jupiter-api'
 }
+
 
 
