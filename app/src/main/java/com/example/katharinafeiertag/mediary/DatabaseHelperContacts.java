@@ -25,7 +25,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
 
     //Konstruktor
     public DatabaseHelperContacts(Context context)
-            //, String name, SQLiteDatabase.CursorFactory, int version)
+            // String name, SQLiteDatabase.CursorFactory, int version)
     {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
@@ -35,9 +35,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
         db.execSQL(TABLE_CREATE);
         this.db = db;
 
-        //Versuch die Datenbank immer zu aktualisieren
-        ContentValues cv = new ContentValues();
-        db.update("contacts", cv, null,null);
+
     }
 
     public void insertContact(Contact c) {
