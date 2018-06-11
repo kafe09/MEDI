@@ -11,29 +11,41 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.AutocompletePrediction;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 
+
 //Zeigt via Google Maps den aktuellen Standort sowie Apotheken im Umkreis an
 // wir müssen mit type-proximity arbeiten
-public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCallback,
+public class AptknaeheActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
@@ -43,9 +55,6 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
-
-
-
 
     //widgets
     private AutoCompleteTextView mSearchText;
@@ -57,9 +66,31 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
     //private PlaceInfo mPlace;
     private Marker mMarker;
 
-    public static AptknaeheActivity newInstance() {
-        AptknaeheActivity fragment = new AptknaeheActivity();
-        return fragment;
+
+    //alle Override Methoden:
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast temp = Toast.makeText(AptknaeheActivity.this, "Google Maps konnte nicht geöffnet werden.", Toast.LENGTH_SHORT);
+        temp.show();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+        mMap = map;
+
+        if (mLocationPermissionsGranted) {
+            getDeviceLocation();
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            mMap.setMyLocationEnabled(true);
+
+            //initMap();
+        }
     }
 
 
@@ -76,9 +107,9 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
         temp.show();
     }
 
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast temp = Toast.makeText(AptknaeheActivity.this, "Google Maps konnte nicht geöffnet werden.", Toast.LENGTH_SHORT);
-        temp.show();
+    public static AptknaeheActivity newInstance() {
+        AptknaeheActivity fragment = new AptknaeheActivity();
+        return fragment;
     }
 
     private void initMap() {
@@ -101,7 +132,7 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
         try {
             if (mLocationPermissionsGranted) {
 
-                Task location = mFusedLocationProviderClient.getLastLocation();
+               final Task location = mFusedLocationProviderClient.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
@@ -113,8 +144,6 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
 
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                     DEFAULT_ZOOM);
-
-
 
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
@@ -132,9 +161,9 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
-            /*Log.d(TAG, "Location wird angezeigt");
+            Log.d(TAG, "Location wird angezeigt");
             MarkerOptions options = new MarkerOptions().position(latLng);
-            mMap.addMarker(options);*/
+            mMap.addMarker(options);
 
         }
 
@@ -166,22 +195,7 @@ public class AptknaeheActivity extends FragmentActivity implements OnMapReadyCal
 
     }
 
-    @Override
-    public void onMapReady(GoogleMap map) {
-        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
-        mMap = map;
 
-        if (mLocationPermissionsGranted) {
-            getDeviceLocation();
-
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            mMap.setMyLocationEnabled(true);
-        }
-    }
 }
 
 

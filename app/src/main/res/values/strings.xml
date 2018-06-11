@@ -1,6 +1,6 @@
 <resources>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyACNCPudG4uNbwUF1885rB_pk9Jl6KyJeg</string>
-    <!--Kathis: AIzaSyACNCPudG4uNbwUF1885rB_pk9Jl6KyJeg-->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAacqfRTKxheR4vOn-_HWyrKqg_qy0OJNE</string>
+    <!--Kathis: AIzaSyAacqfRTKxheR4vOn-_HWyrKqg_qy0OJNE-->
     <!--Dalias hahah da passt was net xD: AIzaSyACNCPudG4uNbwUF1885rB_pk9Jl6KyJeg-->
 
     <string name="app_name">MEDiary</string>
