@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
@@ -24,10 +25,12 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        Log.d("in der DrugDatabases", "SQLiteQueryBuilder successful");
 
         //Kathi habe hier: "ATCCode", "BezeichnungATCCode" gelöscht
         String [] sqlSelect ={"MedID","Handelsname","Mengenangabe","Mengenart","Pharmanummer"};
         String tableName="drugs";
+        Log.d("in der DrugDatabases", " successful" + sqlSelect);
 
         qb.setTables(tableName);
         Cursor cursor = qb.query(db,sqlSelect,null,null,null,null,null);
@@ -36,7 +39,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
             do{
                 Drugs drug = new Drugs();
-                drug.setMedId(cursor.getInt(cursor.getColumnIndex("MedID")));
+                drug.setMedId(cursor.getString(cursor.getColumnIndex("MedID")));
                 drug.setName(cursor.getString(cursor.getColumnIndex("Handelsname")));
                 drug.setMenge(cursor.getInt(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
@@ -82,7 +85,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
             do{
                 Drugs drug = new Drugs();
-                drug.setMedId(cursor.getInt(cursor.getColumnIndex("MedID")));
+                drug.setMedId(cursor.getString(cursor.getColumnIndex("MedID")));
                 drug.setName(cursor.getString(cursor.getColumnIndex("Handelsname")));
                 drug.setMenge(cursor.getInt(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));

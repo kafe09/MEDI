@@ -12,67 +12,68 @@ import android.util.Log;
 public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     SearchAdapter sa = new SearchAdapter();
     public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "hausapotheke.db";
+    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "medikamenten.db";
     private static final String TABLE_NAME = "medikamente";
     private static final String COLUMN_ID = "MedID";
     private static final String COLUMN_HANDELSNAME = "Handelsname";
     private static final String COLUMN_MENGENANGABE = "Mengenangabe";
     private static final String COLUMN_MENGENART = "Mengenart";
     private static final String COLUMN_NUMMER = "Pharmanummer";
-    SQLiteDatabase dbhausapotheke;
+    SQLiteDatabase dbmedikamente;
 
-    private static final String TABLE_CREATE = "create table medikamente (MedID integer not null primary key autoincrement unique ," +
-            "Handelsname text not null , Mengenangabe integer not null , Mengenart text not null ,Pharmanummer integer not null unique);";
+    //private static final String TABLE_CREATE = "create table medikamente (MedID integer not null primary key autoincrement unique ," +
+     //       "Handelsname text not null , Mengenangabe integer not null , Mengenart text not null ,Pharmanummer integer not null unique);";
 
     //Konstruktor
-    public DatabaseHelperMedikament(Context context)
-    {
+    public DatabaseHelperMedikament(Context context) {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
 
     @Override
-    public void onCreate(SQLiteDatabase dbhausapotheke) {
+    public void onCreate(SQLiteDatabase dbmedikamente) {
         //dbhausapotheke.execSQL(TABLE_CREATE);
-        dbhausapotheke.execSQL("CREATE TABLE " + TABLE_NAME + " ("
-        + COLUMN_ID + " INTEGER, "
+        Log.d(TAG, "in der onCreate von Databasehelper Medikamente");
+        dbmedikamente.execSQL("CREATE TABLE " + TABLE_NAME + " ("
+        + COLUMN_ID + " TEXT, "
         + COLUMN_HANDELSNAME + " TEXT, "
         + COLUMN_MENGENANGABE + " INTEGER, "
-                + COLUMN_MENGENART + " TEXT, "
-                + COLUMN_NUMMER + " INTEGER );");
-        this.dbhausapotheke = dbhausapotheke;
+        + COLUMN_MENGENART + " TEXT, "
+        + COLUMN_NUMMER + " INTEGER );");
+        this.dbmedikamente = dbmedikamente;
+        Log.d(TAG, "Create Table successful");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase dbhausapotheke, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase dbmedikamente, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
-        dbhausapotheke.execSQL(query);
-        this.onCreate(dbhausapotheke);
+        dbmedikamente.execSQL(query);
+        this.onCreate(dbmedikamente);
     }
 
-/*
-public void insertMedikament(MedikamentNeu mn) {
-        dbhausapotheke = this.getWritableDatabase();
+
+public void insertMedikament(Drugs mn) {
+    dbmedikamente = this.getWritableDatabase();
 
         ContentValues values2 = new ContentValues();
         //um die ID immer unique zu machen
         String query = "select * from medikamente ";
-        Cursor cursor = dbhausapotheke.rawQuery(query,null);
+        Cursor cursor = dbmedikamente.rawQuery(query,null);
         int count = cursor.getCount();
         values2.put(COLUMN_ID, (count+1));       //+1 damit ID ermittelt werden kann
-        values2.put(COLUMN_ID, mn.g)
-        values2.put(COLUMN_HANDELSNAME, mn.getHandelsname());
+        //values2.put(COLUMN_ID, mn.getMedId());
+        values2.put(COLUMN_HANDELSNAME, mn.getName());
         values2.put(COLUMN_MENGENANGABE, mn.getMenge());
         values2.put(COLUMN_MENGENART, mn.getArt());
         values2.put(COLUMN_NUMMER, mn.getNummer());
 
-        long id = dbhausapotheke.insert(TABLE_NAME,null,values2);
-        dbhausapotheke.close();
+        long id = dbmedikamente.insert(TABLE_NAME,null,values2);
+    dbmedikamente.close();
 
         Log.d(TAG, "Medikament hinzugefügt" +id);
     }
-*/
+
 
 
     //Methode für LoginActivity um Email zu überprüfen von Datenbank

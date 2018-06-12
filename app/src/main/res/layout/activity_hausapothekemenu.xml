@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bt_einsicht"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="37dp"
         android:onClick="onHinzufügenClick"
         android:text="Neue Mediakmente hinzufügen"
         android:textColor="@color/colorPrimary"

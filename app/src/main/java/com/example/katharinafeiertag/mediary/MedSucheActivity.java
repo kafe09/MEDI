@@ -46,6 +46,8 @@ public class MedSucheActivity extends AppCompatActivity {
 
         //Datenbank
         database = new DrugsDatabase(this);
+        Log.d(TAG,"Datenbank gefunden");
+
         //Searchbar
         materialSearchBar.setHint("Search");
         materialSearchBar.setCardViewElevation(10);
