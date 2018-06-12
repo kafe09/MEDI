@@ -4,10 +4,12 @@ package com.example.katharinafeiertag.mediary;
 //für die persönliche Hausapotheke des Benutzers (Datenbank der eigenen Medikamente)
 
 public class MedikamentNeu {
-    private String handelsname,art;
+
+    private String medid, handelsname,art;
     private int menge,nummer;
 
-    public MedikamentNeu(String handelsname, String art, int menge, int nummer) {
+    public MedikamentNeu(String medid, String handelsname, String art, int menge, int nummer) {
+        this.medid = medid;
         this.handelsname = handelsname;
         this.menge = menge;
         this.art = art;
@@ -17,6 +19,9 @@ public class MedikamentNeu {
     public MedikamentNeu() {
 
     }
+
+    public String getMedid() {return medid;}
+    public void setMedid(String medid) {this.medid=medid;}
 
     public String getHandelsname() {
         return handelsname;

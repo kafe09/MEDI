@@ -12,7 +12,7 @@ import android.util.Log;
 public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     SearchAdapter sa = new SearchAdapter();
     public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 15;
     private static final String DATABASE_NAME = "medikamenten.db";
     private static final String TABLE_NAME = "medikamente";
     private static final String COLUMN_ID = "MedID";
@@ -22,8 +22,8 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     private static final String COLUMN_NUMMER = "Pharmanummer";
     SQLiteDatabase dbmedikamente;
 
-    //private static final String TABLE_CREATE = "create table medikamente (MedID integer not null primary key autoincrement unique ," +
-     //       "Handelsname text not null , Mengenangabe integer not null , Mengenart text not null ,Pharmanummer integer not null unique);";
+    private static final String TABLE_CREATE = "create table medikamente (MedID text not null primary key ," +
+            "Handelsname text not null , Mengenangabe integer not null , Mengenart text not null ,Pharmanummer integer not null unique);";
 
     //Konstruktor
     public DatabaseHelperMedikament(Context context) {
@@ -33,8 +33,8 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase dbmedikamente) {
-        //dbhausapotheke.execSQL(TABLE_CREATE);
-        Log.d(TAG, "in der onCreate von Databasehelper Medikamente");
+        dbmedikamente.execSQL(TABLE_CREATE);
+   /*     Log.d(TAG, "in der onCreate von Databasehelper Medikamente");
         dbmedikamente.execSQL("CREATE TABLE " + TABLE_NAME + " ("
         + COLUMN_ID + " TEXT, "
         + COLUMN_HANDELSNAME + " TEXT, "
@@ -42,7 +42,7 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         + COLUMN_MENGENART + " TEXT, "
         + COLUMN_NUMMER + " INTEGER );");
         this.dbmedikamente = dbmedikamente;
-        Log.d(TAG, "Create Table successful");
+        Log.d(TAG, "Create Table successful");*/
     }
 
     @Override
@@ -62,7 +62,7 @@ public void insertMedikament(Drugs mn) {
         Cursor cursor = dbmedikamente.rawQuery(query,null);
         int count = cursor.getCount();
         values2.put(COLUMN_ID, (count+1));       //+1 damit ID ermittelt werden kann
-        //values2.put(COLUMN_ID, mn.getMedId());
+
         values2.put(COLUMN_HANDELSNAME, mn.getName());
         values2.put(COLUMN_MENGENANGABE, mn.getMenge());
         values2.put(COLUMN_MENGENART, mn.getArt());

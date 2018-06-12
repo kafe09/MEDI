@@ -18,7 +18,7 @@ class SearchViewHolder extends RecyclerView.ViewHolder{
 
     public SearchViewHolder(View itemView) {
         super(itemView);
-        medid = (TextView) itemView.findViewById(R.id.medId);
+        medid = (TextView) itemView.findViewById(R.id.medid);
         name = (TextView) itemView.findViewById(R.id.name);
         menge = (TextView) itemView.findViewById(R.id.menge);
         art = (TextView) itemView.findViewById(R.id.art);
@@ -53,7 +53,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     @Override
     public void onBindViewHolder(SearchViewHolder holder, int position) {
         //String pharmaId,name,menge,art,preis,code,bezeichnung;
-        holder.medid.setText(drugs.get(position).getMedId());
+        holder.medid.setText(toString().valueOf(drugs.get(position).getMedID()));
         holder.name.setText(drugs.get(position).getName());
         holder.menge.setText(drugs.get(position).getMenge());
         holder.art.setText(drugs.get(position).getArt());
