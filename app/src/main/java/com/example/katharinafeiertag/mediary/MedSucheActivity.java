@@ -20,7 +20,7 @@ import java.util.List;
 //um Medikamente in unserer großen Datenbank zu suchen
 //das Suchen geht verdammt langsam - eventuell Prof fragen was wir hier tun können
 public class MedSucheActivity extends AppCompatActivity {
-    public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
+    public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     SearchAdapter adapter;
@@ -115,7 +115,7 @@ public class MedSucheActivity extends AppCompatActivity {
     }
 
     public void onHinzuClick(View v) {
-        Log.d("msg","Auf Hinzufügen Button gekclickt");
+        Log.d("msg","Auf Hinzufügen Button geklickt");
         Intent intent = new Intent (getBaseContext(),MedikamentHinzufugenActivity.class);
         startActivity(intent);
     }

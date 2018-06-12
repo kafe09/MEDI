@@ -3,16 +3,16 @@ package com.example.katharinafeiertag.mediary;
 
 public class Drugs {
 
-    public String pharmaId,name,menge,art,preis,atccode,bezeichnung;
+    public String name,art;
+    public int medId, menge, nummer;
 
-    public Drugs(String pharmaId, String name, String menge, String art, String preis, String atccode, String bezeichnung) {
-        this.pharmaId = pharmaId;
+    public Drugs(int medId, String name, int menge, String art, int nummer) {
+        this.medId = medId;
         this.name = name;
         this.menge = menge;
         this.art = art;
-        this.preis = preis;
-        this.atccode = atccode;
-        this.bezeichnung = bezeichnung;
+        this.nummer = nummer;
+
 
     }
     //leerer Konstruktor
@@ -20,13 +20,14 @@ public class Drugs {
 
     }
 
-    public String getPharmaId() {
-        return pharmaId;
+    public int getMedId() {
+        return medId;
     }
 
-    public void setPharmaId(String pharmaId) {
-        this.pharmaId = pharmaId;
+    public void setMedId(int medId) {
+        this.medId = medId;
     }
+
 
     public String getName() {
         return name;
@@ -36,13 +37,15 @@ public class Drugs {
         this.name = name;
     }
 
-    public String getMenge() {
+
+    public int getMenge() {
         return menge;
     }
 
-    public void setMenge(String menge) {
+    public void setMenge(int menge) {
         this.menge = menge;
     }
+
 
     public String getArt() {
         return art;
@@ -52,27 +55,14 @@ public class Drugs {
         this.art = art;
     }
 
-    public String getPreis() {
-        return preis;
+
+    public int getNummer() {
+        return nummer;
     }
 
-    public void setPreis(String preis) {
-        this.preis = preis;
+    public void setNummer(int nummer) {
+        this.nummer = nummer;
     }
 
-    public String getCode() {
-        return atccode;
-    }
 
-    public void setATCCode(String code) {
-        this.atccode = code;
-    }
-
-    public String getBezeichnung() {
-        return bezeichnung;
-    }
-
-    public void setBezeichnung(String bezeichnung) {
-        this.bezeichnung = bezeichnung;
-    }
 }

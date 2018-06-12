@@ -18,7 +18,7 @@ import java.util.HashMap;
 
 //Hier gibt der Benutzer das Medikament ein, welches er zu seiner persönlichen Hausapotheke hinzufügen will
 public class MedikamentHinzufugenActivity extends AppCompatActivity {
-    public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
+    public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
     EditText zulassungsnummer;
     TextView menge;
     EditText art;

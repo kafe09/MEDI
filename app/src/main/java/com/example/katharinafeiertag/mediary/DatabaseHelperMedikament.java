@@ -15,15 +15,15 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "hausapotheke.db";
     private static final String TABLE_NAME = "medikamente";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_HANDELSNAME = "handelsname";
-    private static final String COLUMN_MENGENANGABE = "menge";
-    private static final String COLUMN_MENGENART = "art";
-    private static final String COLUMN_ZULASSUNGSNUMMER = "zulassungsnummer";
+    private static final String COLUMN_ID = "MedID";
+    private static final String COLUMN_HANDELSNAME = "Handelsname";
+    private static final String COLUMN_MENGENANGABE = "Mengenangabe";
+    private static final String COLUMN_MENGENART = "Mengenart";
+    private static final String COLUMN_NUMMER = "Pharmanummer";
     SQLiteDatabase dbhausapotheke;
 
-    private static final String TABLE_CREATE = "create table medikamente (id integer primary key not null ," +
-            "handelsname text not null , menge text not null , art text not null ,zulassungsnummer text not null);";
+    private static final String TABLE_CREATE = "create table medikamente (MedID integer not null primary key autoincrement unique ," +
+            "Handelsname text not null , Mengenangabe integer not null , Mengenart text not null ,Pharmanummer integer not null unique);";
 
     //Konstruktor
     public DatabaseHelperMedikament(Context context)
@@ -34,7 +34,13 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase dbhausapotheke) {
-        dbhausapotheke.execSQL(TABLE_CREATE);
+        //dbhausapotheke.execSQL(TABLE_CREATE);
+        dbhausapotheke.execSQL("CREATE TABLE " + TABLE_NAME + " ("
+        + COLUMN_ID + " INTEGER, "
+        + COLUMN_HANDELSNAME + " TEXT, "
+        + COLUMN_MENGENANGABE + " INTEGER, "
+                + COLUMN_MENGENART + " TEXT, "
+                + COLUMN_NUMMER + " INTEGER );");
         this.dbhausapotheke = dbhausapotheke;
     }
 
@@ -45,7 +51,8 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         this.onCreate(dbhausapotheke);
     }
 
-    public void insertMedikament(MedikamentNeu mn) {
+/*
+public void insertMedikament(MedikamentNeu mn) {
         dbhausapotheke = this.getWritableDatabase();
 
         ContentValues values2 = new ContentValues();
@@ -54,17 +61,18 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         Cursor cursor = dbhausapotheke.rawQuery(query,null);
         int count = cursor.getCount();
         values2.put(COLUMN_ID, (count+1));       //+1 damit ID ermittelt werden kann
-
+        values2.put(COLUMN_ID, mn.g)
         values2.put(COLUMN_HANDELSNAME, mn.getHandelsname());
         values2.put(COLUMN_MENGENANGABE, mn.getMenge());
         values2.put(COLUMN_MENGENART, mn.getArt());
-       // values2.put(COLUMN_ZULASSUNGSNUMMER, mn.getZulassungsnummer());
+        values2.put(COLUMN_NUMMER, mn.getNummer());
 
         long id = dbhausapotheke.insert(TABLE_NAME,null,values2);
         dbhausapotheke.close();
 
         Log.d(TAG, "Medikament hinzugefügt" +id);
     }
+*/
 
 
     //Methode für LoginActivity um Email zu überprüfen von Datenbank

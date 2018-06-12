@@ -5,12 +5,13 @@ package com.example.katharinafeiertag.mediary;
 
 public class MedikamentNeu {
     private String handelsname,art;
-    private int menge;
+    private int menge,nummer;
 
-    public MedikamentNeu(String handelsname, String art, int menge) {
+    public MedikamentNeu(String handelsname, String art, int menge, int nummer) {
         this.handelsname = handelsname;
         this.menge = menge;
         this.art = art;
+        this.nummer = nummer;
     }
 
     public MedikamentNeu() {
@@ -40,6 +41,12 @@ public class MedikamentNeu {
     public void setArt(String art) {
         this.art = art;
     }
+
+    public int getNummer() {return nummer;}
+
+    public void setNummer(int nummer) {this.nummer = nummer;}
+
+
 
 
 

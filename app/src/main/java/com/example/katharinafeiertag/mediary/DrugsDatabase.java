@@ -26,7 +26,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
         //Kathi habe hier: "ATCCode", "BezeichnungATCCode" gelöscht
-        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis"};
+        String [] sqlSelect ={"MedID","Handelsname","Mengenangabe","Mengenart","Pharmanummer"};
         String tableName="drugs";
 
         qb.setTables(tableName);
@@ -36,13 +36,11 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
             do{
                 Drugs drug = new Drugs();
-                drug.setPharmaId(cursor.getString(cursor.getColumnIndex("Pharmanummer")));
+                drug.setMedId(cursor.getInt(cursor.getColumnIndex("MedID")));
                 drug.setName(cursor.getString(cursor.getColumnIndex("Handelsname")));
-                drug.setMenge(cursor.getString(cursor.getColumnIndex("Mengenangabe")));
+                drug.setMenge(cursor.getInt(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
-                drug.setPreis(cursor.getString(cursor.getColumnIndex("Kassenverkaufspreis")));
-                // drug.setATCCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
-                //drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
+                drug.setNummer(cursor.getInt(cursor.getColumnIndex("Pharmanummer")));
 
                 result.add(drug);
 
@@ -74,7 +72,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect ={"Pharmanummer","Handelsname","Mengenangabe","Mengenart","Kassenverkaufspreis","ATCCode","BezeichnungATCCode"};
+        String [] sqlSelect ={"MedID","Handelsname","Mengenangabe","Mengenart","Pharmanummer"};
         String tableName="drugs";
 
         qb.setTables(tableName);
@@ -84,13 +82,11 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
             do{
                 Drugs drug = new Drugs();
-                drug.setPharmaId(cursor.getString(cursor.getColumnIndex("Pharmanummer")));
+                drug.setMedId(cursor.getInt(cursor.getColumnIndex("MedID")));
                 drug.setName(cursor.getString(cursor.getColumnIndex("Handelsname")));
-                drug.setMenge(cursor.getString(cursor.getColumnIndex("Mengenangabe")));
+                drug.setMenge(cursor.getInt(cursor.getColumnIndex("Mengenangabe")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Mengenart")));
-                drug.setPreis(cursor.getString(cursor.getColumnIndex("Kassenverkaufspreis")));
-                drug.setATCCode(cursor.getString(cursor.getColumnIndex("ATCCode")));
-                drug.setBezeichnung(cursor.getString(cursor.getColumnIndex("BezeichnungATCCode")));
+                drug.setNummer(cursor.getInt(cursor.getColumnIndex("Pharmanummer")));
 
                 result.add(drug);
 

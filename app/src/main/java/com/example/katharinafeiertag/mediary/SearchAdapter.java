@@ -14,17 +14,16 @@ import java.util.List;
  */
 class SearchViewHolder extends RecyclerView.ViewHolder{
 
-    public TextView pharmaId,name, menge,art,preis,code,bezeichnung;
+    public TextView medid,name,menge,art,nummer;
 
     public SearchViewHolder(View itemView) {
         super(itemView);
-        pharmaId = (TextView) itemView.findViewById(R.id.pharmaId);
+        medid = (TextView) itemView.findViewById(R.id.medId);
         name = (TextView) itemView.findViewById(R.id.name);
         menge = (TextView) itemView.findViewById(R.id.menge);
         art = (TextView) itemView.findViewById(R.id.art);
-        preis = (TextView) itemView.findViewById(R.id.preis);
-        code = (TextView) itemView.findViewById(R.id.code);
-        bezeichnung = (TextView) itemView.findViewById(R.id.bezeichnung);
+        nummer = (TextView) itemView.findViewById(R.id.nummer);
+
 
     }
 
@@ -54,15 +53,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     @Override
     public void onBindViewHolder(SearchViewHolder holder, int position) {
         //String pharmaId,name,menge,art,preis,code,bezeichnung;
-        holder.pharmaId.setText(drugs.get(position).getPharmaId());
+        holder.medid.setText(drugs.get(position).getMedId());
         holder.name.setText(drugs.get(position).getName());
         holder.menge.setText(drugs.get(position).getMenge());
         holder.art.setText(drugs.get(position).getArt());
-        holder.preis.setText(drugs.get(position).getPreis());
-        holder.code.setText(drugs.get(position).getCode());
-        holder.bezeichnung.setText(drugs.get(position).getBezeichnung());
-
-
+        holder.nummer.setText(drugs.get(position).getNummer());
     }
 
     @Override

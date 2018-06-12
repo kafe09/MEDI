@@ -28,7 +28,7 @@
 
 
             <TextView
-                android:id="@+id/pharmaId"
+                android:id="@+id/medId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -66,7 +66,7 @@
                 />
 
             <TextView
-                android:id="@+id/preis"
+                android:id="@+id/nummer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -74,23 +74,7 @@
                 android:text="4,50"
                 />
 
-            <TextView
-                android:id="@+id/code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:text="DJ12345"
-                />
 
-            <TextView
-                android:id="@+id/bezeichnung"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:text="Schmerzmittel"
-                />
 
 
         </LinearLayout>
