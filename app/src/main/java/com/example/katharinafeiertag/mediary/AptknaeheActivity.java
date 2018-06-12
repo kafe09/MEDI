@@ -97,7 +97,7 @@ public class AptknaeheActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aptknaehe);
+        setContentView(R.layout.activity_maps);
         getLocationPermission();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
