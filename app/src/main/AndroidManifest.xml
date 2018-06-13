@@ -2,22 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.katharinafeiertag.mediary">
 
-    <!--
-    &lt;!&ndash; To auto-complete the email text field in the login form with the user's emails &ndash;&gt;
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    -->
-    <uses-permission android:name="android.permission.USE_FINGERPRINT">
-        Fingerprint
-    </uses-permission>
-    >
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <permission
+        android:name="com.example.yourpackage.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.yourpackage.permission.MAPS_RECEIVE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -49,7 +46,6 @@
         <activity
             android:name=".EinstellungenActivity"
             android:label="@string/title_activity_einstellungen" />
-        <activity android:name=".AptknaeheActivity" />
         <activity android:name=".EinnahmeActivity" />
         <activity android:name=".HausapothekeMenuActivity" />
         <activity android:name=".MedikamentHinzufugenActivity" />
@@ -65,11 +61,17 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyBJYuG5xHxbDe6A1ILn5TTBRb98EJgnXb8" />
 
         <activity android:name=".MedTableActivity" />
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="true" />
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>

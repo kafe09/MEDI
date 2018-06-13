@@ -37,7 +37,7 @@ public class HauptmenuActivity extends AppCompatActivity {
         bt_apt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HauptmenuActivity.this, AptknaeheActivity.class);
+                Intent intent = new Intent(HauptmenuActivity.this, MapsActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class HauptmenuActivity extends AppCompatActivity {
         //launchIntent Methode der Aufgabenstellung
         //Art: Action_View: hier wird die Google Maps App geöffnet
         Log.d(TAG, "in der onClick Methode damit man zu Google Maps kommt.");
-        Intent apothekenIntent = new Intent(getBaseContext(), AptknaeheActivity.class);
+        Intent apothekenIntent = new Intent(getBaseContext(), MapsActivity.class);
         startActivity(apothekenIntent);
     }
 
