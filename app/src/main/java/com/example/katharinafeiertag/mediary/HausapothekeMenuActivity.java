@@ -27,7 +27,7 @@ public class HausapothekeMenuActivity extends AppCompatActivity {
 
     //klick auf Einnahme-Button
     public void onEinnahmeClick(View v) {
-        Intent hpIntent = new Intent(this, MedEinnahmeActivitiy.class);
-        startActivity(hpIntent);
+     //   Intent hpIntent = new Intent(this, MedEinnahmeActivitiy.class);
+       // startActivity(hpIntent);
     }
 }

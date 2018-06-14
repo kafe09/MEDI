@@ -66,12 +66,6 @@ public class HauptmenuActivity extends AppCompatActivity {
         startActivity(settingsIntent);
     }
 
-    //klick auf MedEinnahme-Button
-    //Aufgabenstellung: onClickSwitchActivity()
-    public void onMedEinnahmeClick(View v) {
-        Intent einnahmeIntent = new Intent(this, EinnahmeActivity.class);
-        startActivityForResult(einnahmeIntent, 1);
-    }
 
     //klick auf Hausapotheke-Button
     public void onHausapothekeClick(View v) {
