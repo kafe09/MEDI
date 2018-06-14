@@ -14,7 +14,7 @@ import java.util.List;
 //Datenbank für unsere Medikamenten-DB mit über 7000 Medikamenten
 public class DrugsDatabase extends SQLiteAssetHelper {
 
-    private static final String DB_NAME="drugs.db";
+    private static final String DB_NAME="kaliamed.db";
     private static final int DB_VER=1;
 
     public DrugsDatabase(Context context) {
@@ -33,7 +33,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         Log.d("in der DrugDatabases", " successful" + sqlSelect);
 
         qb.setTables(tableName);
-        Cursor cursor = qb.query(db,sqlSelect,null,null,null,null,null);
+        Cursor cursor = qb.query(db,sqlSelect,null,null,null,null,null,null);
         List<Drugs> result = new ArrayList<>();
         if(cursor.moveToFirst()) {
 
