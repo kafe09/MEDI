@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="@color/ourBackgroundColorLogin"
     tools:context="com.example.katharinafeiertag.mediary.HauptmenuActivity">
 
     <ImageButton
@@ -12,10 +12,9 @@
         android:layout_width="156dp"
         android:layout_height="168dp"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="19dp"
-        android:layout_marginTop="14dp"
-        android:layout_toStartOf="@+id/bt_med"
-        android:background="@android:color/background_light"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/hausapotheke"
         android:onClick="onHausapothekeClick"
         android:visibility="visible"
@@ -24,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.153"
-        app:srcCompat="@drawable/apothekebt" />
+        app:srcCompat="@drawable/neudigi" />
 
     <ImageButton
         android:id="@+id/bt_setting"
@@ -40,23 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_user"
-        app:srcCompat="@drawable/settingsbt" />
-
-    <ImageButton
-        android:id="@+id/bt_med"
-        android:layout_width="170dp"
-        android:layout_height="164dp"
-        android:layout_alignEnd="@+id/bt_setting"
-        android:layout_alignTop="@+id/bt_suitcase"
-        android:background="@android:color/background_light"
-        android:contentDescription="@string/regelm_einzunehmende_mediakmente"
-        android:onClick="onMedEinnahmeClick"
-        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
-        app:layout_constraintBottom_toTopOf="@+id/bt_user"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266"
-        app:srcCompat="@drawable/medbt" />
+        app:srcCompat="@drawable/neusettings" />
 
     <ImageButton
         android:id="@+id/bt_user"
@@ -65,10 +48,10 @@
         android:layout_above="@+id/bt_setting"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="21dp"
-        android:background="@android:color/background_light"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/benutzerprofil"
         android:onClick="onUserClick"
-        app:srcCompat="@drawable/userbt"
+        app:srcCompat="@drawable/neubenutzer"
         tools:layout_editor_absoluteX="142dp"
         tools:layout_editor_absoluteY="227dp" />
 
@@ -76,16 +59,16 @@
         android:id="@+id/bt_apt"
         android:layout_width="148dp"
         android:layout_height="145dp"
-        android:layout_alignEnd="@+id/bt_suitcase"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="23dp"
-        android:layout_marginEnd="25dp"
-        android:background="@android:color/background_light"
+        android:layout_marginStart="22dp"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/apotheken_in_ihrer_naehe"
         android:onClick="onApothekenClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_user"
-        app:srcCompat="@drawable/apotheken" />
+        app:srcCompat="@drawable/neuapt" />
 
 </RelativeLayout>

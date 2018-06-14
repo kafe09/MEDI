@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         helper = new DatabaseHelperContacts(this);
         session = new SessionManager(this);
 
-        tf_fingerprint = (TextView) findViewById(R.id.tf_fingerprinta);
+        //tf_fingerprint = (TextView) findViewById(R.id.tf_fingerprinta);
         iv_finger = (ImageView) findViewById(R.id.iv_fingerprint);
         tf_info = (TextView) findViewById(R.id.tf_fingerinfo);
 
@@ -149,10 +149,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             try {
                 keyStore.load(null);
 
-                keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                /*keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                         .setBlockModes(KeyProperties.BLOCK_MODE_CBC) .setUserAuthenticationRequired(true)
                         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
-                        .build());
+                        .build());*/
                 keyGenerator.generateKey();
 
             } catch (IOException e) {
@@ -161,9 +161,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 e.printStackTrace();
             } catch (CertificateException e) {
                 e.printStackTrace();
-            } catch (InvalidAlgorithmParameterException e) {
-                e.printStackTrace();
-            }
+            } //catch (InvalidAlgorithmParameterException e) {
+              //  e.printStackTrace();
+            //}
 
         }
 

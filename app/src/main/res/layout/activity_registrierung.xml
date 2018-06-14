@@ -16,7 +16,8 @@
         android:layout_marginTop="13dp"
         android:text="Registrierung"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -63,7 +64,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tf_nm" />
 
 
-
     <EditText
         android:id="@+id/tf_passwort"
         android:layout_width="300dp"
@@ -73,7 +73,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Passwort:"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/tf_passwort2"
@@ -84,19 +84,21 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Passwort wiederholen:"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/bt_registrieren"
-        android:onClick="onRegistrierenClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="onRegistrierenClick"
         android:text="Registrieren"
-        android:textColor="@color/colorPrimary"
-        android:textSize="15sp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 

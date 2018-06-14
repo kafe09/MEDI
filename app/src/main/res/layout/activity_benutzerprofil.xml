@@ -13,9 +13,11 @@
         android:layout_above="@+id/bt_loeschen"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="12dp"
+        android:background="@color/colorPrimaryDark"
         android:onClick="logout"
         android:text="Ausloggen"
-        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -25,10 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="27dp"
         android:text="Mein Profil"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -63,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/iv_insertProfilimage"
         android:layout_below="@+id/iv_insertProfilimage"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="41dp"
         android:ems="10"
         android:hint="Vorname"
         android:inputType="textPersonName"
@@ -82,20 +85,6 @@
         android:hint="E-Mail"
         android:textSize="20sp"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="250dp" />
-
-    <TextView
-        android:id="@+id/tf_allergien"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tf_benutzername"
-        android:layout_alignTop="@+id/lb_Allergien"
-        android:ems="10"
-        android:hint="Benutzername"
-        android:inputType="textEmailAddress"
-        android:text="Allergien"
-        android:textSize="20sp"
         tools:layout_editor_absoluteX="24dp"
         tools:layout_editor_absoluteY="250dp" />
 
@@ -122,9 +111,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="13dp"
+        android:background="@color/colorPrimaryDark"
         android:onClick="benutzerloeschen"
         android:text="Profil löschen"
-        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -160,15 +151,6 @@
         android:text="E-Mail:"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/lb_Allergien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/lb_username2"
-        android:layout_below="@+id/lb_username2"
-        android:layout_marginTop="16dp"
-        android:text="Allergien:"
-        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/lb_username2"

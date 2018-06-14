@@ -53,8 +53,6 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         benutzername = (TextView) findViewById(R.id.tf_benutzername);
         benutzername.setText(displayName);
 
-        benutzername = (TextView) findViewById(R.id.tf_allergien);
-        benutzername.setText("keine Daten");
 
         /*if(!session.loggedIn()) {
             logout();

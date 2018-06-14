@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -12,10 +13,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import android.widget.Toast;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,39 +21,22 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 
-
 //Zeigt via Google Maps den aktuellen Standort sowie Apotheken im Umkreis an
-// wir müssen mit type-proximity arbeiten
-
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    // GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
-
     private static final String TAG = "MapsActivity";
     private Boolean mLocationPermissionsGranted = false;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 15f;
     private double myLatitude = 0;
     private double myLongitude = 0;
-
-    //widgets
-    private AutoCompleteTextView mSearchText;
-    private ImageView mGps, mInfo, mPlacePicker;
-
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
-    private GoogleApiClient mGoogleApiClient;
-    //private PlaceInfo mPlace;
-    private Marker mMarker;
-
 
     @Override
     public void onMapReady(GoogleMap map) {
@@ -115,7 +96,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void getDeviceLocation() {
         Log.d(TAG, "getDeviceLocation: getting the devices current location");
-
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         try {
@@ -132,12 +112,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             myLongitude = currentLocation.getLongitude();
                             Log.d(TAG, "onComplete: found location! " + myLatitude + " " + myLongitude);
 
-                            Toast.makeText(MapsActivity.this, "aktuelle Position:" + currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapsActivity.this, "Ihr aktueller Standort ist blau markiert.:", Toast.LENGTH_SHORT).show();
                             LatLng position = new LatLng(myLatitude, myLongitude);
 
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 14));
                         } else {
-                            Log.d(TAG, "onComplete: current location is null");
                             Toast.makeText(MapsActivity.this, "Aktuelle Position konnte nicht gefunden werden", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -151,10 +130,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void moveCamera(LatLng latLng, float zoom) {
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude);
         LatLng currentPosition = new LatLng(myLatitude, myLongitude);
-        Log.d(TAG, "Location wird angezeigt " + currentPosition);
-        //CameraUpdateFactory.zoomIn();
     }
-
 
     private void getLocationPermission() {
         Log.d(TAG, "getLocationPermission: getting location permission");
@@ -165,7 +141,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //Determine whether you have been granted a particular permission.
-
             if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                     COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 mLocationPermissionsGranted = true;
@@ -180,15 +155,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     permissions,
                     LOCATION_PERMISSION_REQUEST_CODE);
         }
-
     }
 
-   /*public void onClickPh(View v) {
-        Intent i = new Intent(getBaseContext(), GetNearbyDataPh.class);
-        startActivity(i);*/
+    public void onClickPh(View v) {
+        Log.d(TAG, "on Apothekenbutton wurde geklickt");
 
-        //https://www.youtube.com/watch?v=_Oljjn1fIAc
-    //}
+        String url = "http://maps.google.co.uk/maps?q=Pharmacy&hl=en";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+        startActivity(intent);
+        }
 }
 
 
