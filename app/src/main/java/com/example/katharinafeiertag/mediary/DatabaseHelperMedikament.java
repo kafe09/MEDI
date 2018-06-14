@@ -30,7 +30,6 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
-    //halloWelt
 
     @Override
     public void onCreate(SQLiteDatabase dbmedikamente) {
