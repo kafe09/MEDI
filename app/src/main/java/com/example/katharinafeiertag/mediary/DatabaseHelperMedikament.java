@@ -30,8 +30,8 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
         super(context, DATABASE_NAME,null,DATABASE_VERSION);
     }
 
-    public void hallo () {
-        int i;
+    public void halloichbindaliahaemmsn () {
+
     }
 
 
