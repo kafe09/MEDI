@@ -183,13 +183,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-   public void onClickPh(View v) {
+   /*public void onClickPh(View v) {
         Intent i = new Intent(getBaseContext(), GetNearbyDataPh.class);
-        //hier steht kacke drin
-        startActivity(i);
+        startActivity(i);*/
 
         //https://www.youtube.com/watch?v=_Oljjn1fIAc
-    }
+    //}
 }
 
 
