@@ -14,12 +14,16 @@ import java.util.List;
 //Datenbank für unsere Medikamenten-DB mit über 7000 Medikamenten
 public class DrugsDatabase extends SQLiteAssetHelper {
 
-    private static final String DB_NAME="kaliamed.db";
-    private static final int DB_VER=1;
+    private static final String DB_NAME= "medikamente.db";
+    private static final int DB_VER= 1;
+
+
 
     public DrugsDatabase(Context context) {
-        super(context, DB_NAME,null,DB_VER);
+        super(context, DB_NAME, null, DB_VER);
     }
+
+
 
     public List<Drugs> getDrug() {
 
@@ -27,13 +31,14 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         Log.d("in der DrugDatabases", "SQLiteQueryBuilder successful");
 
+
         //Kathi habe hier: "ATCCode", "BezeichnungATCCode" gelöscht
-        String [] sqlSelect ={"MedID","Handelsname","Mengenangabe","Mengenart","Pharmanummer"};
-        String tableName="Medikamente";
+        String [] sqlSelect = {"MedID", "Handelsname", "Mengenangabe", "Mengenart", "Pharmanummer"};
+        String tableName = "Medikamente";
         Log.d("in der DrugDatabases", " successful" + sqlSelect);
 
         qb.setTables(tableName);
-        Cursor cursor = qb.query(db,sqlSelect,null,null,null,null,null,null);
+        Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
         List<Drugs> result = new ArrayList<>();
         if(cursor.moveToFirst()) {
 
@@ -56,11 +61,11 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect ={"Handelsname"};
-        String tableName="Medikamente";
+        String [] sqlSelect = {"Handelsname"};
+        String tableName = "Medikamente";
 
         qb.setTables(tableName);
-        Cursor cursor = qb.query(db,sqlSelect,null,null,null,null,null);
+        Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
         List<String> result = new ArrayList<>();
         if(cursor.moveToFirst()) {
 
@@ -75,11 +80,11 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect ={"MedID","Handelsname","Mengenangabe","Mengenart","Pharmanummer"};
-        String tableName="Medikamente";
+        String [] sqlSelect = {"MedID" ,"Handelsname" ,"Mengenangabe" ,"Mengenart" ,"Pharmanummer"};
+        String tableName = "Medikamente";
 
         qb.setTables(tableName);
-        Cursor cursor = qb.query(db,sqlSelect,"Handelsname LIKE ?",new String[]{"%"+name+"%"},null,null,null);
+        Cursor cursor = qb.query(db, sqlSelect, "Handelsname LIKE ?",new String[]{"%"+name+"%"}, null, null, null);
         List<Drugs> result = new ArrayList<>();
         if(cursor.moveToFirst()) {
 

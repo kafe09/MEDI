@@ -10,7 +10,7 @@ import android.util.Log;
 public class DatabaseHelperContacts extends SQLiteOpenHelper {
     public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "kaliamed.db";
+    private static final String DATABASE_NAME = "medikamente.db";
     private static final String TABLE_NAME = "contacts";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_VORNAME = "vorname";
@@ -22,6 +22,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
 
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null ," +
             "vorname text not null , name text not null , email text not null , uname text not null , passwort text not null);";
+
 
     //Konstruktor
     public DatabaseHelperContacts(Context context)

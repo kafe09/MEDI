@@ -107,7 +107,7 @@ public class MedSucheActivity extends AppCompatActivity {
 
     private void startSearch(String text) {
 
-        adapter = new SearchAdapter(this,database.getDrugsByName(text));
+       // adapter = new SearchAdapter(this,database.getDrugsByName(text));
         recyclerView.setAdapter(adapter);
     }
 
