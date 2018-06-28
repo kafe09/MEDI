@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ourBackgroundColorLogin"
+    android:background="@color/backgroundColor"
     tools:context="com.example.katharinafeiertag.mediary.LoginActivity">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_above="@+id/tf_allergien"
         android:layout_alignParentStart="true"
         android:text="Benutzername:"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/schrift"
         android:textSize="20sp" />
 
     <EditText
@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/tv_info2"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="24dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/schrift" />
 
     <TextView
         android:id="@+id/tv_info2"
@@ -34,7 +34,7 @@
         android:layout_above="@+id/tf_passwort"
         android:layout_alignParentStart="true"
         android:text="Passwort:"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/schrift"
         android:textSize="20sp" />
 
     <EditText
@@ -44,20 +44,22 @@
         android:layout_above="@+id/bt_login"
         android:layout_alignParentEnd="true"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/schrift"
+        android:textStyle="italic" />
 
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tv_info3"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="106dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="31dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="anmelden"
         android:text="Anmelden"
         android:textAlignment="center"
-        android:textColor="?attr/colorAccent"
+        android:textColor="@color/backgroundColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -69,10 +71,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="56dp"
         android:autofillHints="@color/colorAccent"
-        android:background="?android:attr/colorAccent"
+        android:background="@color/backgroundColor"
         android:text="Sie sind noch nicht angemeldet?"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/schrift"
         android:textSize="18sp" />
 
     <Button
@@ -81,12 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/iv_fingerprint"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="68dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="registrieren"
         android:text="jetzt registrieren"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/backgroundColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -110,7 +112,7 @@
         android:layout_marginBottom="12dp"
         android:text="Platzieren sie Ihren Finger am Scanner um sich einzuloggen"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/schrift"
         android:textSize="14sp" />
 
 </RelativeLayout>

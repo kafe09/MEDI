@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#CC9999</color>
-    <color name="colorPrimaryDark">#cc9999</color>
-    <color name="colorAccent">#996666</color>
-    <color name="ourBackgroundColorLogin">#996666</color>
+    <color name="colorPrimary">#669933</color>
+    <color name="colorPrimaryDark">#CCCC33</color>
+    <color name="colorAccent">#003300</color>
+    <color name="ourBackgroundColorLogin">#99CC66</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="schrift">#336699</color>
 
     <item name="visible" type="id"/>
     <item name="masked" type="id"/>

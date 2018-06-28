@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -74,39 +75,6 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         });*/
     }
 
-
-    //folgende zwei Methoden: damit Benutzer ein Profilbild hinzufügen kann
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d(TAG," in der onActivityResult Methode" );
-        //  super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == CAMERA_REQUEST_CODE) {
-                Toast.makeText(this, "Image Saved.", Toast.LENGTH_LONG).show();
-
-                if (requestCode == IMAGE_GALLERY_REQUEST) {
-                    //address of image on SD Card
-                    Uri imageUri = data.getData();
-
-                    //read the image data from  SD Card
-                    InputStream inputStream;
-                    try {
-                        inputStream = getContentResolver().openInputStream(imageUri);
-                        //get a bitmap from the stream
-                        Bitmap image = BitmapFactory.decodeStream(inputStream);
-                        imageView.setImageBitmap(image);
-                        Log.d(TAG,"Benutzerfoto hinzugefügt" +image);
-
-                        Toast.makeText(this, "Benutzerfoto wurde festgelegt", Toast.LENGTH_LONG).show();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                        Toast.makeText(this, "Öffnen des Bildes nicht möglich", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-        } Log.d(TAG,"hat nicht geklappt" );
-    }
-
     public void selectImage(View v) {
         Log.d(TAG,"Benutzerfoto "+ "klick auf Foto hinzufügen");
 
@@ -117,7 +85,42 @@ public class BenutzerprofilActivity extends AppCompatActivity {
 
         photopickerIntent.setDataAndType(data, "image/*");
         startActivityForResult(photopickerIntent, IMAGE_GALLERY_REQUEST);
+
     }
+
+    //folgende zwei Methoden: damit Benutzer ein Profilbild hinzufügen kann
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG," in der onActivityResult Methode" );
+        //super.onActivityResult(requestCode, resultCode, data);
+       // if (resultCode == RESULT_OK) {
+          //  if (requestCode == CAMERA_REQUEST_CODE) {
+                if (requestCode == IMAGE_GALLERY_REQUEST) {
+                    //address of image on SD Card
+                    Uri imageUri = data.getData();
+
+                    //read the image data from  SD Card
+                    InputStream inputStream;
+                    try {
+                        inputStream = getContentResolver().openInputStream(imageUri);
+                        //get a bitmap from the stream
+                        Bitmap image = BitmapFactory.decodeStream(inputStream);
+                        BitmapDrawable drawable = new BitmapDrawable(image);
+                        //imageView.setImageBitmap(image);
+                        imageView.setImageDrawable(drawable);
+                        Log.d(TAG,"Benutzerfoto hinzugefügt" +image);
+                        Toast.makeText(this, "Benutzerfoto wurde festgelegt", Toast.LENGTH_LONG).show();
+
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Toast.makeText(this, "Öffnen des Bildes nicht möglich", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        //}
+        //
+   // }
 
 
 

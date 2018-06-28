@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context="com.example.katharinafeiertag.mediary.RegistrierungActivity">
 
 
@@ -13,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="33dp"
         android:text="Registrierung"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/schrift"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -28,7 +29,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="Vorname:"
         android:inputType="textPersonName"
@@ -97,7 +98,7 @@
         android:onClick="onRegistrierenClick"
         android:text="Registrieren"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/backgroundColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 
