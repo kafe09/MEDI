@@ -18,6 +18,9 @@ import static com.example.katharinafeiertag.mediary.Constant.THIRD_COLUMN;
 
 
 public class ListViewAdapter extends BaseAdapter {
+
+
+
     public ArrayList<HashMap> list;
     Activity activity;
 

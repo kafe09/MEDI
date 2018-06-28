@@ -9,8 +9,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
@@ -27,6 +29,7 @@ public class MedSucheActivity extends AppCompatActivity {
     SearchAdapter adapter;
     TextView textView;
 
+
     MaterialSearchBar materialSearchBar;
     List<String> suggestList = new ArrayList<>();
 
@@ -39,13 +42,25 @@ public class MedSucheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medsuchen);
 
+        Button button = (Button) findViewById(R.id.hinzufügen);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MedTableActivity.class);
+                String medikament = materialSearchBar.getText().toLowerCase();
+                intent.putExtra("weitergabe",medikament);
+                startActivityForResult(intent,1);
+                //wichtig wenn man Daten zurück geben will von der 2.Activity
+            }
+        });
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_search);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.search_bar);
-        textView = (TextView) findViewById(R.id.versuch);
+        //textView = (TextView) findViewById(R.id.versuch);
 
         //Datenbank
         database = new DrugsDatabase(this);
@@ -68,6 +83,8 @@ public class MedSucheActivity extends AppCompatActivity {
                 for(String search:suggestList) {
                    String medikament = materialSearchBar.getText().toLowerCase();
                    textView.setText(medikament);
+                   //nur um zu versuchen
+
 
 
 
@@ -122,4 +139,6 @@ public class MedSucheActivity extends AppCompatActivity {
         Intent intent = new Intent (getBaseContext(),MedikamentHinzufugenActivity.class);
         startActivity(intent);
     }
+
+
 }
