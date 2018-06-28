@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,16 +16,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 //Hier sieht man die Benutzerdaten des Benutzers
 public class BenutzerprofilActivity extends AppCompatActivity {
     public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
-    private static final int SELECT_PICTURE = 0;
+    private static final int IMAGE_GALLERY_REQUEST = 20;
+    public static final int CAMERA_REQUEST_CODE = 228;
     private ImageView imageView;
     private Button bt_logout;
     SessionManager session;
     DatabaseHelperContacts helper;
     String displayName;
-    TextView nachname, vorname, benutzername, email, allergien;
+    TextView nachname, vorname, benutzername, email;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +76,32 @@ public class BenutzerprofilActivity extends AppCompatActivity {
 
 
 
-
-
-
-
     //folgende drei Methoden: damit Benutzer ein Profilbild hinzufügen kann
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        //  super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Bitmap bitmap = getPath(data.getData());
-            imageView.setImageBitmap(bitmap);
+            if (requestCode == CAMERA_REQUEST_CODE) {
+                Toast.makeText(this, "Image Saved.", Toast.LENGTH_LONG).show();
+
+                if (requestCode == IMAGE_GALLERY_REQUEST) {
+                    //address of image on SD Card
+                    Uri imageUri = data.getData();
+
+                    //read the image data from  SD Card
+                    InputStream inputStream;
+                    try {
+                        inputStream = getContentResolver().openInputStream(imageUri);
+                        //get a bitmap from the stream
+                        Bitmap image = BitmapFactory.decodeStream(inputStream);
+                        imageView.setImageBitmap(image);
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Toast.makeText(this, "Öffnen des Bildes nicht möglich", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
         }
     }
 
@@ -95,11 +120,26 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         return bitmap;
     }
 
-    public void selectImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
+    private File createImageFile() {
+        // the public picture director
+        File picturesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+        // put together the directory and the timestamp to make a unique image location.
+        File imageFile = new File(picturesDirectory, "picture" + ".jpg");
+        return imageFile;
+    }
+
+
+    public void selectImage(View v) {
+        Log.d(TAG,"Benutzerfoto klick "+ "klick auf Foto hinzufügen");
+
+        Intent photopickerIntent = new Intent(Intent.ACTION_PICK);
+        File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        String pictureDirectoryPath = pictureDirectory.getPath();
+        Uri data = Uri.parse(pictureDirectoryPath);
+
+        photopickerIntent.setDataAndType(data, "image/*");
+        startActivityForResult(photopickerIntent, IMAGE_GALLERY_REQUEST);
     }
 
 
@@ -122,6 +162,4 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
-
-
 }
