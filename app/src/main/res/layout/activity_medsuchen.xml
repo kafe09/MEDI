@@ -33,5 +33,14 @@
         android:onClick="onHinzuClick"
         android:text="Medikament neu hinzufügen" />
 
+    <TextView
+        android:id="@+id/versuch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="84dp"
+        android:text="TextView" />
+
 
 </RelativeLayout>

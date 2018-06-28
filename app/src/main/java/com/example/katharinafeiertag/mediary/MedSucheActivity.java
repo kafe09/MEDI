@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mancj.materialsearchbar.MaterialSearchBar;
@@ -24,6 +25,7 @@ public class MedSucheActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     SearchAdapter adapter;
+    TextView textView;
 
     MaterialSearchBar materialSearchBar;
     List<String> suggestList = new ArrayList<>();
@@ -43,6 +45,7 @@ public class MedSucheActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.search_bar);
+        textView = (TextView) findViewById(R.id.versuch);
 
         //Datenbank
         database = new DrugsDatabase(this);
@@ -63,12 +66,10 @@ public class MedSucheActivity extends AppCompatActivity {
 
                 List<String> suggest = new ArrayList<>();
                 for(String search:suggestList) {
-                   /* if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
-                        suggest.add(search);
-                    else {
-                        Toast toasti = Toast.makeText(MedSucheActivity.this,"Dieses Medikament befindet sich nicht in der Datenbank. Bitte fügen Sie es hinzu durch Klick des Hinzufügen-Buttons!", Toast.LENGTH_LONG);
-                        toasti.show();
-                    }*/
+                   String medikament = materialSearchBar.getText().toLowerCase();
+                   textView.setText(medikament);
+
+
 
                 }
                 materialSearchBar.setLastSuggestions(suggest);
