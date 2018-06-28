@@ -30,11 +30,9 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benutzerprofil);
-
+        imageView = (ImageView) findViewById(R.id.iv_insertProfilimage);
         session = new SessionManager(this);
         helper = new DatabaseHelperContacts(this);
-
-
 
         SharedPreferences preferences = getSharedPreferences("MEDI", MODE_PRIVATE);
         displayName = preferences.getString("displayName", "");  //ist der Username der gerade eingeloggt ist
@@ -95,6 +93,13 @@ public class BenutzerprofilActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeFile(filePath);
 
         return bitmap;
+    }
+
+    public void selectImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
     }
 
 

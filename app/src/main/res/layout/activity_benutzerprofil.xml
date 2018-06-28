@@ -42,6 +42,7 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
+        android:onClick="selectImage"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery"
         tools:layout_editor_absoluteX="145dp" />
