@@ -10,7 +10,9 @@ import android.util.Log;
 public class DatabaseHelperContacts extends SQLiteOpenHelper {
     public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
     private static final int DATABASE_VERSION = 1;
+    SQLiteDatabase db;
     private static final String DATABASE_NAME = "medikamente.db";
+    //contacts Datenbank
     private static final String TABLE_NAME = "contacts";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_VORNAME = "vorname";
@@ -18,11 +20,22 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_UNAME = "uname";
     private static final String COLUMN_PASSWORT = "passwort";
-    SQLiteDatabase db;
 
+    //Hausapotheke Datenbank
+    private static final String TABLE_NAME3 = "Hausapotheke";
+    private static final String UserID = COLUMN_ID;
+
+    private static final String selectQuery = "SELECT MedID FROM Medikamente";
+    Cursor cursor = db.rawQuery(selectQuery, null);
+    private static final String MedikamentID = selectQuery;
+
+    //Contacts
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null ," +
             "vorname text not null , name text not null , email text not null , uname text not null , passwort text not null);";
 
+    //Hausapotheke
+    private static final String TABLE_CREATE2 = "create table Hausapotheke (UserID integer primary key not null," +
+            "MedikamentID integer not null);";
 
     //Konstruktor
     public DatabaseHelperContacts(Context context)
@@ -34,10 +47,14 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
+        db.execSQL(TABLE_CREATE2);
         this.db = db;
 
 
     }
+
+
+
 
     public void insertContact(Contact c) {
         db = this.getWritableDatabase();
@@ -157,6 +174,8 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
         db.execSQL(query);
+        String query2 = "DROP TABLE IF EXISTS " +TABLE_NAME3;
+        db.execSQL(query2);
         this.onCreate(db);
     }
 }

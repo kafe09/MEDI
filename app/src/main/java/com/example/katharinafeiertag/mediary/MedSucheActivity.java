@@ -63,12 +63,12 @@ public class MedSucheActivity extends AppCompatActivity {
 
                 List<String> suggest = new ArrayList<>();
                 for(String search:suggestList) {
-                    if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
+                   /* if(search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
                         suggest.add(search);
                     else {
                         Toast toasti = Toast.makeText(MedSucheActivity.this,"Dieses Medikament befindet sich nicht in der Datenbank. Bitte fügen Sie es hinzu durch Klick des Hinzufügen-Buttons!", Toast.LENGTH_LONG);
                         toasti.show();
-                    }
+                    }*/
 
                 }
                 materialSearchBar.setLastSuggestions(suggest);
