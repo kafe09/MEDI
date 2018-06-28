@@ -75,10 +75,10 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     }
 
 
-
-    //folgende drei Methoden: damit Benutzer ein Profilbild hinzufügen kann
+    //folgende zwei Methoden: damit Benutzer ein Profilbild hinzufügen kann
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG," in der onActivityResult Methode" );
         //  super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == CAMERA_REQUEST_CODE) {
@@ -95,43 +95,20 @@ public class BenutzerprofilActivity extends AppCompatActivity {
                         //get a bitmap from the stream
                         Bitmap image = BitmapFactory.decodeStream(inputStream);
                         imageView.setImageBitmap(image);
+                        Log.d(TAG,"Benutzerfoto hinzugefügt" +image);
 
+                        Toast.makeText(this, "Benutzerfoto wurde festgelegt", Toast.LENGTH_LONG).show();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                         Toast.makeText(this, "Öffnen des Bildes nicht möglich", Toast.LENGTH_LONG).show();
                     }
                 }
             }
-        }
+        } Log.d(TAG,"hat nicht geklappt" );
     }
-
-    private Bitmap getPath(Uri uri) {
-
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
-        int column_index = cursor
-                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String filePath = cursor.getString(column_index);
-        // cursor.close();
-        // Convert file path into bitmap image using below line.
-        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-
-        return bitmap;
-    }
-
-    private File createImageFile() {
-        // the public picture director
-        File picturesDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-
-        // put together the directory and the timestamp to make a unique image location.
-        File imageFile = new File(picturesDirectory, "picture" + ".jpg");
-        return imageFile;
-    }
-
 
     public void selectImage(View v) {
-        Log.d(TAG,"Benutzerfoto klick "+ "klick auf Foto hinzufügen");
+        Log.d(TAG,"Benutzerfoto "+ "klick auf Foto hinzufügen");
 
         Intent photopickerIntent = new Intent(Intent.ACTION_PICK);
         File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);

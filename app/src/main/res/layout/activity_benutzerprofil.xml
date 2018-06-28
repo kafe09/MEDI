@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="21dp"
         android:text="Mein Profil"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -42,7 +42,6 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:onClick="selectImage"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery"
         tools:layout_editor_absoluteX="145dp" />
@@ -66,8 +65,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tf_name"
-        android:layout_below="@+id/iv_insertProfilimage"
-        android:layout_marginTop="41dp"
+        android:layout_centerVertical="true"
         android:ems="10"
         android:hint="Vorname"
         android:inputType="textPersonName"
@@ -122,15 +120,13 @@
         android:textStyle="bold" />
 
 
-
     <TextView
         android:id="@+id/lb_vn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tf_vorname"
         android:layout_alignBottom="@+id/tf_vorname"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="21dp"
+        android:layout_toStartOf="@+id/addPhoto"
         android:text="Vorname:"
         android:textSize="18sp" />
 
@@ -162,6 +158,15 @@
         android:layout_alignTop="@+id/tf_benutzername"
         android:text="Benutzername:"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/addPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_insertProfilimage"
+        android:layout_centerHorizontal="true"
+        android:onClick="selectImage"
+        android:text="Profilbild hinzufügen" />
 
 
 </RelativeLayout>

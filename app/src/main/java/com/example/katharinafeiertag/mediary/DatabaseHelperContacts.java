@@ -26,7 +26,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     private static final String UserID = COLUMN_ID;
 
     private static final String selectQuery = "SELECT MedID FROM Medikamente";
-    Cursor cursor = db.rawQuery(selectQuery, null);
+   // Cursor cursor = db.rawQuery(selectQuery, null);
     private static final String MedikamentID = selectQuery;
 
     //Contacts
