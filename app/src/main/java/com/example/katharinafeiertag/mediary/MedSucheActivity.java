@@ -36,6 +36,7 @@ public class MedSucheActivity extends AppCompatActivity {
     DrugsDatabase database;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"in onCreate von Medikament suchen");
@@ -47,17 +48,18 @@ public class MedSucheActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MedTableActivity.class);
-                String medikament = materialSearchBar.getText().toLowerCase();
-                intent.putExtra("weitergabe",medikament);
+                TextView suche = (TextView) findViewById(R.id.SuchMedikament);
+                intent.putExtra("weitergabe",suche.getText().toString());
                 startActivityForResult(intent,1);
                 //wichtig wenn man Daten zurück geben will von der 2.Activity
             }
         });
-
+        textView = (TextView) findViewById(R.id.SuchMedikament);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_search);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+
 
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.search_bar);
         //textView = (TextView) findViewById(R.id.versuch);
