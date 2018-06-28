@@ -13,8 +13,8 @@ public class DatabaseHelperMedikament extends SQLiteOpenHelper {
     SearchAdapter sa = new SearchAdapter();
     public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
     private static final int DATABASE_VERSION = 15;
-    private static final String DATABASE_NAME = "medikamenten.db";
-    private static final String TABLE_NAME = "medikamente";
+    private static final String DATABASE_NAME = "medikamente.db";
+    private static final String TABLE_NAME = "Medikamente";
     private static final String COLUMN_ID = "MedID";
     private static final String COLUMN_HANDELSNAME = "Handelsname";
     private static final String COLUMN_MENGENANGABE = "Mengenangabe";
