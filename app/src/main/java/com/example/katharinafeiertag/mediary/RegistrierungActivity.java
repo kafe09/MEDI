@@ -36,14 +36,17 @@ public class RegistrierungActivity extends AppCompatActivity {
             String unamestr = uname.getText().toString();
             String passwortstr = passwort.getText().toString();
             String passwort2str = passwort2.getText().toString();
-            //Character geschlechtch = geschlecht.getText().charAt();
 
-            if (emailstr.isEmpty() && passwortstr.isEmpty() && passwort2str.isEmpty()){
-                displayToast ("Benutzername/Passwort sind leer.");
+            if (vornamestr.isEmpty() || namestr.isEmpty() || emailstr.isEmpty() ||unamestr.isEmpty() || passwortstr.isEmpty()|| passwort2str.isEmpty()){
+                displayToast ("Sie müssen alle Felder ausfüllen!");
+                Intent hier = new Intent(getBaseContext(), RegistrierungActivity.class);
+                startActivity(hier);
             }
 
             if (!passwortstr.equals(passwort2str)) {
                 displayToast("Passwörter stimmen nicht überein!");
+
+           // if(vornamestr.)
 
             } else {
                 //insert details in database

@@ -16,7 +16,7 @@
         android:text="Optionen meiner digitale Hausapotheke"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/schrift"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="36dp"
@@ -33,7 +33,7 @@
         android:background="@color/colorPrimaryDark"
         android:onClick="onAlleClick"
         android:text="Einsicht in alle Medikamente"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/backgroundColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
         android:onClick="onHinzufügenClick"
         android:text="Neue Mediakmente hinzufügen"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/backgroundColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -64,7 +64,7 @@
         android:onClick="onEinnahmeClick"
         android:text="Medikament einnehmen"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/backgroundColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 
