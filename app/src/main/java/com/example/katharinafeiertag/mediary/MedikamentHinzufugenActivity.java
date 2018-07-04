@@ -115,6 +115,7 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
     }
 
+/*
     public void addContact(View view) {
 
         String name_med = name.getText().toString();
@@ -127,6 +128,7 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(),"Eintrag gespeichert",Toast.LENGTH_LONG).show();
          drugsdatabase.close();
     }
+*/
 
 
     public void onAddClick (View v) {

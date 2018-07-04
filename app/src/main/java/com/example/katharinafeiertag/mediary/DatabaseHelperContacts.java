@@ -22,21 +22,21 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     private static final String COLUMN_PASSWORT = "passwort";
 
     //Hausapotheke Datenbank
-    private static final String TABLE_NAME3 = "Hausapotheke";
-    private static final String UserID = COLUMN_ID;
+    /*private static final String TABLE_NAME3 = "Hausapotheke";
+    private static final String UserID = COLUMN_ID;*/
 
-    private static final String selectQuery = "SELECT MedID FROM Medikamente";
+    /*private static final String selectQuery = "SELECT MedID FROM Medikamente";
     //Cursor cursor = db.rawQuery(selectQuery, null);
-    private static final String MedikamentID = selectQuery;
+    private static final String MedikamentID = selectQuery;*/
 
     //Contacts
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null ," +
             "vorname text not null , name text not null , email text not null , uname text not null , passwort text not null);";
 
-    //Hausapotheke
+   /* //Hausapotheke
     private static final String TABLE_CREATE2 = "create table Hausapotheke (UserID integer primary key not null," +
             "MedikamentID integer not null);";
-
+*/
     //Konstruktor
     public DatabaseHelperContacts(Context context)
             // String name, SQLiteDatabase.CursorFactory, int version)
@@ -47,7 +47,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
-        db.execSQL(TABLE_CREATE2);
+        //db.execSQL(TABLE_CREATE2);
         this.db = db;
 
 
@@ -174,8 +174,8 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
         db.execSQL(query);
-        String query2 = "DROP TABLE IF EXISTS " +TABLE_NAME3;
-        db.execSQL(query2);
+        //String query2 = "DROP TABLE IF EXISTS " +TABLE_NAME3;
+        //db.execSQL(query2);
         this.onCreate(db);
     }
 }
