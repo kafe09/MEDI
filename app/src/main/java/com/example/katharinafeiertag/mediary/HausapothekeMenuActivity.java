@@ -21,7 +21,7 @@ public class HausapothekeMenuActivity extends AppCompatActivity {
 
     //klick auf hinzufügen-Button
     public void onHinzufügenClick(View v) {
-        Intent hpIntent = new Intent(this, MedSucheActivity.class);
+        Intent hpIntent = new Intent(this, ViewMedikamente.class);
         startActivity(hpIntent);
     }
 
