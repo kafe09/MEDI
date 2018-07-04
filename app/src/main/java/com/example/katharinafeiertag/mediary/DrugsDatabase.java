@@ -95,7 +95,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         SQLiteDatabase db = getReadableDatabase();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-        String [] sqlSelect = {"Handelsname"};
+        String [] sqlSelect = {"Handelsname" };
         String tableName = "Medikamente";
 
         qb.setTables(tableName);
@@ -104,7 +104,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
         if(cursor.moveToFirst()) {
 
             do{
-                result.add(cursor.getString(cursor.getColumnIndex("Handelsname")));
+                result.add(cursor.getString(cursor.getColumnIndex("Handelsname" )));
             }while (cursor.moveToNext());
         }return result;
     }
