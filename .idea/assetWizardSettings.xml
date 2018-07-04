@@ -35,9 +35,9 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../../Bildschirmfoto 2018-07-03 um 21.41.14.png" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../../Bildschirmfoto 2018-07-04 um 17.05.24.png" />
                                       <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="iconnew" />
+                                      <entry key="outputName" value="haupticon_app" />
                                     </map>
                                   </option>
                                 </PersistentState>

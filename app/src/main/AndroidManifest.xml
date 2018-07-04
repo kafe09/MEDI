@@ -23,7 +23,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/iconnew"
+        android:icon="@mipmap/haupticon_app"
         android:label="@string/app_name"
         android:logo="@drawable/logo"
         android:roundIcon="@mipmap/ic_launcher_foreground"
