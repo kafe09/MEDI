@@ -43,22 +43,15 @@ public class RegistrierungActivity extends AppCompatActivity {
             Intent regiintent = new Intent(getBaseContext(), LoginActivity.class);
             startActivity(regiintent);
 
+            //insert details in database
+            Contact c = new Contact();
+            c.setVorname(vornamestr);
+            c.setName(namestr);
+            c.setEmail(emailstr);
+            c.setUname(unamestr);
+            c.setPasswort(passwortstr);
+            helper.insertContact(c);
         }
-
-
-        // if(vornamestr.)
-
-//        } else {
-//            //insert details in database
-//            Contact c = new Contact();
-//            c.setVorname(vornamestr);
-//            c.setName(namestr);
-//            c.setEmail(emailstr);
-//            c.setUname(unamestr);
-//            c.setPasswort(passwortstr);
-//            //c.setGeschlecht(geschlechtch);
-//            helper.insertContact(c);
-//        }
     }
 
     public boolean checkData() {
