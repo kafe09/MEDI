@@ -3,9 +3,13 @@ package com.example.katharinafeiertag.mediary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //Hier kann sich der Benutzer neu registrieren und wird in einer Datenbank gespeichert
 public class RegistrierungActivity extends AppCompatActivity {
@@ -21,12 +25,14 @@ public class RegistrierungActivity extends AppCompatActivity {
         vorname = (EditText) findViewById(R.id.tf_vn);
         name = (EditText) findViewById(R.id.tf_nm);
         email = (EditText) findViewById(R.id.tf_mail);
+        //checkEmailAdress(email);
         uname = (EditText) findViewById(R.id.tf_uname);
         passwort = (EditText) findViewById(R.id.tf_passwort);
         passwort2 = (EditText) findViewById(R.id.tf_passwort2);
     }
 
     public void onRegistrierenClick (View v) {
+        //checkEmailAdress(email);
         Intent regiintent = new Intent(getBaseContext(), LoginActivity.class );
         startActivity(regiintent);
 
@@ -74,9 +80,9 @@ public class RegistrierungActivity extends AppCompatActivity {
     }
 
 
-    public void checkEmailAdress () {
-       // adresse = tf_Eingabe.getText();
-        //System.out.println(adresse);
+    public void checkEmailAdress (String email) {
+        //adresse = tf_Eingabe.getText();
+        Log.d("Email","Benutzereingabe" + email);
 
         String[] mailPattern = new String[]{
                 "^[a-zA-Z0-9._@-]*$",                           //keine Sonderzeichen
@@ -102,6 +108,16 @@ public class RegistrierungActivity extends AppCompatActivity {
                 "Nur Buchstaben und Zahlen sind für die Domain zulässig",
                 "Nur Buchstaben, Zahlen, Unterstrich (_), Punkt (.) und Minus (-) sind als Email erlaubt"
         };
-    }
 
+        for (int i = 0; i < mailPattern.length; i++) {
+            System.out.println(mailPattern[i]);
+            Pattern mailP = Pattern.compile(mailPattern[i]);
+            Matcher mailM = mailP.matcher((CharSequence) email);
+
+            if (!mailM.matches()) {
+                displayToast(mailError[i]);
+                return;
+            }
+        }
+    }
 }
