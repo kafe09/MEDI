@@ -21,13 +21,13 @@ public class DrugsDatabase extends SQLiteAssetHelper {
     private static final String DB_NAME= "medikamente.db";
     private static final int DB_VER= 1;
 
-    private static final String TABLE = "Medikamente";
+    /*private static final String TABLE = "Medikamente";
 
     public static final String ID = "MedID";
     public static final String NAME = "Handelsname";
     public static final String MENGE = "Mengenangabe";
     public static final String ART = "Mengenart";
-    public static final String NUMMER = "Pharmanummer";
+    public static final String NUMMER = "Pharmanummer";*/
 
 
     public DrugsDatabase(Context context) {
@@ -37,14 +37,14 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
 
 
-    @Override
+    /*@Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
-    }
+    }*/
 
 
-    public void insertNewEntry (String name, String mengenangabe, String mengenart, String pharmanummer, SQLiteDatabase db) {
+/*    public void insertNewEntry (String name, String mengenangabe, String mengenart, String pharmanummer, SQLiteDatabase db) {
 
         ContentValues contentValues = new ContentValues();
         //contentValues.put(ID,id);
@@ -55,7 +55,7 @@ public class DrugsDatabase extends SQLiteAssetHelper {
 
         db.insert(TABLE,null,contentValues);
         Log.d("key","Database - one row is inserted.....");
-    }
+    }*/
 
 
 
