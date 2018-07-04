@@ -16,15 +16,15 @@ import java.io.OutputStream;
 
 public class DatabaseHelperMedi extends SQLiteOpenHelper {
 
-    String DB_PATH = null;
-    private static String DB_NAME = "medica";
+    String DB_PATH = "/data/data/com.example.katharinafeiertag.mediary/databases/";
+    private static String DB_NAME = "medica.db";
     private SQLiteDatabase myDataBase;
     private final Context myContext;
 
     public DatabaseHelperMedi(Context context) {
-        super(context, DB_NAME, null, 10);
+        super(context, DB_NAME, null, 11);
         this.myContext = context;
-        this.DB_PATH = "/data/data/" + context.getPackageName() + "/" + "databases/";
+        this.DB_PATH = "/data/data/com.example.katharinafeiertag.mediary/databases/";
         Log.e("Path 1", DB_PATH);
     }
 
@@ -95,7 +95,6 @@ public class DatabaseHelperMedi extends SQLiteOpenHelper {
                 copyDataBase();
             } catch (IOException e) {
                 e.printStackTrace();
-
             }
     }
 
