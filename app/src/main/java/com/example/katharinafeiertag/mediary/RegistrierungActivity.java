@@ -73,4 +73,35 @@ public class RegistrierungActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
+
+    public void checkEmailAdress () {
+       // adresse = tf_Eingabe.getText();
+        //System.out.println(adresse);
+
+        String[] mailPattern = new String[]{
+                "^[a-zA-Z0-9._@-]*$",                           //keine Sonderzeichen
+                "^([a-zA-Z0-9._-]*)@([a-zA-Z0-9._-]*)$",        //Die Email muss genau ein „@“ Zeichen enthalten
+                ".*\\..*",                                      //Die Email muss mind. einen Punkt enthalten
+                ".*@[^.].*",                                    //Die Domain darf nicht mit einem . (Punkt) beginnen oder enden
+                "^[^.].*",                                      //Die Email darf nicht mit einem Punkt beginnen
+                ".*[^.]@.*",                                    //Die Email darf nicht mit einem Punkt enden
+                "^([^.]+\\.)*[^.]+@.*$",                        //Zwei aufeinanderfolgende Punkte
+                ".*\\.([a-z]{2,})$",                            //Die Domainendung muss mindestens zwei Buchstaben haben
+                ".*@[a-zA-Z0-9]+\\.[^.]*",                      //Nur Buchstaben und Zahlen sind für die Domain zulässig
+                "^[a-zA-Z0-9.-_]+@.*"};                         //Nur Buchstaben, Zahlen, Unterstrich (_), Punkt (.) und Minus (-) sind als Email erlaubt
+
+        String[] mailError = new String[]{
+                "Eine Email Adresse kann nicht aus Sonderzeichen oder Leerschritten bestehen",
+                "Die Email muss genau ein „@“ Zeichen enthalten",
+                "Die Email muss mind. einen Punkt enthalten",
+                "Die Domain darf nicht mit einem . (Punkt) beginnen oder enden",
+                "Die Email darf nicht mit einem Punkt beginnen",
+                "Die Email darf nicht mit einem Punkt enden",
+                "Mehrere aufeinanderfolgende Punkte sind nicht erlaubt",
+                "Die Domainendung muss mindestens zwei Buchstaben haben und darf keine Zahlen enthalten",
+                "Nur Buchstaben und Zahlen sind für die Domain zulässig",
+                "Nur Buchstaben, Zahlen, Unterstrich (_), Punkt (.) und Minus (-) sind als Email erlaubt"
+        };
+    }
+
 }
