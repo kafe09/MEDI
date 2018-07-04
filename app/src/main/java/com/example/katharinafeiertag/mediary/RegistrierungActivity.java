@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 public class RegistrierungActivity extends AppCompatActivity {
     DatabaseHelperContacts helper = new DatabaseHelperContacts(this);
     EditText vorname, name, email, uname, passwort, passwort2;
+    String vornamestr, namestr, emailstr, unamestr, passwortstr, passwort2str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,66 +24,90 @@ public class RegistrierungActivity extends AppCompatActivity {
         helper = new DatabaseHelperContacts(this);
 
         vorname = (EditText) findViewById(R.id.tf_vn);
+
         name = (EditText) findViewById(R.id.tf_nm);
+
         email = (EditText) findViewById(R.id.tf_mail);
-        //checkEmailAdress(email);
+
         uname = (EditText) findViewById(R.id.tf_uname);
+
         passwort = (EditText) findViewById(R.id.tf_passwort);
+
         passwort2 = (EditText) findViewById(R.id.tf_passwort2);
+
     }
 
-    public void onRegistrierenClick (View v) {
-        //checkEmailAdress(email);
-        Intent regiintent = new Intent(getBaseContext(), LoginActivity.class );
-        startActivity(regiintent);
+    public void onRegistrierenClick(View v) {
+        if (checkData()) {
 
-            String vornamestr = vorname.getText().toString();
-            String namestr = name.getText().toString();
-            String emailstr = email.getText().toString();
-            String unamestr = uname.getText().toString();
-            String passwortstr = passwort.getText().toString();
-            String passwort2str = passwort2.getText().toString();
+            Intent regiintent = new Intent(getBaseContext(), LoginActivity.class);
+            startActivity(regiintent);
 
-            if (vornamestr.isEmpty() || namestr.isEmpty() || emailstr.isEmpty() ||unamestr.isEmpty() || passwortstr.isEmpty()|| passwort2str.isEmpty()){
-                displayToast ("Sie müssen alle Felder ausfüllen!");
-                Intent hier = new Intent(getBaseContext(), RegistrierungActivity.class);
-                startActivity(hier);
-            }
-
-            if (!passwortstr.equals(passwort2str)) {
-                displayToast("Passwörter stimmen nicht überein!");
-
-           // if(vornamestr.)
-
-            } else {
-                //insert details in database
-                Contact c = new Contact();
-                c.setVorname(vornamestr);
-                c.setName(namestr);
-                c.setEmail(emailstr);
-                c.setUname(unamestr);
-                c.setPasswort(passwortstr);
-                //c.setGeschlecht(geschlechtch);
-                helper.insertContact(c);
-            }
         }
 
-    public void onClickClose(View view) {
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(HauptmenuActivity.REQUEST_RESULT,42);
-        setResult(RESULT_OK, returnIntent);
-        finish();
+
+        // if(vornamestr.)
+
+//        } else {
+//            //insert details in database
+//            Contact c = new Contact();
+//            c.setVorname(vornamestr);
+//            c.setName(namestr);
+//            c.setEmail(emailstr);
+//            c.setUname(unamestr);
+//            c.setPasswort(passwortstr);
+//            //c.setGeschlecht(geschlechtch);
+//            helper.insertContact(c);
+//        }
+    }
+
+    public boolean checkData() {
+        vornamestr = vorname.getText().toString();
+        namestr = name.getText().toString();
+        emailstr = email.getText().toString();
+        unamestr = uname.getText().toString();
+        passwortstr = passwort.getText().toString();
+        passwort2str = passwort2.getText().toString();
+
+        if (vornamestr.isEmpty() || namestr.isEmpty() || emailstr.isEmpty() || unamestr.isEmpty() || passwortstr.isEmpty() || passwort2str.isEmpty()) {
+            displayToast("Sie müssen alle Felder ausfüllen!");
+            return false;
+        } else if (!passwortstr.equals(passwort2str)) {
+            displayToast("Passwörter stimmen nicht überein!");
+            return false;
+        } else if (!isAlpha(vornamestr) || !isAlpha(namestr)) {
+            displayToast("Namen dürfen nur aus Buchstaben bestehen");
+            return false;
+        } else if (!checkEmai(emailstr)) {
+            return false;
+        }
+        return true;
     }
 
 
-    public void displayToast (String message) {
+    public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
+    public boolean isAlpha(String text) {
+        for (char c : text.toCharArray()) {
+            // a - z
+            if (c >= 'a' && c <= 'z')
+                continue;
+            // A - Z
+            if (c >= 'A' && c <= 'Z')
+                continue;
+            // ö, ü, ä, ß
+            if (c == 'ö' || c == 'ß' || c == 'ä' || c == 'ü')
+                continue;
+            return false;
+        }
+        return true;
+    }
 
-    public void checkEmailAdress (String email) {
-        //adresse = tf_Eingabe.getText();
-        Log.d("Email","Benutzereingabe" + email);
+    public boolean checkEmai(String email) {
+        //EMAIL
+        Log.d("Email", "Benutzereingabe" + email);
 
         String[] mailPattern = new String[]{
                 "^[a-zA-Z0-9._@-]*$",                           //keine Sonderzeichen
@@ -116,8 +141,11 @@ public class RegistrierungActivity extends AppCompatActivity {
 
             if (!mailM.matches()) {
                 displayToast(mailError[i]);
-                return;
+                return false;
             }
         }
+        return true;
     }
 }
+
+
