@@ -139,6 +139,10 @@ public class RegistrierungActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    public void test () {
+
+    }
 }
 
 
