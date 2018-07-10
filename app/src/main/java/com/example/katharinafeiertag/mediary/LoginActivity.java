@@ -3,10 +3,13 @@ package com.example.katharinafeiertag.mediary;
 import android.app.KeyguardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -53,7 +56,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-        /*FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+
+
+        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
         if (!fingerprintManager.isHardwareDetected())
             Toast.makeText(this, "Fingerprint kann leider nicht verwendet werden.", Toast.LENGTH_SHORT).show();
@@ -82,7 +87,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     }
             }
-        }*/
+        }
+
         helper = new DatabaseHelperContacts(this);
         session = new SessionManager(this);
 
@@ -96,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
             keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 
@@ -124,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
                 fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
             }
-        }*/
+        }
 
 
     public void genKey() throws CertificateException, NoSuchAlgorithmException, IOException {
@@ -149,10 +155,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             try {
                 keyStore.load(null);
 
-                /*keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                         .setBlockModes(KeyProperties.BLOCK_MODE_CBC) .setUserAuthenticationRequired(true)
                         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
-                        .build());*/
+                        .build());
                 keyGenerator.generateKey();
 
             } catch (IOException e) {
@@ -161,8 +167,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 e.printStackTrace();
             } catch (CertificateException e) {
                 e.printStackTrace();
-            } //catch (InvalidAlgorithmParameterException e) {
-              //  e.printStackTrace();
+            } catch (InvalidAlgorithmParameterException e) {
+                e.printStackTrace();
+            }
+        //  e.printStackTrace();
             //}
 
         }
