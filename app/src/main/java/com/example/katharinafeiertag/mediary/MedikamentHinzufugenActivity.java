@@ -30,17 +30,15 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     TextView menge;
     EditText art;
     EditText zulassungsnummer;
+    EditText id;
+    Button btnUpdate;
 
     Context context = this;
 
 
-    DrugsDatabase drugsdatabase;
+    DatabaseOpenHelper drugsdatabase;
     SQLiteDatabase db;
 
-
-
-    String neuName, neuMengenart, neuLagerbestandString, neuZulassungsnummerString;
-    int neuLagerbestandInt, neuZulassungsnummerInt;
 
     //für Seekbar
     public SeekBar sb;
@@ -62,35 +60,10 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         menge = (TextView) findViewById(R.id.tv_wert);
         art = (EditText) findViewById(R.id.tf_art);
         zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
+        onAddClick();
 
         // SeekBar um die Menge der Medikamente festzulegen von 0 bis 500
         sb = (SeekBar) findViewById(R.id.seekBar);
-        menge = (TextView) findViewById(R.id.tv_wert);
-
-        sb.setMax(sbmax);
-        sb.setProgress(sbstart);
-        menge.setText(Integer.toString(sbstart));
-        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                sbvalue = sb.getProgress();
-                menge.setText(Integer.toString(sbvalue));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        // SeekBar um die Menge der Medikamente festzulegen von 0 bis 500
-        sb = (SeekBar) findViewById(R.id.seekBar);
-        menge = (TextView) findViewById(R.id.tv_wert);
 
         sb.setMax(sbmax);
         sb.setProgress(sbstart);
@@ -116,54 +89,51 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     }
 
 /*
-    public void addContact(View view) {
+    public void UpdateData() {
 
-        String name_med = name.getText().toString();
-        String menge_med = menge.getText().toString();
-        String art_med = art.getText().toString();
-        String nummer_med = zulassungsnummer.getText().toString();
-        drugsdatabase = new DrugsDatabase(context);
-        db = drugsdatabase.getWritableDatabase();
-        drugsdatabase.insertNewEntry(name_med,menge_med,art_med,nummer_med,db);
-        Toast.makeText(getBaseContext(),"Eintrag gespeichert",Toast.LENGTH_LONG).show();
-         drugsdatabase.close();
-    }
-*/
+        btnUpdate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean isUpdate = drugsdatabase.updateData(id.getText().toString(),name.getText().toString(),menge.getText().toString(),art.getText().toString(),zulassungsnummer.getText().toString());
+                        if(isUpdate==true)
+                            Toast.makeText(MedikamentHinzufugenActivity.this,"Datenbank aktualisiert",Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(MedikamentHinzufugenActivity.this,"Datenbank nicht aktualisiert",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+        );
+    }*/
+    public void onHinzufügen (View v) {
+    Intent hpIntent = new Intent(this, HausapothekeMenuActivity.class);
+    startActivity(hpIntent);
+}
 
 
-    public void onAddClick (View v) {
+    public void onAddClick () {
         Button button = (Button) findViewById(R.id.bt_add);
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(),DrugsDatabase.class);
+                drugsdatabase = new DatabaseOpenHelper(context);
+                boolean isInserted = drugsdatabase.insertNewEntry(name.getText().toString(), menge.getText().toString(), art.getText().toString(), zulassungsnummer.getText().toString());
+                drugsdatabase.close();
 
-                EditText handelsname = (EditText) findViewById(R.id.tf_handelsname);
-                neuName = handelsname.getText().toString();
-                intent.putExtra("eingabeName", neuName);
-
-                menge = (TextView) findViewById(R.id.tv_wert);
-                neuLagerbestandString = menge.getText().toString();
-                neuLagerbestandInt = Integer.parseInt(neuLagerbestandString);
-                intent.putExtra("eingabeBestand", neuLagerbestandInt);
-
-                art = (EditText) findViewById(R.id.tf_art);
-                neuMengenart = art.getText().toString();
-                intent.putExtra("eingabeArt", neuMengenart);
-
-                //daweil noch nicht in der Anzeige von allen Medikamenten sichtbar
-                zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
-                neuZulassungsnummerString = zulassungsnummer.getText().toString();
-                neuZulassungsnummerInt = Integer.parseInt(neuZulassungsnummerString.toString());
-                intent.putExtra("eingabeNummer", neuZulassungsnummerInt);
-
-                Log.d("msg","Infos des neu hinzugefügten Medikaments: " +neuName +" " +neuLagerbestandInt +" "+neuMengenart + " " +neuZulassungsnummerInt);
+                if (isInserted == true) {
+                    Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament hinzugefügt", Toast.LENGTH_SHORT);
+                    temp.show();
+                } else {
+                    Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament nicht hinzugefügt", Toast.LENGTH_SHORT);
+                    temp.show();
+                }
+                finish();
+               onHinzufügen(null);
+               //oder nix reinschreiben? 
 
 
-
-                startActivityForResult(intent, 1);
             }
+
         });
     }
 }
-

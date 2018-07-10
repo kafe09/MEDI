@@ -10,65 +10,120 @@
 
     <ImageButton
         android:id="@+id/bt_suitcase"
-        android:layout_width="156dp"
-        android:layout_height="168dp"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="32dp"
-        android:layout_toStartOf="@+id/bt_user"
-        android:background="@android:color/transparent"
+        android:layout_marginTop="72dp"
+        android:background="@color/loginanfang"
         android:contentDescription="@string/hausapotheke"
+        android:gravity="left"
         android:onClick="onHausapothekeClick"
+        android:scaleType="fitStart"
         android:visibility="visible"
         app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
         app:layout_constraintBottom_toTopOf="@+id/bt_user"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153"
-        app:srcCompat="@drawable/hausapotheke" />
+        app:srcCompat="@mipmap/hausi_icon" />
 
-    <ImageButton
-        android:id="@+id/bt_setting"
-        android:layout_width="150dp"
-        android:layout_height="136dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/bt_apt"
-        android:layout_marginEnd="26dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/einstellungen"
-        android:onClick="onSettingsClick"
-        app:layout_constraintBaseline_creator="@android:integer/config_shortAnimTime"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_user"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="123dp"
+        android:layout_toEndOf="@+id/bt_apt"
+        android:text="Hausapotheke"
+        android:textColor="@color/schrift"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/bt_user"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
-        android:layout_below="@+id/bt_suitcase"
-        android:layout_marginStart="15dp"
-        android:layout_toEndOf="@+id/bt_apt"
-        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="#E5E5E5"
         android:contentDescription="@string/benutzerprofil"
         android:onClick="onUserClick"
-        app:srcCompat="@drawable/benutzer"
+        android:scaleType="fitStart"
+        app:srcCompat="@mipmap/profili_icon"
         tools:layout_editor_absoluteX="142dp"
         tools:layout_editor_absoluteY="227dp" />
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="224dp"
+        android:layout_toEndOf="@+id/bt_apt"
+        android:text="Benutzerprofil"
+        android:textColor="@color/schrift"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <ImageButton
         android:id="@+id/bt_apt"
-        android:layout_width="148dp"
-        android:layout_height="145dp"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="47dp"
-        android:layout_marginEnd="27dp"
-        android:layout_toStartOf="@+id/bt_setting"
-        android:background="@android:color/transparent"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="71dp"
+        android:background="#D6D6D6"
         android:contentDescription="@string/apotheken_in_ihrer_naehe"
         android:onClick="onApothekenClick"
+        android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_user"
-        app:srcCompat="@drawable/apotheken" />
+        app:srcCompat="@mipmap/suchi_icon2" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="123dp"
+        android:layout_toEndOf="@+id/bt_apt"
+        android:text="Apotheken"
+        android:textColor="@color/schrift"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="118dp"
+        android:layout_marginEnd="61dp"
+        android:text="Apotheken"
+        android:textColor="@color/schrift"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView11"
+        android:layout_centerVertical="true"
+        android:text="Benutzerprofil"
+        android:textColor="@color/schrift"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_marginEnd="34dp"
+        android:text="Hausapotheke"
+        android:textColor="@color/schrift"
+        android:textSize="24sp" />
+
 
 </RelativeLayout>

@@ -16,91 +16,88 @@ import java.io.OutputStream;
 
 public class DatabaseHelperMedi extends SQLiteOpenHelper {
 
-    String DB_PATH = "/data/data/com.example.katharinafeiertag.mediary/databases/";
-    private static String DB_NAME = "medica.db";
-    private SQLiteDatabase myDataBase;
-    private final Context myContext;
+    public SQLiteDatabase DB;
+    public String DBPath;
+    public static String DBName = "medica";
+    public static final int version = '1';
+    public static Context currentContext;
+    public static String tableName = "medikamente";
 
     public DatabaseHelperMedi(Context context) {
-        super(context, DB_NAME, null, 11);
-        this.myContext = context;
-        this.DB_PATH = "/data/data/com.example.katharinafeiertag.mediary/databases/";
-        Log.e("Path 1", DB_PATH);
-    }
-
-
-    public void createDataBase() throws IOException {
-        boolean dbExist = checkDataBase();
-        if (dbExist) {
-        } else {
-            this.getReadableDatabase();
-            try {
-                copyDataBase();
-            } catch (IOException e) {
-                throw new Error("Error copying database");
-            }
-        }
-    }
-
-    private boolean checkDataBase() {
-        SQLiteDatabase checkDB = null;
-        try {
-            String myPath = DB_PATH + DB_NAME;
-            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-        } catch (SQLiteException e) {
-        }
-        if (checkDB != null) {
-            checkDB.close();
-        }
-        return checkDB != null ? true : false;
-    }
-
-    private void copyDataBase() throws IOException {
-        InputStream myInput = myContext.getAssets().open(DB_NAME);
-        String outFileName = DB_PATH + DB_NAME;
-        OutputStream myOutput = new FileOutputStream(outFileName);
-        byte[] buffer = new byte[10];
-        int length;
-        while ((length = myInput.read(buffer)) > 0) {
-            myOutput.write(buffer, 0, length);
-        }
-        myOutput.flush();
-        myOutput.close();
-        myInput.close();
+        super(context, DBName, null, version);
+        currentContext = context;
+        DBPath = "/data/data/" + context.getPackageName() + "/databases";
+        createDatabase();
 
     }
-
-    public void openDataBase() throws SQLException {
-        String myPath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
-    }
-
-    @Override
-    public synchronized void close() {
-        if (myDataBase != null)
-            myDataBase.close();
-        super.close();
-    }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+// TODO Auto-generated method stub
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (newVersion > oldVersion)
-            try {
-                copyDataBase();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+// TODO Auto-generated method stub
+
     }
 
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return myDataBase.query("medikamente", null, null, null, null, null, null);
+    private void createDatabase() {
+        boolean dbExists = checkDbExists();
+
+        if (dbExists) {
+// do nothing
+        } else {
+            DB = currentContext.openOrCreateDatabase(DBName, 0, null);
+            DB.execSQL("CREATE TABLE IF NOT EXISTS " +
+                    tableName +
+                    " (MedID INT(10), Handelsname VARCHAR," +
+                    " Mengenangabe VARCHAR, Mengenart VARCHAR," +
+                    " Pharmanummer VARCHAR);");
+
+            DB.execSQL("INSERT INTO " +
+                    tableName +
+                    " Values (12345,'Mexalen','50','ST','000123');");
+            DB.execSQL("INSERT INTO " +
+                    tableName +
+                    " Values (12346,'Aggafin','100','ML','000124');");
+            DB.execSQL("INSERT INTO " +
+                    tableName +
+                    " Values (12347,'Aspirin','20','ST','000125');");
+            DB.execSQL("INSERT INTO " +
+                    tableName +
+                    " Values (12348,'Neoangin','10','ST','000126');");
+            DB.execSQL("INSERT INTO " +
+                    tableName +
+                    " Values (12349,'Nasivin','15','ML','000127');");
+            DB.execSQL("INSERT INTO " +
+                    tableName +
+                    " Values (12300,'Prospan','20','ML','000128');");
+        }
+
     }
 
+    private boolean checkDbExists() {
+        SQLiteDatabase checkDB = null;
 
+        try {
+            String myPath = DBPath + DBName;
+            checkDB = SQLiteDatabase.openDatabase(myPath, null,
+                    SQLiteDatabase.OPEN_READONLY);
+
+        } catch (SQLiteException e) {
+
+// database does't exist yet.
+
+        }
+
+        if (checkDB != null) {
+
+            checkDB.close();
+
+        }
+
+        return checkDB != null ? true : false;
+    }
 }

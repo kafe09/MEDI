@@ -15,47 +15,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Datenbank für unsere Medikamenten-DB mit über 7000 Medikamenten
-public class DrugsDatabase extends SQLiteAssetHelper {
+public class DatabaseOpenHelper extends SQLiteAssetHelper {
 
 
-    private static final String DB_NAME= "medikamente.db";
-    private static final int DB_VER= 1;
-
-    /*private static final String TABLE = "Medikamente";
+    private static final String DB_NAME = "medikamente.db";
+    private static final String TABLE = "Medikamente";
+    private static final int DB_VER = 1;
 
     public static final String ID = "MedID";
     public static final String NAME = "Handelsname";
     public static final String MENGE = "Mengenangabe";
     public static final String ART = "Mengenart";
-    public static final String NUMMER = "Pharmanummer";*/
+    public static final String NUMMER = "Pharmanummer";
 
 
-    public DrugsDatabase(Context context) {
+    public DatabaseOpenHelper(Context context) {
         super(context, DB_NAME, null, DB_VER);
     }
 
 
-
-
-    /*@Override
-    public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion) {
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
+    }
+
+//neues Medikament hinzufügen
+   public boolean insertNewEntry (String name, String mengenangabe, String mengenart, String pharmanummer) {
+
+       SQLiteDatabase db = getWritableDatabase();
+       ContentValues values = new ContentValues();
+       values.put(NAME,name);
+       values.put(MENGE,mengenangabe);
+       values.put(ART,mengenart);
+       values.put(NUMMER,pharmanummer);
+       long result = db.insert("Medikamente",null,values);
+       if (result == -1)
+           return false;
+        else
+           return true;
+    }
+
+
+    /*public boolean updateData (String name, String mengenangabe, String mengenart, String pharmanummer) {
+
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(NAME,name);
+        values.put(MENGE,mengenangabe);
+        values.put(ART,mengenart);
+        values.put(NUMMER,pharmanummer);
+        db.update(TABLE,values, "MedID = ?",new String[] {id} );
+        return true;
+
+
     }*/
 
-
-/*    public void insertNewEntry (String name, String mengenangabe, String mengenart, String pharmanummer, SQLiteDatabase db) {
-
-        ContentValues contentValues = new ContentValues();
-        //contentValues.put(ID,id);
-        contentValues.put(NAME,name);
-        contentValues.put(MENGE,mengenangabe);
-        contentValues.put(ART,mengenart);
-        contentValues.put(NUMMER,pharmanummer);
-
-        db.insert(TABLE,null,contentValues);
-        Log.d("key","Database - one row is inserted.....");
-    }*/
 
 
 
