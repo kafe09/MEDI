@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:text="Neues Medikament hinzufügen"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#336699"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="36dp"
@@ -25,25 +25,26 @@
         android:id="@+id/tf_handelsname"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/textView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="78dp"
         android:ems="10"
         android:hint="Handelsname:"
-        android:inputType="textPersonName"
+        android:inputType="textCapCharacters"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
 
     <Button
         android:id="@+id/bt_add"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="34dp"
-        android:layout_marginEnd="12dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/buttonstylegreen"
         android:onClick="onAddClick"
-        android:text="Speichern" />
+        android:text="Speichern"
+        android:textColor="?attr/colorBackgroundFloating" />
 
 
 
@@ -59,19 +60,19 @@
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_alignStart="@+id/lb_menge"
-        android:layout_below="@+id/lb_menge"
-        android:layout_marginTop="18dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="190dp"
         android:max="500" />
 
     <TextView
         android:id="@+id/lb_menge"
         android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_alignStart="@+id/tf_handelsname"
-        android:layout_below="@+id/tf_handelsname"
-        android:layout_marginTop="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="147dp"
         android:textSize="18sp"
         tools:text="Mengenangabe:" />
 
@@ -90,40 +91,32 @@
         android:id="@+id/tv_wert"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_alignStart="@+id/seekBar"
-        android:layout_below="@+id/seekBar"
-        android:layout_marginTop="19dp" />
-
-    <TextView
-        android:id="@+id/tv_art"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/tv_wert"
-        android:layout_below="@+id/tv_wert"
-        android:layout_marginTop="14dp"
-        android:text="Mengenart:"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="228dp"
+        android:textAlignment="viewStart"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/tf_zulassungsnummer"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_below="@+id/tf_art"
-        android:layout_marginTop="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="164dp"
         android:ems="10"
         android:hint="Zulassungsnummer:"
-        android:inputType="textPersonName" />
+        android:inputType="textCapCharacters" />
 
     <EditText
         android:id="@+id/tf_art"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tv_art"
-        android:layout_below="@+id/tv_art"
-        android:layout_marginTop="15dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="227dp"
         android:ems="10"
         android:hint="Mengenart:"
-        android:inputType="textPersonName" />
+        android:inputType="textCapCharacters" />
 
 </RelativeLayout>

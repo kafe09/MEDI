@@ -11,7 +11,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     public static final String TAG = DatabaseHelperContacts.class.getSimpleName();
     private static final int DATABASE_VERSION = 1;
     SQLiteDatabase db;
-    private static final String DATABASE_NAME = "kontakte.db";
+    private static final String DATABASE_NAME = "medikamente.db";
     //contacts Datenbank
     private static final String TABLE_NAME = "contacts";
     private static final String COLUMN_ID = "id";

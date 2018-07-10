@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="162" />
+                                                <entry key="scalingPercent" value="112" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -34,10 +34,11 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../../Bildschirmfoto 2018-07-04 um 17.05.24.png" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
-                                      <entry key="outputName" value="haupticon_app" />
+                                      <entry key="backgroundLayerName" value="search2" />
+                                      <entry key="foregroundImage" value="$PROJECT_DIR$/../../search.png" />
+                                      <entry key="foregroundLayerName" value="suche2" />
+                                      <entry key="outputName" value="suchi_icon2" />
+                                      <entry key="previewDensity" value="XXXHIGH" />
                                     </map>
                                   </option>
                                 </PersistentState>

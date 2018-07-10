@@ -94,7 +94,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/buttonstylegreen"
         android:onClick="onRegistrierenClick"
         android:text="Registrieren"
         android:textAlignment="center"

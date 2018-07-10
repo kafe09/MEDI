@@ -18,7 +18,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_search"
         android:layout_width="match_parent"
-        android:layout_height="355dp"
+        android:layout_height="376dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/search_bar" />
@@ -29,16 +29,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:background="@drawable/buttonstylegreen"
         android:onClick="onHinzuClick"
         android:text="Medikament neu hinzufügen"
-        android:textColor="?attr/actionModeSplitBackground" />
+        android:textColor="#336699" />
 
     <Button
         android:id="@+id/hinzufügen"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bt_add"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp"
+        android:background="@drawable/buttonstylegreen"
+        android:textColor="#fff"
         android:onClick="hinzufügen"
         android:text="Hinzufügen" />
 
@@ -46,10 +50,8 @@
         android:id="@+id/SuchMedikament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="124dp"
-        android:text="TextView"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/recycler_search"
         android:textAlignment="center"
         android:textColor="?attr/actionModeSplitBackground"
         android:textSize="18sp"

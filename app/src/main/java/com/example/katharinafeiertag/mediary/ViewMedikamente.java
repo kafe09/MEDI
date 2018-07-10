@@ -1,60 +1,34 @@
 package com.example.katharinafeiertag.mediary;
 
-
 import android.database.Cursor;
-import android.database.SQLException;
-import android.support.v7.app.AppCompatActivity;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import com.example.katharinafeiertag.mediary.R;
-
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewMedikamente extends AppCompatActivity {
 
-    Cursor c = null;
+    private ListView listView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_medikamente);
 
-        ((Button) findViewById(R.id.button01)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseHelperMedi myDbHelper = new DatabaseHelperMedi(ViewMedikamente.this);
-                try {
-                    myDbHelper.createDataBase();
-                } catch (IOException ioe) {
-                    throw new Error("Unable to create database");
-                }
-                try {
-                    myDbHelper.openDataBase();
-                } catch (SQLException sqle) {
-                    throw sqle;
-                }
-                Toast.makeText(ViewMedikamente.this, "Successfully Imported", Toast.LENGTH_SHORT).show();
-                c = myDbHelper.query("medikamente", null, null, null, null, null, null);
-                if (c.moveToFirst()) {
-                    do {
-                        Toast.makeText(ViewMedikamente.this,
-                                "ID: " + c.getInt(0) + "\n" +
-                                        "NAME: " + c.getString(1) + "\n" +
-                                        "MENGE: " + c.getString(2) + "\n" +
-                                        "ART: " + c.getString(3) + "\n" +
-                                        "PHARMANUMMER:  " + c.getString(4),
-                                Toast.LENGTH_LONG).show();
-                    } while (c.moveToNext());
-                }
-            }
-        });
+        this.listView = (ListView) findViewById(R.id.listView);
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        List<String> quotes = databaseAccess.getQuotes();
+        databaseAccess.close();
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, quotes);
+        this.listView.setAdapter(adapter);
     }
-
-
 }

@@ -1,6 +1,7 @@
 package com.example.katharinafeiertag.mediary;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,26 +22,25 @@ import java.util.List;
 
 
 //um Medikamente in unserer großen Datenbank zu suchen
-//das Suchen geht verdammt langsam - eventuell Prof fragen was wir hier tun können
+
 public class MedSucheActivity extends AppCompatActivity {
-    public static final String TAG = DatabaseHelperMedikament.class.getSimpleName();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     SearchAdapter adapter;
     TextView textView;
 
 
+
     MaterialSearchBar materialSearchBar;
     List<String> suggestList = new ArrayList<>();
 
-    DrugsDatabase database;
+    DatabaseOpenHelper database;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG,"in onCreate von Medikament suchen");
-        super.onCreate(savedInstanceState);
+         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medsuchen);
 
         Button button = (Button) findViewById(R.id.hinzufügen);
@@ -65,8 +65,7 @@ public class MedSucheActivity extends AppCompatActivity {
         //textView = (TextView) findViewById(R.id.versuch);
 
         //Datenbank
-        database = new DrugsDatabase(this);
-        Log.d(TAG,"Datenbank gefunden");
+        database = new DatabaseOpenHelper(this);
 
         //Searchbar
         materialSearchBar.setHint("Search");
@@ -83,9 +82,8 @@ public class MedSucheActivity extends AppCompatActivity {
 
                 List<String> suggest = new ArrayList<>();
                 for(String search:suggestList) {
-                   String medikament = materialSearchBar.getText().toLowerCase();
-                   textView.setText(medikament);
-                   //nur um zu versuchen
+                   if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
+                       suggest.add(search);
 
 
 
@@ -127,7 +125,7 @@ public class MedSucheActivity extends AppCompatActivity {
 
     private void startSearch(String text) {
 
-       // adapter = new SearchAdapter(this,database.getDrugsByName(text));
+       adapter = new SearchAdapter(this,database.getDrugsByName(text));
         recyclerView.setAdapter(adapter);
     }
 
