@@ -40,7 +40,7 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
         onCreate(db);
     }
 
-
+//neues Medikament hinzufügen
    public boolean insertNewEntry (String name, String mengenangabe, String mengenart, String pharmanummer) {
 
        SQLiteDatabase db = getWritableDatabase();
