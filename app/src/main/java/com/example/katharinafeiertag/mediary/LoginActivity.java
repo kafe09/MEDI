@@ -33,9 +33,9 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private KeyStore keyStore;
-    private Cipher cipher;
-    private String KEY_NAME = "AndroidKey";
+    //private KeyStore keyStore;
+    //private Cipher cipher;
+   // private String KEY_NAME = "AndroidKey";
 
     private TextView tf_info;
     private SessionManager session;
@@ -55,9 +55,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-        KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+     //   KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 
-
+/*
         FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
         if (!fingerprintManager.isHardwareDetected())
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
             }
         }
-
+*/
         helper = new DatabaseHelperContacts(this);
         session = new SessionManager(this);
 
@@ -98,11 +98,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         username = (EditText) findViewById(R.id.tf_allergien);
         passwort = (EditText) findViewById(R.id.tf_passwort);
+
+        com.example.katharinafeiertag.mediary.FingerprintManager.Instance(this).setFingerprint(this);
     }
 
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
             keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
 
@@ -130,10 +132,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
                 fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
             }
-        }
+        }*/
 
 
-    public void genKey() throws CertificateException, NoSuchAlgorithmException, IOException {
+    /*public void genKey() throws CertificateException, NoSuchAlgorithmException, IOException {
         try {
 
             KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
@@ -154,11 +156,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             try {
                 keyStore.load(null);
-
+*//*
                 keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                         .setBlockModes(KeyProperties.BLOCK_MODE_CBC) .setUserAuthenticationRequired(true)
                         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
                         .build());
+                        *//*
                 keyGenerator.generateKey();
 
             } catch (IOException e) {
@@ -167,17 +170,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 e.printStackTrace();
             } catch (CertificateException e) {
                 e.printStackTrace();
-            } catch (InvalidAlgorithmParameterException e) {
-                e.printStackTrace();
+            //} catch (InvalidAlgorithmParameterException e) {
+            //    e.printStackTrace();
             }
         //  e.printStackTrace();
-            //}
+            //}*/
 
-        }
+     //   }
 
 
 
-    public boolean cipherInit() {
+    /*public boolean cipherInit() {
         try {
             cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
@@ -211,7 +214,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         }
 
-    }
+    }*/
 
 
 
@@ -251,17 +254,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick (View v) {
         switch (v.getId()) {
             case R.id.bt_login:
-
                 break;
             case R.id.bt_registrieren:
-
                 break;
             default:
-
         }
     }
-
-
-    }
+}
 
 

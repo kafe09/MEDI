@@ -8,11 +8,10 @@
 
     <Button
         android:id="@+id/bt_logout"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bt_loeschen"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:background="@drawable/buttonstylegreen"
         android:onClick="logout"
         android:text="Ausloggen"
@@ -95,7 +94,7 @@
         android:layout_below="@+id/tf_email"
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
-        android:layout_toEndOf="@+id/lb_username2"
+        android:layout_toEndOf="@+id/lb_fingerprint"
         android:ems="10"
         android:hint="Benutzername"
         android:inputType="textEmailAddress"
@@ -106,11 +105,10 @@
 
     <Button
         android:id="@+id/bt_loeschen"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="13dp"
         android:background="@drawable/buttonstylegreen"
         android:onClick="benutzerloeschen"
         android:text="Profil löschen"
@@ -144,14 +142,25 @@
         android:id="@+id/lb_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tf_email"
+        android:layout_alignBottom="@+id/tf_email"
         android:layout_alignStart="@+id/lb_nm"
-        android:layout_alignTop="@+id/tf_email"
         android:text="E-Mail:"
         android:textSize="18sp" />
 
 
     <TextView
-        android:id="@+id/lb_username2"
+        android:id="@+id/lb_fingerprint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lb_username"
+        android:layout_below="@+id/tf_benutzername"
+        android:layout_marginTop="24dp"
+        android:text="Fingerprint verwenden:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/lb_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/lb_mail"
@@ -167,6 +176,16 @@
         android:layout_centerHorizontal="true"
         android:onClick="selectImage"
         android:text="Profilbild hinzufügen" />
+
+    <Switch
+        android:id="@+id/switch_finger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lb_fingerprint"
+        android:layout_alignStart="@+id/tf_benutzername"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:textOff="No"
+        android:textOn="Yes" />
 
 
 </RelativeLayout>

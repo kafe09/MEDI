@@ -50,6 +50,7 @@ public class RegistrierungActivity extends AppCompatActivity {
             c.setEmail(emailstr);
             c.setUname(unamestr);
             c.setPasswort(passwortstr);
+            c.setFingerPrintenabled("false");
             helper.insertContact(c);
         }
     }

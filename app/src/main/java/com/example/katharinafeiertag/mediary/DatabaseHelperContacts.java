@@ -14,13 +14,13 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "medikamente.db";
     //contacts Datenbank
     private static final String TABLE_NAME = "contacts";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_VORNAME = "vorname";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_UNAME = "uname";
-    private static final String COLUMN_PASSWORT = "passwort";
-
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_VORNAME = "vorname";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_UNAME = "uname";
+    public static final String COLUMN_PASSWORT = "passwort";
+    public static final String COLUMN_FINGERPRINTENABLED = "fingerprint";
     //Hausapotheke Datenbank
     /*private static final String TABLE_NAME3 = "Hausapotheke";
     private static final String UserID = COLUMN_ID;*/
@@ -31,7 +31,14 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
 
     //Contacts
     private static final String TABLE_CREATE = "create table contacts (id integer primary key not null ," +
-            "vorname text not null , name text not null , email text not null , uname text not null , passwort text not null);";
+            "vorname text not null , " +
+            "name text not null , " +
+            "email text not null , " +
+            "uname text not null , " +
+            "passwort text not null, " +
+            "fingerprint text not null default 'false'," +
+            "public_key text " +
+            ");";
 
    /* //Hausapotheke
     private static final String TABLE_CREATE2 = "create table Hausapotheke (UserID integer primary key not null," +
@@ -49,33 +56,62 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
         db.execSQL(TABLE_CREATE);
         //db.execSQL(TABLE_CREATE2);
         this.db = db;
-
-
     }
 
-
-
-
+    /***
+     * Insert or updates a contact (it's idempotent)
+     * @param c The Contact to be updated
+     */
     public void insertContact(Contact c) {
         db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         //um die ID immer unique zu machen
-        String query = "select * from contacts ";
+        String query = "select "+ COLUMN_ID+ " from contacts order by " + COLUMN_ID + " desc";
         Cursor cursor = db.rawQuery(query,null);
-        int count = cursor.getCount();
-        values.put(COLUMN_ID, (count+1));       //+1 damit ID ermittelt werden kann (0 ist kein Benutzer)
+        Log.d(TAG, "Found an entry in database: " + cursor.getCount());
+        int count = (cursor.getCount() > 0 && cursor.moveToFirst()) ? Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_ID))) : 0;
+
+        cursor.close();
+
+        query = "select " + COLUMN_ID + "  from contacts where uname = '" + c.getUname() + "'";
+         cursor = db.rawQuery(query,null);
 
         values.put(COLUMN_VORNAME, c.getVorname());
         values.put(COLUMN_NAME, c.getName());
         values.put(COLUMN_EMAIL, c.getEmail());
         values.put(COLUMN_UNAME, c.getUname());
         values.put(COLUMN_PASSWORT, c.getPasswort());
+        values.put(COLUMN_FINGERPRINTENABLED, c.getFingerPrintenabled());
 
-        long id = db.insert(TABLE_NAME,null,values);
+        long id;
+
+         if(! cursor.moveToFirst()) {
+             values.put(COLUMN_ID, (count + 1));       //+1 damit ID ermittelt werden kann (0 ist kein Benutzer)
+             id = db.insert(TABLE_NAME, null, values);
+         } else {
+             Log.d(TAG, "DB: found contact, updating user "+ COLUMN_ID + "=" + cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
+             id = db.update(TABLE_NAME,  values, COLUMN_ID + "=" + cursor.getString(cursor.getColumnIndex(COLUMN_ID)), null);
+         }
         db.close();
 
-        Log.d(TAG, "Benutzer hinzugefügt" +id);
+        Log.d(TAG, "Benutzer hinzugefügt " +id);
+    }
+
+    public Contact GetContactByUserName(String uname) {
+        db = this.getReadableDatabase();
+        String query = "select * from " + TABLE_NAME + " where " + COLUMN_UNAME + " = '" + uname + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        String a;   //Benutzername
+        String b;   //Passwort
+        b = "Sie sind noch nicht registriert";
+
+        if (cursor.moveToFirst())
+            return new Contact(cursor);
+        else
+            Log.d(TAG, "No user with username '" + uname + "' found");
+
+        return null;
     }
 
 
