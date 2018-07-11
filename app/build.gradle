@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.katharinafeiertag.mediary"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -18,11 +18,12 @@ android {
         }
     }
     buildToolsVersion '27.0.3'
+    productFlavors {
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -32,18 +33,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     // Google Play services
     implementation 'com.google.android.gms:play-services:11.4.0'
     implementation 'com.android.support:cardview-v7:26.+'
     implementation files('libs/jxl.jar')
-
     //SQlite Asset
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.github.mancj:MaterialSearchBar:+'
     implementation files('Assets/medikamente.db')
-
     //compile 'org.junit.jupiter:junit-jupiter-api'
 }
