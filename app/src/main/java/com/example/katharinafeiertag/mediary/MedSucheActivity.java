@@ -22,20 +22,18 @@ import java.util.List;
 
 
 //um Medikamente in unserer großen Datenbank zu suchen
-
 public class MedSucheActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     SearchAdapter adapter;
     TextView textView;
-
-
+    String medikamentenName;
+    Button hinzufügen;
 
     MaterialSearchBar materialSearchBar;
     List<String> suggestList = new ArrayList<>();
 
     DatabaseOpenHelper database;
-
 
 
     @Override
@@ -51,7 +49,7 @@ public class MedSucheActivity extends AppCompatActivity {
                 TextView suche = (TextView) findViewById(R.id.SuchMedikament);
                 intent.putExtra("weitergabe",suche.getText().toString());
                 startActivityForResult(intent,1);
-                //wichtig wenn man Daten zurück geben will von der 2.Activity
+
             }
         });
         textView = (TextView) findViewById(R.id.SuchMedikament);
@@ -60,9 +58,18 @@ public class MedSucheActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-
         materialSearchBar = (MaterialSearchBar) findViewById(R.id.search_bar);
-        //textView = (TextView) findViewById(R.id.versuch);
+
+        hinzufügen = (Button)findViewById((R.id.hinzufügen));
+        hinzufügen.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), alleMedEinsichtActivity.class);
+
+                intent.putExtra("name", materialSearchBar.getText().toString());
+                startActivityForResult(intent, 1);
+            }
+        });
 
         //Datenbank
         database = new DatabaseOpenHelper(this);
@@ -74,23 +81,16 @@ public class MedSucheActivity extends AppCompatActivity {
         materialSearchBar.addTextChangeListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 List<String> suggest = new ArrayList<>();
                 for(String search:suggestList) {
                    if (search.toLowerCase().contains(materialSearchBar.getText().toLowerCase()))
                        suggest.add(search);
-
-
-
-
                 }
                 materialSearchBar.setLastSuggestions(suggest);
-
             }
 
             @Override
@@ -120,11 +120,9 @@ public class MedSucheActivity extends AppCompatActivity {
         //init Adapter default set all result
         adapter = new SearchAdapter(this,database.getDrug());
         recyclerView.setAdapter(adapter);
-
     }
 
     private void startSearch(String text) {
-
        adapter = new SearchAdapter(this,database.getDrugsByName(text));
         recyclerView.setAdapter(adapter);
     }
@@ -136,9 +134,7 @@ public class MedSucheActivity extends AppCompatActivity {
 
     public void onHinzuClick(View v) {
         Log.d("msg","Auf Hinzufügen Button geklickt");
-        Intent intent = new Intent (getBaseContext(),MedikamentHinzufugenActivity.class);
+        Intent intent = new Intent (getBaseContext(),alleMedEinsichtActivity.class);
         startActivity(intent);
     }
-
-
 }

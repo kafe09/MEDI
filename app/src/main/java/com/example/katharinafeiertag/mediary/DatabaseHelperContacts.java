@@ -206,6 +206,31 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
     }
 
 
+    public String getUserID (String uname) {
+        db = this.getReadableDatabase();
+        String query = "select * from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String a;   //Benutzername
+        String b;   //ID
+        b = " ";
+
+        if (cursor.moveToFirst()) {
+            do {
+                a = cursor.getString(4);        //Benutzernamen werden durchiteriert
+
+                if (a.equals(uname)) {             //wenn Benutzername gefunden wurde
+                    b = cursor.getString(1);    //ID wird ermittelt
+                    break;                         //Methode abbrechen, weil Benutzername+ID gefunden wurden
+                }
+            }
+            while (cursor.moveToNext());
+        }
+        return b;                              //wenn kein Benutzer gefunden wurde
+    }
+
+
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " +TABLE_NAME;

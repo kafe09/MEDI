@@ -6,7 +6,7 @@
     <color name="ourBackgroundColorLogin">#99CC66</color>
     <color name="backgroundColor">#FFFFFF</color>
     <color name="schrift">#336699</color>
-    <color name="loginanfang">#EEEEEE</color>
+    <color name="loginanfang">#F6F6F6</color>
 
     <item name="visible" type="id"/>
     <item name="masked" type="id"/>

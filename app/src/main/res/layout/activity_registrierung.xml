@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="52dp"
         android:ems="10"
-        android:hint="Vorname:"
+        android:hint="Vorname"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
@@ -44,7 +44,7 @@
         android:layout_below="@+id/tf_vn"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Nachname:"
+        android:hint="Nachname"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_vn" />
@@ -59,7 +59,7 @@
         android:drawableLeft="@android:drawable/sym_action_email"
         android:drawablePadding="@dimen/activity_horizontal_margin"
         android:ems="10"
-        android:hint="E-Mail:"
+        android:hint="E-Mail"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_nm" />
@@ -73,7 +73,7 @@
         android:layout_below="@+id/tf_uname"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Passwort:"
+        android:hint="Passwort"
         android:inputType="textPassword" />
 
     <EditText
@@ -84,12 +84,12 @@
         android:layout_below="@+id/tf_passwort"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Passwort wiederholen:"
+        android:hint="Passwort wiederholen"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/bt_registrieren"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -103,7 +103,6 @@
         android:textStyle="bold" />
 
 
-
     <EditText
         android:id="@+id/tf_uname"
         android:layout_width="300dp"
@@ -112,7 +111,7 @@
         android:layout_below="@+id/tf_mail"
         android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="Benutzername:"
+        android:hint="Benutzername"
         android:inputType="textPersonName" />
 
 </RelativeLayout>
