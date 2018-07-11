@@ -5,6 +5,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
@@ -37,7 +38,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationError(int errorCode, CharSequence errString) {
 
-        this.update("Es ist ein AuthentifizierungError aufgetreten." +errString,false);
+        if(errorCode != 5)
+            Toast.makeText(context, "Es ist ein Fehler bei der Authentifizierung aufgetreten: " +errString + " (" + errorCode + ")", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -49,34 +51,21 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     @Override
     public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-        this.update("Error" + helpString,false);
     }
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
-        super.onAuthenticationFailed();
-        context.startActivity(new Intent(context, HauptmenuActivity.class));
-        Toast.makeText(context, "Sie haben nun Zungang zu der App", Toast.LENGTH_SHORT).show();
-    }
+        super.onAuthenticationSucceeded(result);
 
-    private void update(String s, boolean b) {
-
-        TextView tf_fingerinfo = (TextView) ((Activity)context).findViewById(R.id.tf_fingerinfo);
-        ImageView imageView = (ImageView) ((Activity)context).findViewById(R.id.iv_fingerprint);
-
-        tf_fingerinfo.setText(s);
-
-        //wennn Error auftritt Farbe ändern, ansonsten bleibt es bei der gleichen Farbe
-        if(b == false) {
-
-            tf_fingerinfo.setTextColor(ContextCompat.getColor(context,R.color.colorAccent));
-
-        } else {
-
-            tf_fingerinfo.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            //zusätzlich ein Bild pushen (Hackerl für erledigt)
-            imageView.setImageResource(R.mipmap.done);
-
+        SharedPreferences preferences = this.context.getSharedPreferences("MEDI", context.MODE_PRIVATE);
+        String username = preferences.getString("displayName","");
+        if(!username.equals("") ) {
+            context.startActivity(new Intent(context, HauptmenuActivity.class));
+            Toast.makeText(context, "Servus, " +preferences.getString("displayName","User"), Toast.LENGTH_SHORT).show();
         }
+        else
+            Toast.makeText(context, "Authentifikation fehlgeschlagen. Bitte registrieren Sie den Fingerprint neu.", Toast.LENGTH_SHORT).show();
+
     }
+
 }
