@@ -14,9 +14,9 @@ public class MedTableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medtable);
 
-        TextView tv = (TextView) findViewById(R.id.name1);
+        //TextView tv = (TextView) findViewById(R.id.name1);
         String übergabe = getIntent().getStringExtra("weitergabe");
-        tv.setText(übergabe);
+        //tv.setText(übergabe);
 
    /*     TextView name1 = (TextView) findViewById(R.id.name1);
         String userEingabeName = getIntent().getStringExtra("eingabeName");
