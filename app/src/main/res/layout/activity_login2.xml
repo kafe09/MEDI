@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="35dp"
-        android:background="@color/loginanfang">
+        android:background="@color/loginanfang"
+        android:id="@+id/linearLayout2">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,7 +21,7 @@
             android:fontFamily="@font/abel"
             android:text="Willkommen in ihrer digitalen Hausapotheke!"
             android:textAlignment="center"
-            android:textColor="#fff"
+            android:textColor="@color/schrift"
             android:textSize="25sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -30,8 +31,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="160dp"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
         android:drawableLeft="@drawable/ic_person_outline_black_24dp"
         android:drawablePadding="10dp"
         android:text="Benutzername:"
@@ -40,10 +42,10 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/tf_allergien"
-        android:layout_width="match_parent"
+        android:id="@+id/tf_benutzername"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/tv_info"
         android:layout_below="@+id/tv_info"
         android:ems="10"
         android:inputType="textPersonName"
@@ -53,8 +55,8 @@
         android:id="@+id/tv_info2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tf_allergien"
+        android:layout_alignStart="@+id/tf_benutzername"
+        android:layout_below="@+id/tf_benutzername"
         android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
         android:drawablePadding="10dp"
         android:text="Passwort:"
@@ -64,9 +66,10 @@
 
     <EditText
         android:id="@+id/tf_passwort"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/tf_benutzername"
+        android:layout_alignStart="@+id/tv_info2"
         android:layout_below="@+id/tv_info2"
         android:ems="10"
         android:inputType="textPassword"
@@ -74,11 +77,11 @@
 
     <Button
         android:id="@+id/bt_login"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="204dp"
+        android:layout_above="@+id/bt_registrieren"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttonstylegreen"
         android:onClick="anmelden"
         android:text="Anmelden"
@@ -86,19 +89,6 @@
         android:textColor="#fff"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_info3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="168dp"
-        android:autofillHints="@color/colorAccent"
-        android:background="@color/backgroundColor"
-        android:text="Sie sind noch nicht angemeldet?"
-        android:textAlignment="center"
-        android:textColor="@color/schrift"
-        android:textSize="18sp" />
 
     <Button
         android:id="@+id/bt_registrieren"

@@ -52,10 +52,9 @@
         <activity
             android:name=".EinstellungenActivity"
             android:label="@string/title_activity_einstellungen" />
-        <activity android:name=".EinnahmeActivity" />
+        <activity android:name=".ListViewActivity" />
         <activity android:name=".HausapothekeMenuActivity" />
         <activity android:name=".MedikamentHinzufugenActivity" />
-        <activity android:name=".MedEinnahmeActivitiy" />
         <activity android:name=".MedSucheActivity" />
 
         <!-- Declaring Service in Manifest -->
@@ -83,7 +82,6 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".ViewMedikamente"></activity>
     </application>
 
 </manifest>

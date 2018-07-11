@@ -3,34 +3,14 @@ package com.example.katharinafeiertag.mediary;
 import android.app.KeyguardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.security.keystore.KeyGenParameterSpec;
-import android.security.keystore.KeyProperties;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.CertificateException;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tf_info;
@@ -59,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         iv_finger = (ImageView) findViewById(R.id.iv_fingerprint);
         tf_info = (TextView) findViewById(R.id.tf_fingerinfo);
 
-        username = (EditText) findViewById(R.id.tf_allergien);
+        username = (EditText) findViewById(R.id.tf_benutzername);
         passwort = (EditText) findViewById(R.id.tf_passwort);
 
 //        com.example.katharinafeiertag.mediary.FingerprintManager.Instance(this).setFingerprint(this);
