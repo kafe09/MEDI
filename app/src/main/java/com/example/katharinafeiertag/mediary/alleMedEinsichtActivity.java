@@ -1,13 +1,17 @@
 package com.example.katharinafeiertag.mediary;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,6 +20,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,22 +39,26 @@ import static com.example.katharinafeiertag.mediary.Constant.THIRD_COLUMN;
 //Hier sieht Benutzer all seine Medikamente in seiner Hausapotheke
 public class alleMedEinsichtActivity extends AppCompatActivity {
     private static final String TAG = "alleMedEinsicht";
-    ArrayList[] list = new ArrayList[3];
-    ListView lview;
-    DatabaseOpenHelper openHelper;
-    DatabaseHelperContacts helperC;
-    Button button;
 
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    SearchAdapterdigital adapter;
+    TextView textView;
+    DatabaseHelperContacts helperC;
+    SQLiteDatabase db;
+
+    DatabaseOpenHelper openHelper;
     Context context = this;
     String name,userName, art, menge, nummer;
+    String id;
+    int idint;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allemedeinsicht);
         Log.d(TAG, "alleMedEinsicht startet");
-
-        lview = (ListView) findViewById(R.id.lv_medikamente);
-        button = (Button) findViewById(R.id.button2);
         name = getIntent().getStringExtra("name");
 
         openHelper= new DatabaseOpenHelper(this);
@@ -60,7 +71,14 @@ public class alleMedEinsichtActivity extends AppCompatActivity {
         Log.d(TAG,"benutzer eingeloggt: " +userName);
 
         helperC = new DatabaseHelperContacts(this);
-        helperC.getUserID(userName);
+        id = helperC.getUserID(userName);
+        idint = Integer.parseInt(id);
+        Log.d(TAG,"user id gefunden "+idint);
+
+        //openHelper.selectUser(id);
+        //SQLiteDatabase db = getReadableDatabase();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
 
         art = openHelper.getDrugsArtByName(name);
         menge = openHelper.getDrugsAmountByName(name);
@@ -72,21 +90,73 @@ public class alleMedEinsichtActivity extends AppCompatActivity {
 
         Log.d("msg","Daten"+ art + " " +menge + " "+ nummer);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyler_alleMed);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent i = new Intent(alleMedEinsichtActivity.this, ListViewActivity.class);
-                startActivity(i);
-            }
+        recyclerView.addOnItemTouchListener(new ViewCardListener(context, recyclerView, new ViewCardListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        AlertDialog.Builder a_builder = new AlertDialog.Builder(alleMedEinsichtActivity.this);
+                        a_builder.setMessage("Wollen Sie das Medikament jetzt einnehmen?")
+                                .setCancelable(false)
+                                .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        Intent i = new Intent(getBaseContext(),HauptmenuActivity.class);
+                                        startActivity(i);
+                                        Toast temp = Toast.makeText(alleMedEinsichtActivity.this, "Medikamentenbestand wurde verringert", Toast.LENGTH_LONG);
+                                        temp.show();
+
+                                        finish();
+                                    }
+                                })
+                                .setNegativeButton("ABBRECHEN", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alert = a_builder.create();
+                        alert.setTitle("Alert !!!");
+                        alert.show();
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+            Log.d("vor adapter", "apdater beginnt");
 
 
-    });
+        adapter = new SearchAdapterdigital(this,openHelper.getmeineMed(idint));
+        Log.d("werte mitbekommen ", "Daten" + openHelper.getmeineMed(idint));
+        recyclerView.setAdapter(adapter);
 
+        recyclerView.addOnItemTouchListener(new ViewCardListener(getBaseContext(), recyclerView, new ViewCardListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //do whatever
+                    }
 
-
-
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
     }
+
+
+
+
 
 
 }

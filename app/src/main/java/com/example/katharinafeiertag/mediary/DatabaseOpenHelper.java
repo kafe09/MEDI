@@ -31,7 +31,6 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
     public static final String haArt = "Art";
     public static final String haNummer = "Nummer";
 
-
     public DatabaseOpenHelper(Context context) {
         super(context, DB_NAME, null, DB_VER);
     }
@@ -99,8 +98,6 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         Log.d("in der DrugDatabases", "SQLiteQueryBuilder successful");
 
-
-        //Kathi habe hier: "ATCCode", "BezeichnungATCCode" gelöscht
         String [] sqlSelect = {"MedID", "Handelsname", "Mengenangabe", "Mengenart", "Pharmanummer"};
         String tableName = "Medikamente";
         Log.d("in der DrugDatabases", " successful" + sqlSelect);
@@ -152,7 +149,10 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
 
         qb.setTables(tableName);
         Cursor cursor = qb.query(db, sqlSelect, "Handelsname LIKE ?",new String[]{"%"+name+"%"}, null, null, null);
+        Log.d("Message","Handelsname " +cursor);
+
         List<Drugs> result = new ArrayList<>();
+        Log.d("Daten Handelsname","gefilterte Daten Handelsname nach Query" + result);
         if(cursor.moveToFirst()) {
 
             do{
@@ -165,10 +165,13 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
 
                 result.add(drug);
 
+
+
             }while (cursor.moveToNext());
         }return result;
     }
 
+    //gebraucht in alleMedEinsicht
     public Drugs getDrugsByNameForHome(String name) {
         SQLiteDatabase db = getReadableDatabase();
         Drugs drug = new Drugs();
@@ -238,4 +241,46 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
         }cursor.close();
         return hinzuNr;
     }
+
+    public List<Drugs> getmeineMed(int id) {
+
+        String gesuchteId = String.valueOf(id);
+        SQLiteDatabase db = getReadableDatabase();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        Log.d("in der DrugDatabases", "SQLiteQueryBuilder successful");
+
+        String [] sqlSelect = {"MedID", "UserID", "Name", "Menge", "Art", "Nummer"};
+        String tableName = "Hausapotheke";
+        Log.d("in der DrugDatabases", " successful" + sqlSelect);
+
+        qb.setTables(tableName);
+        Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
+        Log.d("geöffnete ", "Tabl: " +tableName);
+       // Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
+
+        //Cursor cursor = qb.query(db, sqlSelect, "UserID LIKE ?",new String[]{""+gesuchteId+""}, null, null, null,null);
+        Log.d("Message","Cursorabfrage " +cursor);
+        List<Drugs> foundHomeMed = new ArrayList<>();
+        Log.d("vor if", "xxx");
+        if(cursor.moveToFirst()) {
+
+            do{
+                Log.d("nach do", "hier");
+                Drugs drug = new Drugs();
+                drug.setMedID(cursor.getInt(cursor.getColumnIndex("MedID")));
+                drug.setUserId(cursor.getInt(cursor.getColumnIndex("UserID")));
+Log.d("in if drinnen", "userid");
+                drug.setName(cursor.getString(cursor.getColumnIndex("Name")));
+                drug.setMenge(cursor.getString(cursor.getColumnIndex("Menge")));
+                drug.setArt(cursor.getString(cursor.getColumnIndex("Art")));
+                drug.setNummer(cursor.getString(cursor.getColumnIndex("Nummer")));
+
+                Log.d("Daten Hausapotheke","gefilterte Daten Hausapotheke nach Query" + drug);
+
+                foundHomeMed.add(drug);
+            }while (cursor.moveToNext());
+        }return foundHomeMed;
+    }
+
+
 }
