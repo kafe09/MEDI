@@ -9,34 +9,32 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by scheerbernhard on 05.05.18.
- */
-class SearchViewHolder extends RecyclerView.ViewHolder{
+
+class SearchViewHolderdigital extends RecyclerView.ViewHolder{
 
     public TextView medid,name,menge,art,nummer;
 
-    public SearchViewHolder(View itemView) {
+    public SearchViewHolderdigital(View itemView) {
         super(itemView);
-        medid = (TextView) itemView.findViewById(R.id.medid);
+        //medid = (TextView) itemView.findViewById(R.id.medid);
         name = (TextView) itemView.findViewById(R.id.name);
         menge = (TextView) itemView.findViewById(R.id.menge);
         art = (TextView) itemView.findViewById(R.id.art);
-        nummer = (TextView) itemView.findViewById(R.id.nummer);
+        //nummer = (TextView) itemView.findViewById(R.id.nummer);
     }
 }
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
+public class SearchAdapterdigital extends RecyclerView.Adapter<SearchViewHolder> {
 
     private Context context;
     private List<Drugs> drugs;
 
-    public SearchAdapter(Context context, List<Drugs> drugs) {
+    public SearchAdapterdigital(Context context, List<Drugs> drugs) {
         this.context = context;
         this.drugs = drugs;
     }
 
-    public SearchAdapter() {
+    public SearchAdapterdigital() {
 
     }
 
@@ -50,11 +48,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     @Override
     public void onBindViewHolder(SearchViewHolder holder, int position) {
         //String pharmaId,name,menge,art,preis,code,bezeichnung;
-        holder.medid.setText(toString().valueOf(drugs.get(position).getMedID()));
+        //holder.medid.setText(toString().valueOf(drugs.get(position).getMedID()));
         holder.name.setText(drugs.get(position).getName());
         holder.menge.setText(drugs.get(position).getMenge());
         holder.art.setText(drugs.get(position).getArt());
-        holder.nummer.setText(drugs.get(position).getNummer());
+        //holder.nummer.setText(drugs.get(position).getNummer());
     }
 
     @Override
@@ -62,6 +60,3 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
         return drugs.size();
     }
 }
-
-//-------------------------------------
-

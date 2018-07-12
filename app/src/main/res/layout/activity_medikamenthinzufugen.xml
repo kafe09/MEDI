@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_insertProfilimage" />
 
     <Button
-        android:id="@+id/bt_add"
+        android:id="@+id/bt_speichern"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -118,5 +118,19 @@
         android:ems="10"
         android:hint="Mengenart:"
         android:inputType="textCapCharacters" />
+
+
+    <TextView
+        android:id="@+id/tv_anzeige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="99dp"
+        android:text=""
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

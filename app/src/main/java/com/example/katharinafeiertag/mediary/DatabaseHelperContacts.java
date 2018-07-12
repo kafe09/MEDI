@@ -220,7 +220,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
                 a = cursor.getString(4);        //Benutzernamen werden durchiteriert
 
                 if (a.equals(uname)) {             //wenn Benutzername gefunden wurde
-                    b = cursor.getString(1);    //ID wird ermittelt
+                    b = cursor.getString(0);    //ID wird ermittelt
                     break;                         //Methode abbrechen, weil Benutzername+ID gefunden wurden
                 }
             }

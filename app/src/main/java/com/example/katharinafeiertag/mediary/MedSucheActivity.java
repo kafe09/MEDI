@@ -119,6 +119,7 @@ public class MedSucheActivity extends AppCompatActivity {
 
         //init Adapter default set all result
         adapter = new SearchAdapter(this,database.getDrug());
+        Log.d("alleMed","mitbekommen" +database.getDrug());
         recyclerView.setAdapter(adapter);
     }
 
@@ -134,6 +135,11 @@ public class MedSucheActivity extends AppCompatActivity {
 
     public void onHinzuClick(View v) {
         Log.d("msg","Auf Hinzufügen Button geklickt");
+        Intent intent = new Intent (getBaseContext(),MedikamentHinzufugenActivity.class);
+        startActivity(intent);
+    }
+
+    public void hinzufuegen (View v) {
         Intent intent = new Intent (getBaseContext(),alleMedEinsichtActivity.class);
         startActivity(intent);
     }
