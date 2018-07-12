@@ -73,6 +73,7 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
         int count = (cursor.getCount() > 0 && cursor.moveToFirst()) ? Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_ID))) : 0;
 
         cursor.close();
+        //hier entsteht ein doofer kommentar weil kathi foto macht xD
 
         query = "select " + COLUMN_ID + "  from contacts where uname = '" + c.getUname() + "'";
          cursor = db.rawQuery(query,null);
