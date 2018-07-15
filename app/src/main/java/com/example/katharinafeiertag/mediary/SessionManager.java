@@ -41,7 +41,6 @@ public class SessionManager {
     public void setLoggedin(boolean loggedin){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
-
         // commit changes
         editor.commit();
     }
@@ -62,29 +61,6 @@ public class SessionManager {
 
         // return user
         return user;
-    }
-
-     // Clear session details
-    public void logoutUser(){
-        // Clearing all data from Shared Preferences
-        editor.clear();
-        editor.commit();
-
-        // After logout redirect user to Loing Activity
-        Intent i = new Intent(ctx, LoginActivity.class);
-        // Closing all the Activities
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        // Add new Flag to start new Activity
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        // Staring Login Activity
-        ctx.startActivity(i);
-    }
-
-    // Get Login State - Quick check for login
-    public boolean loggedIn(){
-        return pref.getBoolean(IS_LOGIN, false);
     }
 
 

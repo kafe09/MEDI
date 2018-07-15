@@ -147,8 +147,8 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
 
             if (isInserted == true) {
-                        //Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament hinzugefügt", Toast.LENGTH_LONG);
-                        //temp.show();
+                        Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament hinzugefügt", Toast.LENGTH_LONG);
+                        temp.show();
                     } else {
                         Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament nicht hinzugefügt", Toast.LENGTH_LONG);
                         temp.show();

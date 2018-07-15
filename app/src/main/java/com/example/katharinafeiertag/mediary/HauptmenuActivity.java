@@ -16,20 +16,14 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 //Unser Hauptmenü
 public class HauptmenuActivity extends AppCompatActivity {
-    //Aufgabenstellung: Ein Ergebnis aus einer Aktivität zurückgeben
     public static final String REQUEST_RESULT = "REQUEST_RESULT";
-
     private static final String TAG = "AptknaeheActivity";
 
-    private static final int ERROR_DIADLOG_REQUEST = 9011;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hauptmenu);
-//        if(isServiceOK()){
-//            init();
-//        }
     }
 
     private void init() {
@@ -42,7 +36,6 @@ public class HauptmenuActivity extends AppCompatActivity {
             }
         });
     }
-
 
     //klick auf Apotheken-Button funktioniert
     public void onApothekenClick(View v) {
@@ -59,13 +52,6 @@ public class HauptmenuActivity extends AppCompatActivity {
         Intent userIntent = new Intent(getBaseContext(), BenutzerprofilActivity.class);
         startActivity(userIntent);
     }
-
-    //klick auf Settings-Button
-    public void onSettingsClick(View v) {
-        Intent settingsIntent = new Intent(getBaseContext(), EinstellungenActivity.class);
-        startActivity(settingsIntent);
-    }
-
 
     //klick auf Hausapotheke-Button
     public void onHausapothekeClick(View v) {
@@ -84,27 +70,5 @@ public class HauptmenuActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
-
-   /* public boolean isServiceOK() {
-        Log.d(TAG, "isServiceOK: checking google services version");
-
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(AptknaeheActivity.this);
-
-        if (available  == ConnectionResult.SUCCESS) {
-            //erverything is fine and the user can make requests
-            Log.d(TAG, "isServiceOK: Google Play Services is working");
-            return true;
-
-        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
-            //an error occured but we can resolve it
-            Log.d(TAG, "isServiceOK: an error occured but we can fix it");
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(AptknaeheActivity.this,available, ERROR_DIADLOG_REQUEST);
-            dialog.show();
-        } else {
-            Toast.makeText(this, "We can't make map requests", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }*/
-
 }
 

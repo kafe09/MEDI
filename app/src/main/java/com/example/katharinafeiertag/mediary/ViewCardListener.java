@@ -15,11 +15,8 @@ public class ViewCardListener implements RecyclerView.OnItemTouchListener {
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
 
-
         public void onLongItemClick(View view, int position);
     }
-
-
 
 
     public ViewCardListener(final Context context, final RecyclerView recyclerView, OnItemClickListener listener) {

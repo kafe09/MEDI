@@ -15,8 +15,6 @@ public class Drugs {
         this.art = art;
         this.nummer = nummer;
 
-
-
     }
     //leerer Konstruktor
     public Drugs() {

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         username = (EditText) findViewById(R.id.tf_benutzername);
         passwort = (EditText) findViewById(R.id.tf_passwort);
 
-//        com.example.katharinafeiertag.mediary.FingerprintManager.Instance(this).setFingerprint(this);
+        com.example.katharinafeiertag.mediary.FingerprintManager.Instance(this).setFingerprint(this);
     }
 
 
@@ -53,8 +53,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     public void anmelden (View v) {
-         usernameEingabe = username.getText().toString();
-         passwortEingabe = passwort.getText().toString();
+        usernameEingabe = username.getText().toString();
+        passwortEingabe = passwort.getText().toString();
 
         String password = helper.searchPass(usernameEingabe);
         if(passwortEingabe.equals(password)) {

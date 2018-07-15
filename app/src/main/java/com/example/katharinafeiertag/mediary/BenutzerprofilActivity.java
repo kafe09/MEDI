@@ -132,8 +132,6 @@ public class BenutzerprofilActivity extends AppCompatActivity {
                 }
             }
 
-
-
     public void benutzerloeschen(View v) {
         helper = new DatabaseHelperContacts(this);
 
@@ -147,8 +145,6 @@ public class BenutzerprofilActivity extends AppCompatActivity {
     }
 
     public void logout(View v) {
-        // session.setLoggedin(false);
-        // finish();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

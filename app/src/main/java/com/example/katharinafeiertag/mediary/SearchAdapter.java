@@ -1,10 +1,12 @@
 package com.example.katharinafeiertag.mediary;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -12,9 +14,10 @@ import java.util.List;
 /**
  * Created by scheerbernhard on 05.05.18.
  */
-class SearchViewHolder extends RecyclerView.ViewHolder{
+ class SearchViewHolder extends RecyclerView.ViewHolder{
 
     public TextView medid,name,menge,art,nummer;
+    public ImageView icon;
 
     public SearchViewHolder(View itemView) {
         super(itemView);
@@ -23,7 +26,10 @@ class SearchViewHolder extends RecyclerView.ViewHolder{
         menge = (TextView) itemView.findViewById(R.id.menge);
         art = (TextView) itemView.findViewById(R.id.art);
         nummer = (TextView) itemView.findViewById(R.id.nummer);
+        icon = (ImageView) itemView.findViewById(R.id.icon_med_search);
+        //itemView.setOnClickListener(this);
     }
+
 }
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
@@ -55,6 +61,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
         holder.menge.setText(drugs.get(position).getMenge());
         holder.art.setText(drugs.get(position).getArt());
         holder.nummer.setText(drugs.get(position).getNummer());
+
     }
 
     @Override

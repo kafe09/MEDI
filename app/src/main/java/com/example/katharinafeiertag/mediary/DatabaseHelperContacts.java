@@ -73,10 +73,9 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
         int count = (cursor.getCount() > 0 && cursor.moveToFirst()) ? Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_ID))) : 0;
 
         cursor.close();
-        //hier entsteht ein doofer kommentar weil kathi foto macht xD
 
         query = "select " + COLUMN_ID + "  from contacts where uname = '" + c.getUname() + "'";
-         cursor = db.rawQuery(query,null);
+        cursor = db.rawQuery(query,null);
 
         values.put(COLUMN_VORNAME, c.getVorname());
         values.put(COLUMN_NAME, c.getName());
@@ -152,9 +151,9 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
                 do {
                     a = cursor.getString(4);        //Benutzernamen werden durchiteriert
 
-                    if (a.equals(uname)) {             //wenn Benutzername gefunden wurde
+                    if (a.equals(uname)) {                      //wenn Benutzername gefunden wurde
                         b = cursor.getString(1);    //Vorname wird ermittelt
-                        break;                         //Methode abbrechen, weil Benutzername+Vorname gefunden wurden
+                        break;                                  //Methode abbrechen, weil Benutzername+Vorname gefunden wurden
                     }
                 }
                 while (cursor.moveToNext());
@@ -196,14 +195,14 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
             do {
                 a = cursor.getString(4);        //Benutzernamen werden durchiteriert
 
-                if (a.equals(uname)) {             //wenn Benutzername gefunden wurde
+                if (a.equals(uname)) {                      //wenn Benutzername gefunden wurde
                     b = cursor.getString(3);    //EMail wird ermittelt
-                    break;                         //Methode abbrechen, weil Benutzername+EMail gefunden wurden
+                    break;                                  //Methode abbrechen, weil Benutzername+EMail gefunden wurden
                 }
             }
             while (cursor.moveToNext());
         }
-        return b;                              //wenn kein Benutzer gefunden wurde
+        return b;                                           //wenn kein Benutzer gefunden wurde
     }
 
 
@@ -228,9 +227,6 @@ public class DatabaseHelperContacts extends SQLiteOpenHelper {
         }
         return b;                              //wenn kein Benutzer gefunden wurde
     }
-
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

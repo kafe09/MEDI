@@ -52,20 +52,4 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/bt_medEinnahme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/bt_einsicht"
-        android:layout_alignStart="@+id/bt_medHinzufügen"
-        android:layout_below="@+id/bt_medHinzufügen"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/buttonstylegreen"
-        android:onClick="onEinnahmeClick"
-        android:text="Medikament einnehmen"
-        android:textAlignment="center"
-        android:textColor="@color/backgroundColor"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
 </RelativeLayout>

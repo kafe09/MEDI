@@ -59,7 +59,6 @@ public class ServiceDbAbfrage extends Service {
         return Service.START_STICKY;
     }
 
-
     @Override
     public IBinder onBind (Intent intent) {
         return null;
@@ -70,18 +69,6 @@ public class ServiceDbAbfrage extends Service {
         intent.setAction(EXAMPLE_ACTION);
         intent.putExtra(EXAMPLE_CATEGORY, msg);
         sendBroadcast(intent);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean onStopService() {
-        Toast toasti = Toast.makeText(ServiceDbAbfrage.this, "Die Aktualisierung Ihrer Datenbank ist fehlgeschlagen.", Toast.LENGTH_SHORT);
-        toasti.show();
-        Log.d("stop","Vorgang gestoppt.");
-
-        return false;
     }
 
 

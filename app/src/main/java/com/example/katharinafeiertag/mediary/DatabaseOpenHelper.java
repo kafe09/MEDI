@@ -75,23 +75,6 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
     }
 
 
-    /*public boolean updateData (String name, String mengenangabe, String mengenart, String pharmanummer) {
-
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(NAME,name);
-        values.put(MENGE,mengenangabe);
-        values.put(ART,mengenart);
-        values.put(NUMMER,pharmanummer);
-        db.update(TABLE,values, "MedID = ?",new String[] {id} );
-        return true;
-
-
-    }*/
-
-
-
-
     public List<Drugs> getDrug() {
 
         SQLiteDatabase db = getReadableDatabase();
@@ -164,9 +147,6 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
                 drug.setNummer(cursor.getString(cursor.getColumnIndex("Pharmanummer")));
 
                 result.add(drug);
-
-
-
             }while (cursor.moveToNext());
         }return result;
     }
@@ -256,12 +236,11 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
         qb.setTables(tableName);
         Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
         Log.d("geöffnete ", "Tabl: " +tableName);
-       // Cursor cursor = qb.query(db, sqlSelect, null, null, null, null, null);
 
-        //Cursor cursor = qb.query(db, sqlSelect, "UserID LIKE ?",new String[]{""+gesuchteId+""}, null, null, null,null);
-        Log.d("Message","Cursorabfrage " +cursor);
+        //Cursor cursor = qb.query(db, sqlSelect, "UserID = " + gesuchteId, null, null, null, null,null);
+
+        Log.d("Message","Cursorabfrage " +qb.toString());
         List<Drugs> foundHomeMed = new ArrayList<>();
-        Log.d("vor if", "xxx");
         if(cursor.moveToFirst()) {
 
             do{
@@ -269,7 +248,7 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
                 Drugs drug = new Drugs();
                 drug.setMedID(cursor.getInt(cursor.getColumnIndex("MedID")));
                 drug.setUserId(cursor.getInt(cursor.getColumnIndex("UserID")));
-Log.d("in if drinnen", "userid");
+                Log.d("in if drinnen", "userid");
                 drug.setName(cursor.getString(cursor.getColumnIndex("Name")));
                 drug.setMenge(cursor.getString(cursor.getColumnIndex("Menge")));
                 drug.setArt(cursor.getString(cursor.getColumnIndex("Art")));

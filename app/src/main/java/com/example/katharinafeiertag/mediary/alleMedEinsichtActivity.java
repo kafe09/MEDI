@@ -143,12 +143,10 @@ public class alleMedEinsichtActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new ViewCardListener(getBaseContext(), recyclerView, new ViewCardListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        //do whatever
                     }
 
                     @Override
                     public void onLongItemClick(View view, int position) {
-                        // do whatever
                     }
                 })
         );
