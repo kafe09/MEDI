@@ -51,7 +51,7 @@ public class BenutzerprofilActivity extends AppCompatActivity {
             if (on) {
                 Log.d("set Fingerprint:", "in onCheckChanged Methode");
                 Toast.makeText(getBaseContext(), "Bestätigen Sie durch berühren des Fingerprint-Sensors", Toast.LENGTH_LONG).show();
-                FingerprintManager.Instance(getBaseContext()).setFingerprint(getBaseContext());
+      //          FingerprintManager.Instance(getBaseContext()).setFingerprint(getBaseContext());
             } else {
             //do nothing
             }

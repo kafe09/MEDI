@@ -49,8 +49,8 @@ public class MedSucheActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (getApplicationContext(), alleMedEinsichtActivity.class);
-
                 intent.putExtra("name", materialSearchBar.getText().toString());
+
                 startActivityForResult(intent, 1);
             }
         });
@@ -59,7 +59,7 @@ public class MedSucheActivity extends AppCompatActivity {
         database = new DatabaseOpenHelper(this);
 
         //Searchbar
-        materialSearchBar.setHint("Search");
+        materialSearchBar.setHint("Geben Sie hier den Handelsnamen ein.");
         materialSearchBar.setCardViewElevation(10);
         loadSuggestList();
         materialSearchBar.addTextChangeListener(new TextWatcher() {

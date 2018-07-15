@@ -40,7 +40,7 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
     EditText zulassungsnummer;
     EditText id;
     Button btnUpdate;
-    ProgressDialog progress;
+   //  progress;
 
     Context context = this;
 
@@ -52,7 +52,6 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
 
     DatabaseOpenHelper drugsdatabase;
     SQLiteDatabase db;
-
 
     //für Seekbar
     public SeekBar sb;
@@ -75,7 +74,6 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
         menge = (TextView) findViewById(R.id.tv_wert);
         art = (EditText) findViewById(R.id.tf_art);
         zulassungsnummer = (EditText) findViewById(R.id.tf_zulassungsnummer);
-        //onAddClick(null);
 
         // SeekBar um die Menge der Medikamente festzulegen von 0 bis 500
         sb = (SeekBar) findViewById(R.id.seekBar);
@@ -91,14 +89,10 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
     }
@@ -125,40 +119,22 @@ public class MedikamentHinzufugenActivity extends AppCompatActivity {
                 //finish();
             }
         }, 6000);
-
-        }
-
-
+    }
 
 
     public void onAddClick(View view) {
-
-
         int wartezeit;
+        ProgressDialog progress = ProgressDialog.show(this, "Aktualisierung", "Warten Sie einen Moment...");
 
         try {
-
             wartezeit = 3000;
-
                     drugsdatabase = new DatabaseOpenHelper(context);
                     boolean isInserted = drugsdatabase.insertNewEntry(name.getText().toString(), menge.getText().toString(), art.getText().toString(), zulassungsnummer.getText().toString());
                     drugsdatabase.close();
-
-
-
-            if (isInserted == true) {
-                        Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament hinzugefügt", Toast.LENGTH_LONG);
-                        temp.show();
-                    } else {
-                        Toast temp = Toast.makeText(MedikamentHinzufugenActivity.this, "Medikament nicht hinzugefügt", Toast.LENGTH_LONG);
-                        temp.show();
-                    }
-
                 } catch (Exception e) {
             wartezeit = 0;
             Toast toasti2 = Toast.makeText(MedikamentHinzufugenActivity.this, "Fehlgeschlagen", Toast.LENGTH_LONG);
             toasti2.show();
-
         }
 
         Intent intent = new Intent(getBaseContext(), ServiceDbAbfrage.class);

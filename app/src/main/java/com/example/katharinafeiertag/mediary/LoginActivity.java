@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         username = (EditText) findViewById(R.id.tf_benutzername);
         passwort = (EditText) findViewById(R.id.tf_passwort);
 
-        com.example.katharinafeiertag.mediary.FingerprintManager.Instance(this).setFingerprint(this);
+     //   com.example.katharinafeiertag.mediary.FingerprintManager.Instance(this).setFingerprint(this);
     }
 
 

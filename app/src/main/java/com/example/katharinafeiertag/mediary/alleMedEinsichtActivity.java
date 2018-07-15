@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.support.v7.app.AlertDialog;
@@ -14,27 +13,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.mancj.materialsearchbar.MaterialSearchBar;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import static com.example.katharinafeiertag.mediary.Constant.FIRST_COLUMN;
-import static com.example.katharinafeiertag.mediary.Constant.SECOND_COLUMN;
-import static com.example.katharinafeiertag.mediary.Constant.THIRD_COLUMN;
 
 //Hier sieht Benutzer all seine Medikamente in seiner Hausapotheke
 public class alleMedEinsichtActivity extends AppCompatActivity {

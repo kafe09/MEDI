@@ -8,12 +8,12 @@
 
 
     <com.mancj.materialsearchbar.MaterialSearchBar
-    android:id="@+id/search_bar"
-        android:layout_alignParentTop="true"
-        app:mt_speechMode="false"
-        app:mt_hint="Search"
+        android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:hint="Geben Sie hier den Handelsname ein."
+        app:mt_speechMode="false" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_search"
@@ -31,7 +31,7 @@
         android:layout_alignParentStart="true"
         android:background="@drawable/buttonstylegreen"
         android:onClick="onHinzuClick"
-        android:text="Medikament neu hinzufügen"
+        android:text="neues Medikament hinzufügen"
         android:textColor="#336699" />
 
     <Button

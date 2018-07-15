@@ -44,19 +44,17 @@ public class ServiceDbAbfrage extends Service {
         try {
 
             Thread.sleep(wartezeit);
-            //progress = ProgressDialog.show(this, "Aktualisierung", "Warten Sie einen Moment...");
-            //progress.dismiss();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         String msg = "Die Medikamentendatenbank wurde aktualisiert!";
 
         broadcastExampleInfo(msg);
-
         stopSelf();
+        progress.dismiss();
 
         return Service.START_STICKY;
+
     }
 
     @Override

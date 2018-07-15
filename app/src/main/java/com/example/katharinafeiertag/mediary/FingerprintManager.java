@@ -106,7 +106,7 @@ public class FingerprintManager {
         }
 
 
-        try {
+       /* try {
             keyStore.load(null);
 
             keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
@@ -157,7 +157,7 @@ public class FingerprintManager {
 
             FingerprintHandler helper = new FingerprintHandler(context);
             helper.startAuth(fingerprintManager, cryptoObject);
-        }
+        }*/
     }
 
 

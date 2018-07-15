@@ -27,10 +27,20 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyler_alleMed"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="450dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="69dp" />
+        android:layout_below="@+id/tf_editText"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:id="@+id/tv_klicken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="11dp"
+        android:text="Klicken Sie auf das Medikament wenn Sie es gerade einnehmen"
+        android:textAlignment="center" />
 
 
 </RelativeLayout>
